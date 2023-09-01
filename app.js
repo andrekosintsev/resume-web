@@ -23,8 +23,8 @@ basic.addEventListener("click", function(){
 		tg.MainButton.hide();
 	}
 	else {
-		tg.MainButton.setText("Вы выбрали basic!");
-		item = "1";
+		tg.MainButton.setText("Add/update basic info!");
+		item = "basic";
 		tg.MainButton.show();
 	}
 });
@@ -34,8 +34,8 @@ address.addEventListener("click", function(){
 		tg.MainButton.hide();
 	}
 	else {
-		tg.MainButton.setText("Вы выбрали address!");
-		item = "2";
+		tg.MainButton.setText("Add/update address!");
+		item = "address";
 		tg.MainButton.show();
 	}
 });
@@ -45,8 +45,8 @@ work.addEventListener("click", function(){
 		tg.MainButton.hide();
 	}
 	else {
-		tg.MainButton.setText("Вы выбрали work!");
-		item = "3";
+		tg.MainButton.setText("Add/update work!");
+		item = "work";
 		tg.MainButton.show();
 	}
 });
@@ -56,8 +56,8 @@ education.addEventListener("click", function(){
 		tg.MainButton.hide();
 	}
 	else {
-		tg.MainButton.setText("Вы выбрали education!");
-		item = "4";
+		tg.MainButton.setText("Add/update education!");
+		item = "education";
 		tg.MainButton.show();
 	}
 });
@@ -67,8 +67,8 @@ awards.addEventListener("click", function(){
 		tg.MainButton.hide();
 	}
 	else {
-		tg.MainButton.setText("Вы выбрали awards!");
-		item = "5";
+		tg.MainButton.setText("Add/update awards!");
+		item = "awards";
 		tg.MainButton.show();
 	}
 });
@@ -78,8 +78,8 @@ certificates.addEventListener("click", function(){
 		tg.MainButton.hide();
 	}
 	else {
-		tg.MainButton.setText("Вы выбрали certificates!");
-		item = "6";
+		tg.MainButton.setText("Add/update certificates!");
+		item = "certificates";
 		tg.MainButton.show();
 	}
 });
@@ -89,8 +89,8 @@ publications.addEventListener("click", function(){
 		tg.MainButton.hide();
 	}
 	else {
-		tg.MainButton.setText("Вы выбрали publications!");
-		item = "6";
+		tg.MainButton.setText("Add/update publications!");
+		item = "publications";
 		tg.MainButton.show();
 	}
 });
@@ -100,8 +100,8 @@ volunteer.addEventListener("click", function(){
 		tg.MainButton.hide();
 	}
 	else {
-		tg.MainButton.setText("Вы выбрали volunteer!");
-		item = "6";
+		tg.MainButton.setText("Add/update volunteer!");
+		item = "volunteer";
 		tg.MainButton.show();
 	}
 });
@@ -111,8 +111,8 @@ skills.addEventListener("click", function(){
 		tg.MainButton.hide();
 	}
 	else {
-		tg.MainButton.setText("Вы выбрали skills!");
-		item = "6";
+		tg.MainButton.setText("Add/update skills!");
+		item = "skills";
 		tg.MainButton.show();
 	}
 });
@@ -122,8 +122,8 @@ languages.addEventListener("click", function(){
 		tg.MainButton.hide();
 	}
 	else {
-		tg.MainButton.setText("Вы выбрали languages!");
-		item = "6";
+		tg.MainButton.setText("Add/update languages!");
+		item = "languages";
 		tg.MainButton.show();
 	}
 });
