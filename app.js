@@ -132,19 +132,3 @@ languages.addEventListener("click", function(){
 Telegram.WebApp.onEvent("mainButtonClicked", function(){
 	tg.sendData(item);
 });
-
-
-let usercard = document.getElementById("usercard");
-
-let allinfo = document.getElementById("allinfo");
-
-let p = document.createElement("p");
-let s = document.createElement("p");
-
-p.innerText = `${tg.initDataUnsafe.user.first_name} ${tg.initDataUnsafe.user.last_name}`;
-s.innerText = `${tg.initDataUnsafe} ${tg.initDataUnsafe.user}`;
-console.log(${tg.initDataUnsafe} ${tg.initDataUnsafe.user});
-
-usercard.appendChild(p);
-
-allinfo.appendChild(s);
