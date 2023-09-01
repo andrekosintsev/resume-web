@@ -130,7 +130,6 @@ languages.addEventListener("click", function(){
 
 
 Telegram.WebApp.onEvent("mainButtonClicked", function(){
-	//tg.sendData(item);
-	window.Telegram.WebApp.sendData(item);
+	tg.sendData(JSON.stingify(item));
 	tg.close();
 });
