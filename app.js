@@ -23,7 +23,7 @@ basic.addEventListener("click", function(){
 		tg.MainButton.hide();
 	}
 	else {
-		tg.MainButton.setText("Add/update basic info!");
+		tg.MainButton.setText("Add/update basic info");
 		item = "basic";
 		tg.MainButton.show();
 	}
@@ -34,7 +34,7 @@ address.addEventListener("click", function(){
 		tg.MainButton.hide();
 	}
 	else {
-		tg.MainButton.setText("Add/update address!");
+		tg.MainButton.setText("Add/update address");
 		item = "address";
 		tg.MainButton.show();
 	}
@@ -45,7 +45,7 @@ work.addEventListener("click", function(){
 		tg.MainButton.hide();
 	}
 	else {
-		tg.MainButton.setText("Add/update work!");
+		tg.MainButton.setText("Add/update work");
 		item = "work";
 		tg.MainButton.show();
 	}
@@ -56,7 +56,7 @@ education.addEventListener("click", function(){
 		tg.MainButton.hide();
 	}
 	else {
-		tg.MainButton.setText("Add/update education!");
+		tg.MainButton.setText("Add/update education");
 		item = "education";
 		tg.MainButton.show();
 	}
@@ -67,7 +67,7 @@ awards.addEventListener("click", function(){
 		tg.MainButton.hide();
 	}
 	else {
-		tg.MainButton.setText("Add/update awards!");
+		tg.MainButton.setText("Add/update awards");
 		item = "awards";
 		tg.MainButton.show();
 	}
@@ -78,7 +78,7 @@ certificates.addEventListener("click", function(){
 		tg.MainButton.hide();
 	}
 	else {
-		tg.MainButton.setText("Add/update certificates!");
+		tg.MainButton.setText("Add/update certificates");
 		item = "certificates";
 		tg.MainButton.show();
 	}
@@ -89,7 +89,7 @@ publications.addEventListener("click", function(){
 		tg.MainButton.hide();
 	}
 	else {
-		tg.MainButton.setText("Add/update publications!");
+		tg.MainButton.setText("Add/update publications");
 		item = "publications";
 		tg.MainButton.show();
 	}
@@ -100,7 +100,7 @@ volunteer.addEventListener("click", function(){
 		tg.MainButton.hide();
 	}
 	else {
-		tg.MainButton.setText("Add/update volunteer!");
+		tg.MainButton.setText("Add/update volunteer");
 		item = "volunteer";
 		tg.MainButton.show();
 	}
@@ -111,7 +111,7 @@ skills.addEventListener("click", function(){
 		tg.MainButton.hide();
 	}
 	else {
-		tg.MainButton.setText("Add/update skills!");
+		tg.MainButton.setText("Add/update skills");
 		item = "skills";
 		tg.MainButton.show();
 	}
@@ -122,7 +122,7 @@ languages.addEventListener("click", function(){
 		tg.MainButton.hide();
 	}
 	else {
-		tg.MainButton.setText("Add/update languages!");
+		tg.MainButton.setText("Add/update languages");
 		item = "languages";
 		tg.MainButton.show();
 	}
@@ -131,4 +131,5 @@ languages.addEventListener("click", function(){
 
 Telegram.WebApp.onEvent("mainButtonClicked", function(){
 	tg.sendData(item);
+	tg.close();
 });
