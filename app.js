@@ -5,131 +5,39 @@ tg.expand();
 tg.MainButton.textColor = '#FFFFFF';
 tg.MainButton.color = '#2cab37';
 
-let item = "";
+// Get references to the input fields
+const fullNameInput = document.getElementById('full_name');
+const labelInput = document.getElementById('label');
+const imageInput = document.getElementById('image');
+const emailInput = document.getElementById('email');
+const phoneInput = document.getElementById('phone');
+const summaryInput = document.getElementById('summary');
+const addressInput = document.getElementById('address');
+const postalCodeInput = document.getElementById('postal_code');
+const cityInput = document.getElementById('city');
+const countryCodeInput = document.getElementById('country');
+const regionInput = document.getElementById('region');
 
-let basic = document.getElementById("basic");
-let address = document.getElementById("address");
-let work = document.getElementById("work");
-let education = document.getElementById("education");
-let awards = document.getElementById("awards");
-let certificates = document.getElementById("certificates");
-let publications = document.getElementById("publications");
-let volunteer = document.getElementById("volunteer");
-let skills = document.getElementById("skills");
-let languages = document.getElementById("languages");
 
-basic.addEventListener("click", function(){
-	if (tg.MainButton.isVisible) {
-		tg.MainButton.hide();
-	}
-	else {
-		tg.MainButton.setText("Add/update basic info");
-		item = "basic";
-		tg.MainButton.show();
-	}
-});
-
-address.addEventListener("click", function(){
-	if (tg.MainButton.isVisible) {
-		tg.MainButton.hide();
-	}
-	else {
-		tg.MainButton.setText("Add/update address");
-		item = "address";
-		tg.MainButton.show();
-	}
-});
-
-work.addEventListener("click", function(){
-	if (tg.MainButton.isVisible) {
-		tg.MainButton.hide();
-	}
-	else {
-		tg.MainButton.setText("Add/update work");
-		item = "work";
-		tg.MainButton.show();
-	}
-});
-
-education.addEventListener("click", function(){
-	if (tg.MainButton.isVisible) {
-		tg.MainButton.hide();
-	}
-	else {
-		tg.MainButton.setText("Add/update education");
-		item = "education";
-		tg.MainButton.show();
-	}
-});
-
-awards.addEventListener("click", function(){
-	if (tg.MainButton.isVisible) {
-		tg.MainButton.hide();
-	}
-	else {
-		tg.MainButton.setText("Add/update awards");
-		item = "awards";
-		tg.MainButton.show();
-	}
-});
-
-certificates.addEventListener("click", function(){
-	if (tg.MainButton.isVisible) {
-		tg.MainButton.hide();
-	}
-	else {
-		tg.MainButton.setText("Add/update certificates");
-		item = "certificates";
-		tg.MainButton.show();
-	}
-});
-
-publications.addEventListener("click", function(){
-	if (tg.MainButton.isVisible) {
-		tg.MainButton.hide();
-	}
-	else {
-		tg.MainButton.setText("Add/update publications");
-		item = "publications";
-		tg.MainButton.show();
-	}
-});
-
-volunteer.addEventListener("click", function(){
-	if (tg.MainButton.isVisible) {
-		tg.MainButton.hide();
-	}
-	else {
-		tg.MainButton.setText("Add/update volunteer");
-		item = "volunteer";
-		tg.MainButton.show();
-	}
-});
-
-skills.addEventListener("click", function(){
-	if (tg.MainButton.isVisible) {
-		tg.MainButton.hide();
-	}
-	else {
-		tg.MainButton.setText("Add/update skills");
-		item = "skills";
-		tg.MainButton.show();
-	}
-});
-
-languages.addEventListener("click", function(){
-	if (tg.MainButton.isVisible) {
-		tg.MainButton.hide();
-	}
-	else {
-		tg.MainButton.setText("Add/update languages");
-		item = "languages";
-		tg.MainButton.show();
-	}
-});
+tg.MainButton.show();
 
 
 Telegram.WebApp.onEvent("mainButtonClicked", function(){
-	tg.sendData(item);
+	tg.sendData(basics: {
+                        name: fullNameInput.value,
+                        label: labelInput.value,
+                        image: imageInput.value,
+                        email: emailInput.value,
+                        phone: phoneInput.value,
+                        summary: summaryInput.value,
+                        location: {
+                            address: addressInput.value,
+                            postalCode: postalCodeInput.value,
+                            city: cityInput.value,
+                            countryCode: countryCodeInput.value,
+                            region: regionInput.value
+                          }
+                        }
+                      );
 	tg.close();
 });
