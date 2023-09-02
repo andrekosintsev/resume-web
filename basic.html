@@ -66,12 +66,12 @@
 
         <div class="mb-3">
             <label for="city" class="form-label">City:</label>
-            <input type="text" class="form-control" id="city" name="city" placeholder="Moscow">
+            <input type="text" class="form-control" id="city" name="city" placeholder="Mainz">
         </div>
 
         <div class="mb-3">
             <label for="region" class="form-label">Region:</label>
-            <input type="text" class="form-control" id="region" name="region" placeholder="Moscow region">
+            <input type="text" class="form-control" id="region" name="region" placeholder="Rheinland-Pfalz">
         </div>
     </form>
 </div>
@@ -79,7 +79,6 @@
 <!-- Add Bootstrap JS (Optional) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>
 <script>
-        // Function to populate the "Country" select element with all possible options
         function populateCountryDropdown() {
             const countrySelect = document.getElementById("country");
             const countries = [];
@@ -97,6 +96,9 @@
                 const option = document.createElement("option");
                 option.value = country.code;
                 option.text = country.name;
+                if (option.value==='DE') {
+                    option.selected=true;
+                }
                 countrySelect.appendChild(option);
             });
               })
@@ -108,6 +110,7 @@
 
         // Call the function to populate the dropdown
         populateCountryDropdown();
+
 
 
 </script>
