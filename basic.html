@@ -7,161 +7,81 @@
 
     <!-- Include the Telegram Web App script -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-
-        .container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 500px;
-            text-align: center;
-        }
-
-        h1 {
-            text-align: center;
-        }
-
-        form {
-            display: grid;
-            grid-gap: 20px;
-        }
-
-        label {
-            font-weight: bold;
-        }
-
-        input[type="text"],
-        input[type="email"],
-        input[type="tel"],
-        select,
-        textarea,
-        input[type="file"] {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            outline: none;
-        }
-
-        input[type="file"] {
-            border: none;
-        }
-
-        select {
-            height: 40px;
-        }
-
-        textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-
-        input[type="submit"] {
-            background-color: #007BFF;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #0056b3;
-        }
-
-        /* Responsive design for smaller screens */
-        @media screen and (max-width: 768px) {
-            .container {
-                max-width: 90%;
-            }
-        }
-
-    </style>
+    <!-- Add Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<div class="container">
-    <h1>Personal Information Form</h1>
+<div class="container mt-5">
+    <h1 class="text-center">Personal Information Form</h1>
     <form action="submit.php" method="POST" enctype="multipart/form-data">
-        <label for="full_name">Full Name:</label>
-        <input type="text" id="full_name" name="full_name"><br><br>
+        <div class="mb-3">
+            <label for="full_name" class="form-label">Full Name:</label>
+            <input type="text" class="form-control" id="full_name" name="full_name" placeholder="e.g. John Doe">
+        </div>
 
-        <label for="label">Label:</label>
-        <input type="text" id="label" name="label" placeholder="Full Stack Java Developer"><br><br>
+        <div class="mb-3">
+            <label for="label" class="form-label">Label:</label>
+            <input type="text" class="form-control" id="label" name="label" placeholder="e.g. Full Stack Java Developer">
+        </div>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email"><br><br>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="e.g. john.doe@gmail.com">
+        </div>
 
-        <label for="phone">Phone:</label>
-        <input type="tel" id="phone" name="phone"><br><br>
+        <div class="mb-3">
+            <label for="phone" class="form-label">Phone:</label>
+            <input type="tel" class="form-control" id="phone" name="phone" placeholder="e.g. +49 175 332 2233">
+        </div>
 
-        <label for="image">Upload Image:</label>
-        <input type="file" id="image" name="image" accept="image/*"><br><br>
+        <div class="mb-3">
+            <label for="image" class="form-label">Upload Image:</label>
+            <input type="file" class="form-control" id="image" name="image" accept="image/*">
+        </div>
 
-        <label for="summary">Summary:</label><br>
-        <textarea id="summary" name="summary" rows="4" cols="50"></textarea><br><br>
+        <div class="mb-3">
+            <label for="summary" class="form-label">Summary:</label>
+            <textarea class="form-control" id="summary" name="summary" rows="4" placeholder="Write a brief summary about you about your working experience..."></textarea>
+        </div>
 
+        <!-- Address Section (You can style this part as needed) -->
+        <!-- Address Section (Styled with Bootstrap) -->
         <h2>Address</h2>
-        <label for="address">Address:</label>
-        <input type="text" id="address" name="address"><br><br>
 
-        <label for="postal_code">Postal Code:</label>
-        <input type="text" id="postal_code" name="postal_code"><br><br>
+        <div class="mb-3">
+            <label for="address" class="form-label">Address:</label>
+            <input type="text" class="form-control" id="address" name="address" placeholder="Odenwaldstr. 223">
+        </div>
 
-        <label for="country">Country:</label>
-        <select id="country" name="country"></select><br><br>
+        <div class="mb-3">
+            <label for="postal_code" class="form-label">Postal Code:</label>
+            <input type="text" class="form-control" id="postal_code" name="postal_code" placeholder="65760">
+        </div>
 
-        <label for="city">City:</label>
-        <input type="text" id="city" name="city" placeholder="Start typing your city"><br><br>
+        <div class="mb-3">
+            <label for="country" class="form-label">Country:</label>
+            <select class="form-select" id="country" name="country">
+                <option value="AF">Afghanistan</option>
+                <option value="AL">Albania</option>
+                <option value="DZ">Algeria</option>
+            </select>
+        </div>
 
-        <label for="country_code">Country Code:</label>
-        <input type="text" id="country_code" name="country_code"><br><br>
+        <div class="mb-3">
+            <label for="city" class="form-label">City:</label>
+            <input type="text" class="form-control" id="city" name="city" placeholder="Moscow">
+        </div>
 
-        <label for="region">Region:</label>
-        <input type="text" id="region" name="region"><br><br>
+        <div class="mb-3">
+            <label for="region" class="form-label">Region:</label>
+            <input type="text" class="form-control" id="region" name="region" placeholder="Moscow region">
+        </div>
 
-        <input type="submit" value="Submit">
-
-        <script>
-            // Function to populate the country dropdown
-            function populateCountries() {
-                const countrySelect = document.getElementById("country");
-                const countries = [
-                    { code: "AF", name: "Afghanistan" },
-                    { code: "AL", name: "Albania" },
-                    { code: "DZ", name: "Algeria" },
-                    { code: "AD", name: "Andorra" },
-                    { code: "AO", name: "Angola" },
-                    // Add more countries here
-                ];
-
-                countries.forEach((country) => {
-                    const option = document.createElement("option");
-                    option.value = country.code;
-                    option.text = country.name;
-                    countrySelect.appendChild(option);
-                });
-            }
-
-            // Call the function to populate the dropdown
-            populateCountries();
-
-
-
-        </script>
+        <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
+
+<!-- Add Bootstrap JS (Optional) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
