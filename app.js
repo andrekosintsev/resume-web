@@ -55,7 +55,7 @@ function populateCountryDropdown() {
 populateCountryDropdown();
 
 Telegram.WebApp.onEvent("mainButtonClicked", function(){
-	tg.sendData(basics: {
+	tg.sendData({
                         name: fullNameInput.value,
                         label: labelInput.value,
                         image: imageInput.value,
