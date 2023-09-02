@@ -8,6 +8,7 @@ tg.MainButton.setText("Save");
 tg.MainButton.show();
 
 // Get references to the input fields
+let basic = document.getElementById("basic");
 let fullNameInput = document.getElementById('full_name');
 let labelInput = document.getElementById('label');
 let imageInput = document.getElementById('image');
@@ -19,6 +20,16 @@ let postalCodeInput = document.getElementById('postal_code');
 let cityInput = document.getElementById('city');
 let countryCodeInput = document.getElementById('country');
 let regionInput = document.getElementById('region');
+
+basic.addEventListener("click", function(){
+	if (tg.MainButton.isVisible) {
+		tg.MainButton.hide();
+	}
+	else {
+		tg.MainButton.setText("Add/update basic info");
+		tg.MainButton.show();
+	}
+});
 
 fullNameInput.addEventListener("input", function(){
 		tg.MainButton.setText("Save");
