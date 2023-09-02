@@ -20,14 +20,29 @@ let cityInput = document.getElementById('city');
 let countryCodeInput = document.getElementById('country');
 let regionInput = document.getElementById('region');
 
-fullNameInput.addEventListener("click", function(){
-	if (tg.MainButton.isVisible) {
-		tg.MainButton.hide();
-	}
-	else {
+fullNameInput.addEventListener("input", function(){
 		tg.MainButton.setText("Save");
 		tg.MainButton.show();
-	}
+});
+labelInput.addEventListener("input", function(){
+		tg.MainButton.setText("Save");
+		tg.MainButton.show();
+});
+emailInput.addEventListener("input", function(){
+		tg.MainButton.setText("Save");
+		tg.MainButton.show();
+});
+phoneInput.addEventListener("input", function(){
+		tg.MainButton.setText("Save");
+		tg.MainButton.show();
+});
+summaryInput.addEventListener("input", function(){
+		tg.MainButton.setText("Save");
+		tg.MainButton.show();
+});
+addressInput.addEventListener("input", function(){
+		tg.MainButton.setText("Save");
+		tg.MainButton.show();
 });
 
 Telegram.WebApp.onEvent("mainButtonClicked", function(){
