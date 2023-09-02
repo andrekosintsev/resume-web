@@ -55,7 +55,7 @@ function populateCountryDropdown() {
 populateCountryDropdown();
 
 Telegram.WebApp.onEvent("mainButtonClicked", function(){
-	tg.sendData({
+	tg.sendData(JSON.stringify({
                         name: fullNameInput.value,
                         label: labelInput.value,
                         image: imageInput.value,
@@ -69,7 +69,7 @@ Telegram.WebApp.onEvent("mainButtonClicked", function(){
                             countryCode: countryCodeInput.value,
                             region: regionInput.value
                           }
-                        }
+                        })
                       );
 	tg.close();
 });
