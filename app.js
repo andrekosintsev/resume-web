@@ -18,7 +18,7 @@ let cityInput = document.getElementById('city');
 let countryCodeInput = document.getElementById('country');
 let regionInput = document.getElementById('region');
 
-fullNameInput.addEventListener("mouseover", function(){
+fullNameInput.addEventListener("click", function(){
 	if (tg.MainButton.isVisible) {
 		tg.MainButton.hide();
 	}
