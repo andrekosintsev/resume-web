@@ -6,19 +6,30 @@ tg.MainButton.textColor = '#FFFFFF';
 tg.MainButton.color = '#2cab37';
 
 // Get references to the input fields
-const fullNameInput = document.getElementById('full_name');
-const labelInput = document.getElementById('label');
-const imageInput = document.getElementById('image');
-const emailInput = document.getElementById('email');
-const phoneInput = document.getElementById('phone');
-const summaryInput = document.getElementById('summary');
-const addressInput = document.getElementById('address');
-const postalCodeInput = document.getElementById('postal_code');
-const cityInput = document.getElementById('city');
-const countryCodeInput = document.getElementById('country');
-const regionInput = document.getElementById('region');
+let fullNameInput = document.getElementById('full_name');
+let labelInput = document.getElementById('label');
+let imageInput = document.getElementById('image');
+let emailInput = document.getElementById('email');
+let phoneInput = document.getElementById('phone');
+let summaryInput = document.getElementById('summary');
+let addressInput = document.getElementById('address');
+let postalCodeInput = document.getElementById('postal_code');
+let cityInput = document.getElementById('city');
+let countryCodeInput = document.getElementById('country');
+let regionInput = document.getElementById('region');
+
+fullNameInput.addEventListener("mouseover", function(){
+	if (tg.MainButton.isVisible) {
+		tg.MainButton.hide();
+	}
+	else {
+		tg.MainButton.setText("Save");
+		tg.MainButton.show();
+	}
+});
 
 
+tg.MainButton.setText("Save");
 tg.MainButton.show();
 
 
