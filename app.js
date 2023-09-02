@@ -4,6 +4,8 @@ tg.expand();
 
 tg.MainButton.textColor = '#FFFFFF';
 tg.MainButton.color = '#2cab37';
+tg.MainButton.setText("Save");
+tg.MainButton.show();
 
 // Get references to the input fields
 let fullNameInput = document.getElementById('full_name');
@@ -27,11 +29,6 @@ fullNameInput.addEventListener("click", function(){
 		tg.MainButton.show();
 	}
 });
-
-
-tg.MainButton.setText("Save");
-tg.MainButton.show();
-
 
 Telegram.WebApp.onEvent("mainButtonClicked", function(){
 	tg.sendData(basics: {
