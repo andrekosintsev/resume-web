@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificates Form</title>
+
+    <!-- Add Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="text-center">Certificates Form</h1>
+    <form id="certificates_form">
+        <div class="mb-3">
+            <label for="name" class="form-label">Name:</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+        </div>
+
+        <div class="mb-3">
+            <label for="date" class="form-label">Date:</label>
+            <input type="date" class="form-control" id="date" name="date">
+        </div>
+
+        <div class="mb-3">
+            <label for="url" class="form-label">URL:</label>
+            <input type="url" class="form-control" id="url" name="url" placeholder="URL (e.g., http://example.com)">
+        </div>
+
+        <div class="mb-3">
+            <label for="issuer" class="form-label">Issuer:</label>
+            <input type="text" class="form-control" id="issuer" name="issuer" placeholder="Issuer">
+        </div>
+
+        <button type="button" class="btn btn-primary" id="add_button">Add</button>
+    </form>
+
+    <!-- List of Certificate Entries -->
+    <div class="mt-5">
+        <h2>List of Certificate Entries</h2>
+        <ul id="certificates_list" class="list-group">
+            <!-- Dynamically generated certificate entries will be placed here -->
+        </ul>
+    </div>
+</div>
+
+<script>
+    const addButton = document.getElementById('add_button');
+    const certificatesForm = document.getElementById('certificates_form');
+    const certificatesList = document.getElementById('certificates_list');
+
+    // Sample data for certificate entries
+    const sampleCertificateEntries = [];
+
+    // Function to generate and append certificate entry HTML
+    function addCertificateEntry(entry) {
+        const listItem = document.createElement('li');
+        listItem.className = 'list-group-item';
+
+        const entryHTML = `
+            <strong>Name:</strong> ${entry.name}<br>
+            <strong>Date:</strong> ${entry.date}<br>
+            <strong>URL:</strong> <a href="${entry.url}" target="_blank">${entry.url}</a><br>
+            <strong>Issuer:</strong> ${entry.issuer}<br>
+        `;
+
+        listItem.innerHTML = entryHTML;
+        certificatesList.appendChild(listItem);
+
+        // Delete button event listener
+        const deleteButton = document.createElement('button');
+        deleteButton.className = 'btn btn-danger btn-sm delete-button';
+        deleteButton.textContent = 'Delete';
+        listItem.appendChild(deleteButton);
+
+        deleteButton.addEventListener('click', () => {
+            listItem.remove();
+        });
+
+        // Edit button event listener
+        const editButton = document.createElement('button');
+        editButton.className = 'btn btn-primary btn-sm edit-button';
+        editButton.textContent = 'Edit';
+        listItem.appendChild(editButton);
+
+        editButton.addEventListener('click', () => {
+            populateFormForEditing(entry);
+        });
+    }
+
+    // Function to populate the certificate form with data for editing
+    function populateFormForEditing(entry) {
+        document.getElementById('name').value = entry.name;
+        document.getElementById('date').value = entry.date;
+        document.getElementById('url').value = entry.url;
+        document.getElementById('issuer').value = entry.issuer;
+    }
+
+    // Edit button event listener
+    function editCertificateEntry(entry) {
+        populateFormForEditing(entry);
+    }
+
+    // Add button click event listener
+    addButton.addEventListener('click', () => {
+        const entryData = {
+            name: document.getElementById('name').value,
+            date: document.getElementById('date').value,
+            url: document.getElementById('url').value,
+            issuer: document.getElementById('issuer').value,
+        };
+
+        addCertificateEntry(entryData);
+        certificatesForm.reset();
+    });
+
+</script>
+
+<!-- Add Bootstrap JS (Optional) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
