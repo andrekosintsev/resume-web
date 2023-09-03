@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work Experience Form</title>
+
+    <!-- Add Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="text-center">Work Experience Form</h1>
+    <form id="work_experience_form">
+        <div class="mb-3">
+            <label for="company_name" class="form-label">Company Name:</label>
+            <input type="text" class="form-control" id="company_name" name="company_name" placeholder="Company Name">
+        </div>
+
+        <div class="mb-3">
+            <label for="company_address" class="form-label">Company Address:</label>
+            <input type="text" class="form-control" id="company_address" name="company_address"
+                   placeholder="Company Address">
+        </div>
+
+        <div class="mb-3">
+            <label for="company_website" class="form-label">Company Website:</label>
+            <input type="url" class="form-control" id="company_website" name="company_website"
+                   placeholder="Company Website (e.g., https://www.example.com)">
+        </div>
+
+        <div class="mb-3">
+            <label for="industry" class="form-label">Industry:</label>
+            <select class="form-select" id="industry" name="industry">
+                <option value="Technology">Technology</option>
+                <option value="Banking">Banking</option>
+                <option value="Digital Farming">Digital Farming</option>
+                <option value="Automotive">Automotive</option>
+                <option value="Startup">Startup</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="position" class="form-label">Position:</label>
+            <input type="text" class="form-control" id="position" name="position" placeholder="Position">
+        </div>
+
+        <div class="mb-3">
+            <label for="start_date" class="form-label">Start Date:</label>
+            <input type="date" class="form-control" id="start_date" name="start_date">
+        </div>
+
+        <div class="mb-3">
+            <label for="end_date" class="form-label">End Date:</label>
+            <input type="date" class="form-control" id="end_date" name="end_date">
+        </div>
+
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="currently_working" name="currently_working">
+            <label class="form-check-label" for="currently_working">Currently working here</label>
+        </div>
+
+        <div class="mb-3">
+            <label for="summary" class="form-label">Summary:</label>
+            <textarea class="form-control" id="summary" name="summary"
+                      placeholder="Write a short summary..."></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="highlights" class="form-label">Highlights:</label>
+            <textarea class="form-control" id="highlights" name="highlights"
+                      placeholder="Enter highlights..."></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="keywords" class="form-label">Keywords:</label>
+            <textarea class="form-control" id="keywords" name="keywords" placeholder="Enter keywords..."></textarea>
+        </div>
+
+        <button type="button" class="btn btn-primary" id="add_button">Add</button>
+    </form>
+
+    <!-- List of Entries -->
+    <div class="mt-5">
+        <h2>List of Work Experience Entries</h2>
+        <ul id="entry_list" class="list-group">
+            <!-- Dynamically generated entries will be placed here -->
+        </ul>
+    </div>
+
+</div>
+
+<script>
+    const currentlyWorkingCheckbox = document.getElementById('currently_working');
+    const endDateInput = document.getElementById('end_date');
+    const addButton = document.getElementById('add_button');
+    const workExperienceForm = document.getElementById('work_experience_form');
+    const entryList = document.getElementById('entry_list');
+
+    currentlyWorkingCheckbox.addEventListener('change', function () {
+        endDateInput.disabled = this.checked;
+        if (this.checked) {
+            endDateInput.value = ''; // Clear the value when disabled
+        }
+    });
+
+    // Sample data for work experience entries
+    const sampleEntries = [];
+
+    // Function to generate and append entry HTML
+    function addEntry(entry) {
+        const listItem = document.createElement('li');
+        listItem.className = 'list-group-item';
+
+        const entryHTML = `
+            <strong>Company Name:</strong> ${entry.company_name}<br>
+            <strong>Company Address:</strong> ${entry.company_address}<br>
+            <strong>Company Website:</strong> <a href="${entry.company_website}" target="_blank">${entry.company_website}</a><br>
+            <strong>Industry:</strong> ${entry.industry}<br>
+            <strong>Position:</strong> ${entry.position}<br>
+            <strong>Start Date:</strong> ${entry.start_date}<br>
+            <strong>End Date:</strong> ${entry.end_date}<br>
+            <strong>Currently Working:</strong> ${entry.currently_working ? 'Yes' : 'No'}<br>
+            <strong>Summary:</strong> ${entry.summary}<br>
+            <strong>Highlights:</strong> ${entry.highlights}<br>
+            <strong>Keywords:</strong> ${entry.keywords}<br>
+            <button class="btn btn-danger btn-sm delete-button">Delete</button>
+            <button class="btn btn-primary btn-sm edit-button">Edit</button>
+        `;
+
+        listItem.innerHTML = entryHTML;
+        entryList.appendChild(listItem);
+
+        // Delete button event listener
+        const deleteButton = document.createElement('button');
+        deleteButton.className = 'btn btn-danger btn-sm delete-button';
+        deleteButton.textContent = 'Delete';
+        listItem.appendChild(deleteButton);
+
+        deleteButton.addEventListener('click', () => {
+            listItem.remove();
+        });
+
+        // Edit button event listener
+        const editButton = document.createElement('button');
+        editButton.className = 'btn btn-primary btn-sm edit-button';
+        editButton.textContent = 'Edit';
+        listItem.appendChild(editButton);
+
+        editButton.addEventListener('click', () => {
+            populateFormForEditing(entry);
+        });
+    }
+
+    // Function to populate the form with data for editing
+    function populateFormForEditing(entry) {
+        document.getElementById('company_name').value = entry.company_name;
+        document.getElementById('company_address').value = entry.company_address;
+        document.getElementById('company_website').value = entry.company_website;
+        document.getElementById('industry').value = entry.industry;
+        document.getElementById('position').value = entry.position;
+        document.getElementById('start_date').value = entry.start_date;
+        document.getElementById('end_date').value = entry.end_date;
+        document.getElementById('currently_working').checked = entry.currently_working;
+        document.getElementById('summary').value = entry.summary;
+        document.getElementById('highlights').value = entry.highlights;
+        document.getElementById('keywords').value = entry.keywords;
+    }
+
+    // Edit button event listener
+    function editEntry(entry) {
+        populateFormForEditing(entry);
+    }
+
+    // Add button click event listener
+    addButton.addEventListener('click', () => {
+        const entryData = {
+            company_name: document.getElementById('company_name').value,
+            company_address: document.getElementById('company_address').value,
+            company_website: document.getElementById('company_website').value,
+            industry: document.getElementById('industry').value,
+            position: document.getElementById('position').value,
+            start_date: document.getElementById('start_date').value,
+            end_date: document.getElementById('end_date').value,
+            currently_working: document.getElementById('currently_working').checked,
+            summary: document.getElementById('summary').value,
+            highlights: document.getElementById('highlights').value,
+            keywords: document.getElementById('keywords').value,
+        };
+
+        addEntry(entryData);
+        workExperienceForm.reset();
+    });
+
+</script>
+
+<!-- Add Bootstrap JS (Optional) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script src="work_app.js"></script>
+</body>
+</html>
