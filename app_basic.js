@@ -27,40 +27,43 @@ let cityInput = document.getElementById('city');
 let countryCodeInput = document.getElementById('country');
 let regionInput = document.getElementById('region');
 
-const jsonData = decodeURIComponent(encodedJsonData);
-const fixedJson = jsonData.replace(/(['"])?([a-zA-Z0-9_]+)(['"])?:/g, '"$2":');
-console.log(fixedJson);
-const jsonObject = JSON.parse(fixedJson);
+if(encodedJsonData) {
 
-if (fullNameInput) {
-  fullNameInput.value = jsonObject.name || "";
-}
-if (labelInput) {
-  labelInput.value = jsonObject.label || "";
-}
-if (emailInput) {
-  emailInput.value = jsonObject.email || "";
-}
-if (phoneInput) {
-  phoneInput.value = jsonObject.phone || "";
-}
-if (summaryInput) {
-  summaryInput.value = jsonObject.summary || "";
-}
-if (addressInput && jsonObject.location) {
-  addressInput.value = jsonObject.location.address || "";
-}
-if (postalCodeInput && jsonObject.location) {
-  postalCodeInput.value = jsonObject.location.postalCode || "";
-}
-if (cityInput && jsonObject.location) {
-  cityInput.value = jsonObject.location.city || "";
-}
-if (countryCodeInput && jsonObject.location) {
-  countryCodeInput.value = jsonObject.location.countryCode || "";
-}
-if (regionInput && jsonObject.location) {
-  regionInput.value = jsonObject.location.region || "";
+    const jsonData = decodeURIComponent(encodedJsonData);
+    const fixedJson = jsonData.replace(/(['"])?([a-zA-Z0-9_]+)(['"])?:/g, '"$2":');
+    console.log(fixedJson);
+    const jsonObject = JSON.parse(fixedJson);
+
+    if (fullNameInput) {
+      fullNameInput.value = jsonObject.name || "";
+    }
+    if (labelInput) {
+      labelInput.value = jsonObject.label || "";
+    }
+    if (emailInput) {
+      emailInput.value = jsonObject.email || "";
+    }
+    if (phoneInput) {
+      phoneInput.value = jsonObject.phone || "";
+    }
+    if (summaryInput) {
+      summaryInput.value = jsonObject.summary || "";
+    }
+    if (addressInput && jsonObject.location) {
+      addressInput.value = jsonObject.location.address || "";
+    }
+    if (postalCodeInput && jsonObject.location) {
+      postalCodeInput.value = jsonObject.location.postalCode || "";
+    }
+    if (cityInput && jsonObject.location) {
+      cityInput.value = jsonObject.location.city || "";
+    }
+    if (countryCodeInput && jsonObject.location) {
+      countryCodeInput.value = jsonObject.location.countryCode || "";
+    }
+    if (regionInput && jsonObject.location) {
+      regionInput.value = jsonObject.location.region || "";
+    }
 }
 
 function populateCountryDropdown() {
