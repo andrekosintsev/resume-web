@@ -7,7 +7,6 @@ tg.MainButton.color = '#2cab37';
 tg.MainButton.setText("Save");
 tg.MainButton.show();
 
-// Get references to the input fields
 let basic = document.getElementById("basic");
 let fullNameInput = document.getElementById('full_name');
 let labelInput = document.getElementById('label');
@@ -32,6 +31,7 @@ function populateCountryDropdown() {
                   const countryCode = country.cca2;
                   const countryName = country.name.common;
                   countries.push({ code: countryCode, name: countryName });
+                  countries.sort((a, b) => a.name.localeCompare(b.name));
                 });
                 console.log(countries);
                 countries.forEach((country) => {
@@ -47,9 +47,6 @@ function populateCountryDropdown() {
               .catch(error => {
                 console.error('Error fetching country data:', error);
               });
-              tg.MainButton.setText("Save");
-              tg.MainButton.show();
-
 }
         // Call the function to populate the dropdown
 populateCountryDropdown();
@@ -66,7 +63,7 @@ Telegram.WebApp.onEvent("mainButtonClicked", function(){
                             address: addressInput.value,
                             postalCode: postalCodeInput.value,
                             city: cityInput.value,
-                            countryCode: countryCodeInput.value,
+                            countryCode: country.value,
                             region: regionInput.value
                           }
                         })
