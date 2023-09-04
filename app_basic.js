@@ -79,8 +79,6 @@ function populateCountryDropdown() {
                   countries.push({ code: countryCode, name: countryName });
                   countries.sort((a, b) => a.name.localeCompare(b.name));
                 });
-                console.log(countries);
-                console.log(jsonObject);
                 countries.forEach((country) => {
                 const option = document.createElement("option");
                 option.value = country.code;
