@@ -48,9 +48,6 @@ function addAwardEntry(entry) {
          const editButton = document.createElement('button');
          editButton.className = 'btn btn-info btn-sm me-2';
          editButton.textContent = 'Edit';
-         const spanEdit = document.createElement('i');
-         spanEdit.className = 'bi bi-pencil';
-         editButton.appendChild(spanEdit);
 
          editButton.addEventListener('click', () => {
              populateFormForEditing(entry);
