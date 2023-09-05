@@ -46,20 +46,19 @@ if(encodedJsonData) {
         const editButton = document.createElement('button');
         editButton.className = 'btn btn-info btn-sm me-2';
         editButton.textContent = 'Edit';
-
-         editButton.addEventListener('click', () => {
+        editButton.addEventListener('click', () => {
              populateFormForEditing(entry);
              listItem.remove();
-         });
+        });
 
          // Delete button event listener
-         const deleteButton = document.createElement('button');
-         deleteButton.className = 'btn btn-danger btn-sm me-2';
-         deleteButton.textContent = 'Delete';
+        const deleteButton = document.createElement('button');
+        deleteButton.className = 'btn btn-danger btn-sm me-2';
+        deleteButton.textContent = 'Delete';
 
-         deleteButton.addEventListener('click', () => {
-                     listItem.remove();
-         });
+        deleteButton.addEventListener('click', () => {
+            listItem.remove();
+        });
 
         const div = document.createElement('div');
         div.appendChild(editButton);
@@ -78,12 +77,12 @@ if(encodedJsonData) {
     }
 
     // Edit button event listener
-    function editPublicationEntry(entry) {
+function editPublicationEntry(entry) {
         populateFormForEditing(entry);
-    }
+}
 
     // Add button click event listener
-    addButton.addEventListener('click', () => {
+addButton.addEventListener('click', () => {
         const entryData = {
             name: document.getElementById('name').value,
             publisher: document.getElementById('publisher').value,
@@ -94,10 +93,10 @@ if(encodedJsonData) {
 
         addPublicationEntry(entryData);
         publicationsForm.reset();
-    });
+});
 
 Telegram.WebApp.onEvent("mainButtonClicked", function(){
-    const listItems = awardsList.querySelectorAll('li');
+    const listItems = publicationsList.querySelectorAll('li');
     const pubs = [];
     listItems.forEach((item) => {
       const strongElements = item.querySelectorAll('i');
