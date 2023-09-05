@@ -35,8 +35,8 @@ function addCertificateEntry(entry) {
         listItem.className = 'list-group-item justify-content-between align-items-center';
 
         const entryHTML = `
-            <strong>Name:</strong> <i>${entry.name}</i<br>
-            <strong>Date:</strong> <i>${entry.date}</i<br>
+            <strong>Name:</strong> <i>${entry.name}</i><br>
+            <strong>Date:</strong> <i>${entry.date}</i><br>
             <strong>URL:</strong> <a href="${entry.url}" target="_blank"><i>${entry.url}</i></a><br>
             <strong>Issuer:</strong> <i>${entry.issuer}</i><br>
         `;
