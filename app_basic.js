@@ -31,7 +31,6 @@ if(encodedJsonData) {
 
     const jsonData = decodeURIComponent(encodedJsonData);
     const fixedJson = jsonData.replace(/(['"])?([a-zA-Z0-9_]+)(['"])?:/g, '"$2":');
-    console.log(fixedJson);
     const jsonObject = JSON.parse(fixedJson);
 
     if (fullNameInput) {
