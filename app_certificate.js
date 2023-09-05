@@ -21,8 +21,7 @@ const certificatesList = document.getElementById('certificates_list');
 
 if(encodedJsonData) {
     const jsonData = decodeURIComponent(encodedJsonData);
-    const fixedJson = jsonData.replace(/(['"])?([a-zA-Z0-9_]+)(['"])?:/g, '"$2":');
-    const jsonObject = JSON.parse(fixedJson);
+    const jsonObject = JSON.parse(jsonData);
     jsonObject.forEach(item => {
       addCertificateEntry(item);
     });
