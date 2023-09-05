@@ -34,9 +34,9 @@ function addLanguageEntry(entry) {
     listItem.className = 'list-group-item d-flex justify-content-between align-items-center';
 
     const entryHTML = `
-        <strong>Language:</strong> ${entry.language}<br>
-        <strong>Fluency:</strong> ${entry.fluency}<br>
-            `;
+        <strong>Language:</strong> <i>${entry.language}</i><br>
+        <strong>Fluency:</strong> <i>${entry.fluency}</i><br>
+        `;
     listItem.innerHTML = entryHTML;
 
     // Edit button event listener
@@ -94,7 +94,7 @@ Telegram.WebApp.onEvent("mainButtonClicked", function(){
     const listItems = languagesList.querySelectorAll('li');
     const langs = [];
     listItems.forEach((item) => {
-      const strongElements = item.querySelectorAll('strong');
+      const strongElements = item.querySelectorAll('i');
       langs.push({
           language: strongElements[0].textContent.trim(),
           fluency: strongElements[1].textContent.trim()
