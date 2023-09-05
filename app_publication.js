@@ -46,6 +46,7 @@ if(encodedJsonData) {
         const editButton = document.createElement('button');
         editButton.className = 'btn btn-info btn-sm me-2';
         editButton.textContent = 'Edit';
+
         editButton.addEventListener('click', () => {
              populateFormForEditing(entry);
              listItem.remove();
@@ -63,7 +64,7 @@ if(encodedJsonData) {
         const div = document.createElement('div');
         div.appendChild(editButton);
         div.appendChild(deleteButton);
-        listItem.appendChild(editButton);
+        listItem.appendChild(div);
         publicationsList.appendChild(listItem);
     }
 
