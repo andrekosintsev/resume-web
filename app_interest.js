@@ -15,9 +15,9 @@ function getQueryParam(name) {
 
 const encodedJsonData = getQueryParam("json_data");
 
-let addInterestButton = document.getElementById('add_interest_button');
-let interestsForm = document.getElementById('interests_form');
-let interestsList = document.getElementById('interests_list');
+let addButton = document.getElementById('add_button');
+let certificatesForm = document.getElementById('certificates_form');
+let certificatesList = document.getElementById('certificates_list');
 
 
 if(encodedJsonData) {
