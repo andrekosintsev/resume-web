@@ -15,9 +15,9 @@ function getQueryParam(name) {
 
 const encodedJsonData = getQueryParam("json_data");
 
-let addButton = document.getElementById('add_button');
-let certificatesForm = document.getElementById('certificates_form');
-let certificatesList = document.getElementById('certificates_list');
+const addInterestButton = document.getElementById('add_interest_button');
+const interestsForm = document.getElementById('interests_form');
+const interestsList = document.getElementById('interests_list');
 
 
 if(encodedJsonData) {
@@ -79,7 +79,7 @@ function editInterestEntry(entry) {
 }
 
 // Add button click event listener
-addButton.addEventListener('click', () => {
+addInterestButton.addEventListener('click', () => {
         const entryData = {
             name: document.getElementById('name').value,
             keyword: document.getElementById('keyword').value,
