@@ -95,7 +95,7 @@ Telegram.WebApp.onEvent("mainButtonClicked", function(){
       const strongElements = item.querySelectorAll('i');
       inters.push({
           name: strongElements[0].textContent.trim(),
-          keywords: strongElements[1].textContent.trim(),
+          keyword: strongElements[1].textContent.trim(),
       });
     });
 	tg.sendData(JSON.stringify({interests: inters}));
