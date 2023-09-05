@@ -79,7 +79,7 @@ function editInterestEntry(entry) {
 }
 
 // Add button click event listener
-addInterestButton.addEventListener('click', () => {
+addButton.addEventListener('click', () => {
         const entryData = {
             name: document.getElementById('name').value,
             keyword: document.getElementById('keyword').value,
