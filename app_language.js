@@ -31,7 +31,7 @@ if(encodedJsonData) {
 // Function to generate and append language entry HTML
 function addLanguageEntry(entry) {
     const listItem = document.createElement('li');
-    listItem.className = 'list-group-item d-flex justify-content-between align-items-center';
+    listItem.className = 'list-group-item justify-content-between align-items-center';
 
     const entryHTML = `
         <strong>Language:</strong> <i>${entry.language}</i><br>
