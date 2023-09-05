@@ -36,7 +36,7 @@ if(encodedJsonData) {
         const entryHTML = `
             <strong>Name:</strong> <i>${entry.name}</i><br>
             <strong>Publisher:</strong> <i>${entry.publisher}</i><br>
-            <strong>Release Date:</strong> <i>${entry.date}</i><br>
+            <strong>Release Date:</strong> <i>${entry.releaseDate}</i><br>
             <strong>URL:</strong> <a href="${entry.url}" target="_blank"><i>${entry.url}</i></a><br>
             <strong>Summary:</strong> <i>${entry.summary}</i><br>
         `;
@@ -72,7 +72,7 @@ if(encodedJsonData) {
     function populateFormForEditing(entry) {
         document.getElementById('name').value = entry.name;
         document.getElementById('publisher').value = entry.publisher;
-        document.getElementById('date').value = entry.date;
+        document.getElementById('releaseDate').value = entry.releaseDate;
         document.getElementById('url').value = entry.url;
         document.getElementById('summary').value = entry.summary;
     }
@@ -87,7 +87,7 @@ if(encodedJsonData) {
         const entryData = {
             name: document.getElementById('name').value,
             publisher: document.getElementById('publisher').value,
-            date: document.getElementById('date').value,
+            releaseDate: document.getElementById('releaseDate').value,
             url: document.getElementById('url').value,
             summary: document.getElementById('summary').value,
         };
@@ -104,7 +104,7 @@ Telegram.WebApp.onEvent("mainButtonClicked", function(){
       pubs.push({
           name: strongElements[0].textContent.trim(),
           publisher: strongElements[1].textContent.trim(),
-          date: strongElements[2].textContent.trim(),
+          releaseDate: strongElements[2].textContent.trim(),
           url: strongElements[3].textContent.trim()
           summary: strongElements[4].textContent.trim()
       });
