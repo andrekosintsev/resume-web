@@ -15,29 +15,30 @@ function getQueryParam(name) {
 
 const encodedJsonData = getQueryParam("json_data");
 
-const addButton = document.getElementById('add_button');
-const certificatesForm = document.getElementById('certificates_form');
-const certificatesList = document.getElementById('certificates_list');
+
+let addButton = document.getElementById('add_button');
+let publicationsForm = document.getElementById('publications_form');
+let publicationsList = document.getElementById('publications_list');
 
 if(encodedJsonData) {
     const jsonData = decodeURIComponent(encodedJsonData);
     const jsonObject = JSON.parse(jsonData);
     jsonObject.forEach(item => {
-      addCertificateEntry(item);
+      addPublicationEntry(item);
     });
 }
 
-
-// Function to generate and append certificate entry HTML
-function addCertificateEntry(entry) {
+ // Function to generate and append publication entry HTML
+    function addPublicationEntry(entry) {
         const listItem = document.createElement('li');
-        listItem.className = 'list-group-item justify-content-between align-items-center';
+        listItem.className = 'list-group-item';
 
         const entryHTML = `
             <strong>Name:</strong> <i>${entry.name}</i><br>
-            <strong>Date:</strong> <i>${entry.date}</i><br>
+            <strong>Publisher:</strong> <i>${entry.publisher}</i><br>
+            <strong>Release Date:</strong> <i>${entry.date}</i><br>
             <strong>URL:</strong> <a href="${entry.url}" target="_blank"><i>${entry.url}</i></a><br>
-            <strong>Issuer:</strong> <i>${entry.issuer}</i><br>
+            <strong>Summary:</strong> <i>${entry.summary}</i><br>
         `;
 
         listItem.innerHTML = entryHTML;
@@ -46,39 +47,38 @@ function addCertificateEntry(entry) {
         editButton.className = 'btn btn-info btn-sm me-2';
         editButton.textContent = 'Edit';
 
-        editButton.addEventListener('click', () => {
+         editButton.addEventListener('click', () => {
              populateFormForEditing(entry);
              listItem.remove();
-        });
+         });
 
-        // Delete button event listener
-        const deleteButton = document.createElement('button');
-        deleteButton.className = 'btn btn-danger btn-sm me-2';
-        deleteButton.textContent = 'Delete';
+         // Delete button event listener
+         const deleteButton = document.createElement('button');
+         deleteButton.className = 'btn btn-danger btn-sm me-2';
+         deleteButton.textContent = 'Delete';
 
-        deleteButton.addEventListener('click', () => {
-            listItem.remove();
-        });
+         deleteButton.addEventListener('click', () => {
+                     listItem.remove();
+         });
 
         const div = document.createElement('div');
         div.appendChild(editButton);
         div.appendChild(deleteButton);
-        listItem.appendChild(div);
-
-        certificatesList.appendChild(listItem);
+        listItem.appendChild(editButton);
+        publicationsList.appendChild(listItem);
     }
 
-
-    // Function to populate the certificate form with data for editing
+    // Function to populate the publication form with data for editing
     function populateFormForEditing(entry) {
         document.getElementById('name').value = entry.name;
+        document.getElementById('publisher').value = entry.publisher;
         document.getElementById('date').value = entry.date;
         document.getElementById('url').value = entry.url;
-        document.getElementById('issuer').value = entry.issuer;
+        document.getElementById('summary').value = entry.summary;
     }
 
     // Edit button event listener
-    function editCertificateEntry(entry) {
+    function editPublicationEntry(entry) {
         populateFormForEditing(entry);
     }
 
@@ -86,27 +86,29 @@ function addCertificateEntry(entry) {
     addButton.addEventListener('click', () => {
         const entryData = {
             name: document.getElementById('name').value,
+            publisher: document.getElementById('publisher').value,
             date: document.getElementById('date').value,
             url: document.getElementById('url').value,
-            issuer: document.getElementById('issuer').value,
+            summary: document.getElementById('summary').value,
         };
 
-        addCertificateEntry(entryData);
-        certificatesForm.reset();
+        addPublicationEntry(entryData);
+        publicationsForm.reset();
     });
 
 Telegram.WebApp.onEvent("mainButtonClicked", function(){
-    const listItems = certificatesList.querySelectorAll('li');
-    const certs = [];
+    const listItems = awardsList.querySelectorAll('li');
+    const pubs = [];
     listItems.forEach((item) => {
       const strongElements = item.querySelectorAll('i');
-      certs.push({
+      pubs.push({
           name: strongElements[0].textContent.trim(),
-          date: strongElements[1].textContent.trim(),
-          url: strongElements[2].textContent.trim(),
-          issuer: strongElements[3].textContent.trim()
+          publisher: strongElements[1].textContent.trim(),
+          date: strongElements[2].textContent.trim(),
+          url: strongElements[3].textContent.trim()
+          summary: strongElements[4].textContent.trim()
       });
     });
-	tg.sendData(JSON.stringify({certificates: certs}));
+	tg.sendData(JSON.stringify({publications: pubs}));
 	tg.close();
 });
