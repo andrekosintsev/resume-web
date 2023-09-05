@@ -31,7 +31,7 @@ if(encodedJsonData) {
  // Function to generate and append publication entry HTML
     function addPublicationEntry(entry) {
         const listItem = document.createElement('li');
-        listItem.className = 'list-group-item';
+        listItem.className = 'list-group-item justify-content-between align-items-center';
 
         const entryHTML = `
             <strong>Name:</strong> <i>${entry.name}</i><br>
