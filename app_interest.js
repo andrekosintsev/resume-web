@@ -37,7 +37,7 @@ function addInterestEntry(entry) {
 
         const entryHTML = `
             <strong>Interest Name:</strong> <i>${entry.name}</i><br>
-            <strong>Keywords:</strong> <i>${entry.keywords}</i><br>
+            <strong>Keywords:</strong> <i>${entry.keyword}</i><br>
         `;
 
         listItem.innerHTML = entryHTML;
@@ -70,7 +70,7 @@ function addInterestEntry(entry) {
 // Function to populate the interests form with data for editing
 function populateFormForEditing(entry) {
     document.getElementById('name').value = entry.name;
-    document.getElementById('keywords').value = entry.keywords;
+    document.getElementById('keyword').value = entry.keyword;
 }
 
     // Edit button event listener
@@ -82,7 +82,7 @@ function editInterestEntry(entry) {
 addInterestButton.addEventListener('click', () => {
         const entryData = {
             name: document.getElementById('name').value,
-            keywords: document.getElementById('keywords').value,
+            keyword: document.getElementById('keyword').value,
         };
         addInterestEntry(entryData);
         interestsForm.reset();
