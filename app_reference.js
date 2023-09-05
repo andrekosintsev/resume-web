@@ -21,7 +21,7 @@ const referencesList = document.getElementById('references_list');
 
 if(encodedJsonData) {
     const jsonData = decodeURIComponent(encodedJsonData);
-    const jsonObject = JSON.parse(fixedJson);
+    const jsonObject = JSON.parse(jsonData);
     jsonObject.forEach(item => {
       addReferenceEntry(item);
     });
