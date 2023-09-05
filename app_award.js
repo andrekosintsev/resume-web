@@ -99,7 +99,7 @@ addButton.addEventListener('click', () => {
 });
 
 Telegram.WebApp.onEvent("mainButtonClicked", function(){
-    const listItems = languagesList.querySelectorAll('li');
+    const listItems = awardsList.querySelectorAll('li');
     const aws = [];
     listItems.forEach((item) => {
       const strongElements = item.querySelectorAll('i');
