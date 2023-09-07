@@ -121,7 +121,6 @@ Telegram.WebApp.onEvent("mainButtonClicked", function() {
         tg.MainButton.setText("Save");
         return;
     }
-}
 const listItems = languagesList.querySelectorAll('li');
 const langs = []; listItems.forEach((item) => {
     const strongElements = item.querySelectorAll('i');

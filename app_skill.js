@@ -127,7 +127,6 @@ Telegram.WebApp.onEvent("mainButtonClicked", function() {
         tg.MainButton.setText("Save");
         return;
     }
-}
 const listItems = skillsList.querySelectorAll('li');
 const sks = []; listItems.forEach((item) => {
     const strongElements = item.querySelectorAll('i');
