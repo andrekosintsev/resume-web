@@ -6,9 +6,9 @@ function validateInput(fieldsToValidate) {
         const value = document.getElementById(item).value.trim();
         const field = document.getElementById(item);
         if (value === "") {
-            field.classList.add("required-field");
+            field.classList.add('invalid');
         } else {
-            field.classList.remove("required-field");
+            field.classList.add('invalid');
         }
     });
     fieldsToValidate.forEach(item => {
