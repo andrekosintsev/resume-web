@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Awards</title>
-
+    <!-- Add Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Add Material Icons for the "+" button -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <!-- Add Materialize CSS for Material Design styles -->
@@ -21,6 +22,7 @@
         input:required {
             border-bottom: 2px solid #FF0000; /* Red border color */
         }
+
     </style>
 </head>
 <body>
@@ -47,7 +49,7 @@
 
         <div class="mb-3">
             <label for="summary" class="form-label">Summary:</label>
-            <textarea class="form-control" id="summary" name="summary"
+            <textarea id="summary" class="materialize-textarea" id="summary" name="summary"
                       placeholder="Summary"></textarea>
         </div>
 
@@ -70,6 +72,7 @@
 
 <!-- Add Materialize JS for button behavior -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<!-- Include Bootstrap JS (optional) -->
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script src="app_award.js"></script>
 <script src="validation.js"></script>
