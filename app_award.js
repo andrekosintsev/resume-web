@@ -26,14 +26,14 @@ let awardsList = document.getElementById('awards_list');
                                      tg.MainButton.show();
                                  }
                              });
-                     item.addEventListener('mouseout', function() {
+                     /*item.addEventListener('mouseout', function() {
                                  tg.MainButton.color = '#2cab37';
                                  tg.MainButton.setText("Save");
                                  tg.MainButton.hide();
                                  if (!tg.MainButton.isVisible) {
                                      tg.MainButton.show();
                                  }
-                    });
+                    });*/
             }
 );
 
