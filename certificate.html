@@ -12,6 +12,11 @@
         .required-field {
             border: 1px solid red;
         }
+        .floating-button {
+              position: fixed;
+              bottom: 20px;
+              right: 20px;
+        }
     </style>
 </head>
 <body>
@@ -39,8 +44,6 @@
                 <label for="issuer" class="form-label">Issuer:</label>
                 <input type="text" class="form-control" id="issuer" name="issuer" placeholder="Issuer">
             </div>
-
-            <button type="button" class="btn btn-primary" id="add_button">Add</button>
         </form>
 
         <!-- List of Certificate Entries -->
@@ -51,6 +54,10 @@
             </ul>
         </div>
     </div>
+    <!-- Floating "+" button -->
+    <button class="btn btn-primary floating-button" id="add_button">
+        <span class="oi oi-plus" aria-hidden="true">+</span>
+    </button>
 
     <!-- Add Bootstrap JS (Optional) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>
