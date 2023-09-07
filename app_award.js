@@ -4,7 +4,7 @@ tg.expand();
 
 tg.MainButton.textColor = '#FFFFFF';
 tg.MainButton.color = '#0000FF';
-tg.MainButton.setText("Add");
+tg.MainButton.setText("Add to List");
 
 
 function getQueryParam(name) {
@@ -16,27 +16,28 @@ const encodedJsonData = getQueryParam("json_data");
 
 let awardsForm = document.getElementById('awards_form');
 let awardsList = document.getElementById('awards_list');
-let titleInput = document.getElementById('title');
-let date = document.getElementById('date');
-let awarder =  document.getElementById('awarder');
-let summary =  document.getElementById('summary');
+let inputElements = [document.getElementById('title'),document.getElementById('date'),document.getElementById('awarder'),document.getElementById('summary')]
 
-titleInput.addEventListener('mouseover', function() {
-            tg.MainButton.color = '#0000FF';
-            tg.MainButton.setText("Add");
-            tg.MainButton.hide();
-            if (!tg.MainButton.isVisible) {
-                tg.MainButton.show();
+
+inputElements.forEach(item => {
+                     item.addEventListener('mouseover', function() {
+                                 tg.MainButton.color = '#0000FF';
+                                 tg.MainButton.setText("Add to List");
+                                 tg.MainButton.hide();
+                                 if (!tg.MainButton.isVisible) {
+                                     tg.MainButton.show();
+                                 }
+                             });
+                     item.addEventListener('mouseout', function() {
+                                 tg.MainButton.color = '#2cab37';
+                                 tg.MainButton.setText("Save");
+                                 tg.MainButton.hide();
+                                 if (!tg.MainButton.isVisible) {
+                                     tg.MainButton.show();
+                                 }
+                    });
             }
-        });
-titleInput.addEventListener('mouseout', function() {
-            tg.MainButton.color = '#2cab37';
-            tg.MainButton.setText("Save");
-            tg.MainButton.hide();
-            if (!tg.MainButton.isVisible) {
-                tg.MainButton.show();
-            }
-        });
+);
 
 if (encodedJsonData) {
     const jsonData = decodeURIComponent(encodedJsonData);
@@ -122,7 +123,7 @@ function addEntry(){
 };
 
 Telegram.WebApp.onEvent("mainButtonClicked", function() {
-    if (tg.MainButton.getText()==="Add") {
+    if (tg.MainButton.text==="Add") {
         addEntry();
         tg.MainButton.color = '#2cab37';
         tg.MainButton.setText("Save");
