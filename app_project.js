@@ -52,7 +52,7 @@ function addProjectEntry(entry) {
     const listItem = document.createElement('li');
     listItem.className = 'list-group-item justify-content-between align-items-center';
 
-                const entryHTML = `
+    const entryHTML = `
                             <strong>Name:</strong> <i>${entry.name}</i><br>
                             <strong>Description:</strong> <i>${entry.description}</i><br>
                             <strong>Highlights:</strong> <i>${entry.highlights}</i><br>
@@ -105,35 +105,35 @@ function addProjectEntry(entry) {
 }
 
 function populateFormForEditing(entry) {
-            document.getElementById('name').value = entry.name;
-                        document.getElementById('description').value = entry.description;
-                        document.getElementById('highlights').value = entry.highlights;
-                        document.getElementById('keywords').value = entry.keywords;
-                        document.getElementById('startDate').value = entry.startDate;
-                        document.getElementById('endDate').value = entry.endDate;
-                        document.getElementById('url').value = entry.url;
-                        document.getElementById('roles').value = entry.roles;
-                        document.getElementById('entity').value = entry.entity;
-                        document.getElementById('type').value = entry.type;
-        }
+    document.getElementById('name').value = entry.name;
+    document.getElementById('description').value = entry.description;
+    document.getElementById('highlights').value = entry.highlights;
+    document.getElementById('keywords').value = entry.keywords;
+    document.getElementById('startDate').value = entry.startDate;
+    document.getElementById('endDate').value = entry.endDate;
+    document.getElementById('url').value = entry.url;
+    document.getElementById('roles').value = entry.roles;
+    document.getElementById('entity').value = entry.entity;
+    document.getElementById('type').value = entry.type;
+}
 
 // Add button click event listener
 function addEntry() {
-    if (validateInput(['name', 'description','startDate','endDate'])) {
+    if (validateInput(['name', 'description', 'startDate', 'endDate'])) {
         return;
     }
     const entryData = {
-                    name: document.getElementById('name').value,
-                    description: document.getElementById('description').value,
-                    highlights: document.getElementById('highlights').value,
-                    keywords: document.getElementById('keywords').value,
-                    startDate: document.getElementById('startDate').value,
-                    endDate: document.getElementById('endDate').value,
-                    url: document.getElementById('url').value,
-                    roles: document.getElementById('roles').value,
-                    entity: document.getElementById('entity').value,
-                    type: document.getElementById('type').value,
-                };
+        name: document.getElementById('name').value,
+        description: document.getElementById('description').value,
+        highlights: document.getElementById('highlights').value,
+        keywords: document.getElementById('keywords').value,
+        startDate: document.getElementById('startDate').value,
+        endDate: document.getElementById('endDate').value,
+        url: document.getElementById('url').value,
+        roles: document.getElementById('roles').value,
+        entity: document.getElementById('entity').value,
+        type: document.getElementById('type').value,
+    };
     addProjectEntry(entryData);
     projectsForm.reset();
 };

@@ -99,29 +99,29 @@ function addVolunteerEntry(entry) {
 }
 
 function populateFormForEditing(entry) {
-            document.getElementById('organization').value = entry.organization;
-            document.getElementById('position').value = entry.position;
-            document.getElementById('url').value = entry.url;
-            document.getElementById('startDate').value = entry.startDate;
-            document.getElementById('endDate').value = entry.endDate;
-            document.getElementById('summary').value = entry.summary;
-            document.getElementById('highlights').value = entry.highlights;
-        }
+    document.getElementById('organization').value = entry.organization;
+    document.getElementById('position').value = entry.position;
+    document.getElementById('url').value = entry.url;
+    document.getElementById('startDate').value = entry.startDate;
+    document.getElementById('endDate').value = entry.endDate;
+    document.getElementById('summary').value = entry.summary;
+    document.getElementById('highlights').value = entry.highlights;
+}
 
 // Add button click event listener
 function addEntry() {
-    if (validateInput(['organization', 'position','startDate','endDate'])) {
+    if (validateInput(['organization', 'position', 'startDate', 'endDate'])) {
         return;
     }
     const entryData = {
-                    organization: document.getElementById('organization').value,
-                    position: document.getElementById('position').value,
-                    url: document.getElementById('url').value,
-                    startDate: document.getElementById('startDate').value,
-                    endDate: document.getElementById('endDate').value,
-                    summary: document.getElementById('summary').value,
-                    highlights: document.getElementById('highlights').value
-                };
+        organization: document.getElementById('organization').value,
+        position: document.getElementById('position').value,
+        url: document.getElementById('url').value,
+        startDate: document.getElementById('startDate').value,
+        endDate: document.getElementById('endDate').value,
+        summary: document.getElementById('summary').value,
+        highlights: document.getElementById('highlights').value
+    };
     addVolunteerEntry(entryData);
     volunteerWorkForm.reset();
 };

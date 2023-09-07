@@ -121,14 +121,17 @@ Telegram.WebApp.onEvent("mainButtonClicked", function() {
         tg.MainButton.setText("Save");
         return;
     }
-const listItems = languagesList.querySelectorAll('li');
-const langs = []; listItems.forEach((item) => {
-    const strongElements = item.querySelectorAll('i');
-    langs.push({
-        language: strongElements[0].textContent.trim(),
-        fluency: strongElements[1].textContent.trim()
+    const listItems = languagesList.querySelectorAll('li');
+    const langs = [];
+    listItems.forEach((item) => {
+        const strongElements = item.querySelectorAll('i');
+        langs.push({
+            language: strongElements[0].textContent.trim(),
+            fluency: strongElements[1].textContent.trim()
+        });
     });
-}); tg.sendData(JSON.stringify({
-    languages: langs
-})); tg.close();
+    tg.sendData(JSON.stringify({
+        languages: langs
+    }));
+    tg.close();
 });

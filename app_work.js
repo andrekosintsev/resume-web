@@ -105,17 +105,17 @@ function addWorkEntry(entry) {
 }
 
 function populateFormForEditing(entry) {
-            document.getElementById('name').value = entry.name;
-            document.getElementById('address').value = entry.address;
-            document.getElementById('website').value = entry.website;
-            document.getElementById('industry').value = entry.industry;
-            document.getElementById('position').value = entry.position;
-            document.getElementById('startDate').value = entry.startDate;
-            document.getElementById('endDate').value = entry.endDate;
-            document.getElementById('summary').value = entry.summary;
-            document.getElementById('highlights').value = entry.highlights;
-            document.getElementById('keywords').value = entry.keywords;
-        }
+    document.getElementById('name').value = entry.name;
+    document.getElementById('address').value = entry.address;
+    document.getElementById('website').value = entry.website;
+    document.getElementById('industry').value = entry.industry;
+    document.getElementById('position').value = entry.position;
+    document.getElementById('startDate').value = entry.startDate;
+    document.getElementById('endDate').value = entry.endDate;
+    document.getElementById('summary').value = entry.summary;
+    document.getElementById('highlights').value = entry.highlights;
+    document.getElementById('keywords').value = entry.keywords;
+}
 
 // Edit button event listener
 function editEntry(entry) {
@@ -124,21 +124,21 @@ function editEntry(entry) {
 
 // Add button click event listener
 function addEntry() {
-    if (validateInput(['name', 'industry','position','startDate','endDate'])) {
+    if (validateInput(['name', 'industry', 'position', 'startDate', 'endDate'])) {
         return;
     }
     const entryData = {
-                    name: document.getElementById('name').value,
-                    address: document.getElementById('address').value,
-                    website: document.getElementById('website').value,
-                    industry: document.getElementById('industry').value,
-                    position: document.getElementById('position').value,
-                    start_date: document.getElementById('startDate').value,
-                    end_date: document.getElementById('endDate').value,
-                    summary: document.getElementById('summary').value,
-                    highlights: document.getElementById('highlights').value,
-                    keywords: document.getElementById('keywords').value,
-                };
+        name: document.getElementById('name').value,
+        address: document.getElementById('address').value,
+        website: document.getElementById('website').value,
+        industry: document.getElementById('industry').value,
+        position: document.getElementById('position').value,
+        startDate: document.getElementById('startDate').value,
+        endDate: document.getElementById('endDate').value,
+        summary: document.getElementById('summary').value,
+        highlights: document.getElementById('highlights').value,
+        keywords: document.getElementById('keywords').value,
+    };
     addWorkEntry(entryData);
     workExperienceForm.reset();
 };
