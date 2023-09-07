@@ -3,8 +3,8 @@ let tg = window.Telegram.WebApp;
 tg.expand();
 
 tg.MainButton.textColor = '#FFFFFF';
-tg.MainButton.color = '#2cab37';
-tg.MainButton.setText("Save");
+tg.MainButton.color = '#229ED9';
+tg.MainButton.setText("Add to List");
 
 
 function getQueryParam(name) {
@@ -14,10 +14,24 @@ function getQueryParam(name) {
 
 const encodedJsonData = getQueryParam("json_data");
 
-
-let addButton = document.getElementById('add_button');
 let publicationsForm = document.getElementById('publications_form');
 let publicationsList = document.getElementById('publications_list');
+
+[document.getElementById('name'),
+    document.getElementById('publisher'),
+    document.getElementById('releaseDate'),
+    document.getElementById('url'),
+    document.getElementById('summary')
+].forEach(item => {
+    item.addEventListener('mouseover', function() {
+        tg.MainButton.color = '#229ED9';
+        tg.MainButton.setText("Add to List");
+        tg.MainButton.hide();
+        if (!tg.MainButton.isVisible) {
+            tg.MainButton.show();
+        }
+    });
+});
 
 if (encodedJsonData) {
     const jsonData = decodeURIComponent(encodedJsonData);
@@ -49,8 +63,11 @@ function addPublicationEntry(entry) {
     editButton.addEventListener('click', () => {
         populateFormForEditing(entry);
         listItem.remove();
-        if (tg.MainButton.isVisible) {
-            tg.MainButton.hide();
+        tg.MainButton.color = '#229ED9';
+        tg.MainButton.setText("Save changes");
+        tg.MainButton.hide();
+        if (!tg.MainButton.isVisible) {
+            tg.MainButton.show();
         }
     });
 
@@ -63,6 +80,8 @@ function addPublicationEntry(entry) {
         listItem.remove();
         if (!tg.MainButton.isVisible) {
             tg.MainButton.show();
+            tg.MainButton.color = '#2CAB37';
+            tg.MainButton.setText("Save");
         }
     });
 
@@ -88,7 +107,7 @@ function editPublicationEntry(entry) {
 }
 
 // Add button click event listener
-addButton.addEventListener('click', () => {
+function addEntry() {
     if (validateInput(['name', 'releaseDate'])) {
         return;
     }
@@ -102,12 +121,21 @@ addButton.addEventListener('click', () => {
 
     addPublicationEntry(entryData);
     publicationsForm.reset();
-    if (!tg.MainButton.isVisible) {
-        tg.MainButton.show();
-    }
 });
 
 Telegram.WebApp.onEvent("mainButtonClicked", function() {
+    if (tg.MainButton.text === "Add to List") {
+        addEntry();
+        tg.MainButton.color = '#2CAB37';
+        tg.MainButton.setText("Save");
+        return;
+    }
+    if (tg.MainButton.text === "Save changes") {
+        addEntry();
+        tg.MainButton.color = '#2CAB37';
+        tg.MainButton.setText("Save");
+        return;
+    }
     const listItems = publicationsList.querySelectorAll('li');
     const pubs = [];
     listItems.forEach((item) => {

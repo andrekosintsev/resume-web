@@ -3,8 +3,8 @@ let tg = window.Telegram.WebApp;
 tg.expand();
 
 tg.MainButton.textColor = '#FFFFFF';
-tg.MainButton.color = '#2cab37';
-tg.MainButton.setText("Save");
+tg.MainButton.color = '#229ED9';
+tg.MainButton.setText("Add to List");
 
 
 function getQueryParam(name) {
@@ -14,9 +14,21 @@ function getQueryParam(name) {
 
 const encodedJsonData = getQueryParam("json_data");
 
-const addReferenceButton = document.getElementById('add_reference_button');
 const referencesForm = document.getElementById('references_form');
 const referencesList = document.getElementById('references_list');
+
+[document.getElementById('name'),
+    document.getElementById('reference')
+].forEach(item => {
+    item.addEventListener('mouseover', function() {
+        tg.MainButton.color = '#229ED9';
+        tg.MainButton.setText("Add to List");
+        tg.MainButton.hide();
+        if (!tg.MainButton.isVisible) {
+            tg.MainButton.show();
+        }
+    });
+});
 
 if (encodedJsonData) {
     const jsonData = decodeURIComponent(encodedJsonData);
@@ -45,8 +57,11 @@ function addReferenceEntry(entry) {
     editButton.addEventListener('click', () => {
         populateFormForEditing(entry);
         listItem.remove();
-        if (tg.MainButton.isVisible) {
-            tg.MainButton.hide();
+        tg.MainButton.color = '#229ED9';
+        tg.MainButton.setText("Save changes");
+        tg.MainButton.hide();
+        if (!tg.MainButton.isVisible) {
+            tg.MainButton.show();
         }
     });
 
@@ -59,6 +74,8 @@ function addReferenceEntry(entry) {
         listItem.remove();
         if (!tg.MainButton.isVisible) {
             tg.MainButton.show();
+            tg.MainButton.color = '#2CAB37';
+            tg.MainButton.setText("Save");
         }
     });
 
@@ -80,7 +97,7 @@ function editReferenceEntry(entry) {
 }
 
 // Add button click event listener
-addReferenceButton.addEventListener('click', () => {
+function addEntry() {
     if (validateInput(['name', 'reference'])) {
         return;
     }
@@ -91,12 +108,21 @@ addReferenceButton.addEventListener('click', () => {
 
     addReferenceEntry(entryData);
     referencesForm.reset();
-    if (!tg.MainButton.isVisible) {
-        tg.MainButton.show();
-    }
 });
 
 Telegram.WebApp.onEvent("mainButtonClicked", function() {
+    if (tg.MainButton.text === "Add to List") {
+        addEntry();
+        tg.MainButton.color = '#2CAB37';
+        tg.MainButton.setText("Save");
+        return;
+    }
+    if (tg.MainButton.text === "Save changes") {
+        addEntry();
+        tg.MainButton.color = '#2CAB37';
+        tg.MainButton.setText("Save");
+        return;
+    }
     const listItems = referencesList.querySelectorAll('li');
     const refs = [];
     listItems.forEach((item) => {

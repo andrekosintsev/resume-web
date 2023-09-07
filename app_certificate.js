@@ -3,8 +3,8 @@ let tg = window.Telegram.WebApp;
 tg.expand();
 
 tg.MainButton.textColor = '#FFFFFF';
-tg.MainButton.color = '#2cab37';
-tg.MainButton.setText("Save");
+tg.MainButton.color = '#229ED9';
+tg.MainButton.setText("Add to List");
 
 
 function getQueryParam(name) {
@@ -14,9 +14,23 @@ function getQueryParam(name) {
 
 const encodedJsonData = getQueryParam("json_data");
 
-let addButton = document.getElementById('add_button');
 let certificatesForm = document.getElementById('certificates_form');
 let certificatesList = document.getElementById('certificates_list');
+
+[document.getElementById('name'),
+    document.getElementById('date'),
+    document.getElementById('url'),
+    document.getElementById('issuer')
+].forEach(item => {
+    item.addEventListener('mouseover', function() {
+        tg.MainButton.color = '#229ED9';
+        tg.MainButton.setText("Add to List");
+        tg.MainButton.hide();
+        if (!tg.MainButton.isVisible) {
+            tg.MainButton.show();
+        }
+    });
+});
 
 if (encodedJsonData) {
     const jsonData = decodeURIComponent(encodedJsonData);
@@ -48,8 +62,11 @@ function addCertificateEntry(entry) {
     editButton.addEventListener('click', () => {
         populateFormForEditing(entry);
         listItem.remove();
-        if (tg.MainButton.isVisible) {
-            tg.MainButton.hide();
+        tg.MainButton.color = '#229ED9';
+        tg.MainButton.setText("Save changes");
+        tg.MainButton.hide();
+        if (!tg.MainButton.isVisible) {
+            tg.MainButton.show();
         }
     });
 
@@ -62,6 +79,8 @@ function addCertificateEntry(entry) {
         listItem.remove();
         if (!tg.MainButton.isVisible) {
             tg.MainButton.show();
+            tg.MainButton.color = '#2CAB37';
+            tg.MainButton.setText("Save");
         }
     });
 
@@ -69,7 +88,6 @@ function addCertificateEntry(entry) {
     div.appendChild(editButton);
     div.appendChild(deleteButton);
     listItem.appendChild(div);
-
     certificatesList.appendChild(listItem);
 }
 
@@ -88,7 +106,7 @@ function editCertificateEntry(entry) {
 }
 
 // Add button click event listener
-addButton.addEventListener('click', () => {
+function addEntry() {
     if (validateInput(['name', 'date'])) {
         return;
     }
@@ -101,12 +119,21 @@ addButton.addEventListener('click', () => {
 
     addCertificateEntry(entryData);
     certificatesForm.reset();
-    if (!tg.MainButton.isVisible) {
-        tg.MainButton.show();
-    }
 });
 
 Telegram.WebApp.onEvent("mainButtonClicked", function() {
+    if (tg.MainButton.text === "Add to List") {
+        addEntry();
+        tg.MainButton.color = '#2CAB37';
+        tg.MainButton.setText("Save");
+        return;
+    }
+    if (tg.MainButton.text === "Save changes") {
+        addEntry();
+        tg.MainButton.color = '#2CAB37';
+        tg.MainButton.setText("Save");
+        return;
+    }
     const listItems = certificatesList.querySelectorAll('li');
     const certs = [];
     listItems.forEach((item) => {

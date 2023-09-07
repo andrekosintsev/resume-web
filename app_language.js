@@ -3,8 +3,8 @@ let tg = window.Telegram.WebApp;
 tg.expand();
 
 tg.MainButton.textColor = '#FFFFFF';
-tg.MainButton.color = '#2cab37';
-tg.MainButton.setText("Save");
+tg.MainButton.color = '#229ED9';
+tg.MainButton.setText("Add to List");
 
 
 function getQueryParam(name) {
@@ -14,9 +14,21 @@ function getQueryParam(name) {
 
 const encodedJsonData = getQueryParam("json_data");
 
-let addButton = document.getElementById('add_button');
 let languagesForm = document.getElementById('languages_form');
 let languagesList = document.getElementById('languages_list');
+
+[document.getElementById('language'),
+    document.getElementById('fluency')
+].forEach(item => {
+    item.addEventListener('mouseover', function() {
+        tg.MainButton.color = '#229ED9';
+        tg.MainButton.setText("Add to List");
+        tg.MainButton.hide();
+        if (!tg.MainButton.isVisible) {
+            tg.MainButton.show();
+        }
+    });
+});
 
 if (encodedJsonData) {
     const jsonData = decodeURIComponent(encodedJsonData);
@@ -46,8 +58,11 @@ function addLanguageEntry(entry) {
     editButton.addEventListener('click', () => {
         populateFormForEditing(entry);
         listItem.remove();
-        if (tg.MainButton.isVisible) {
-            tg.MainButton.hide();
+        tg.MainButton.color = '#229ED9';
+        tg.MainButton.setText("Save changes");
+        tg.MainButton.hide();
+        if (!tg.MainButton.isVisible) {
+            tg.MainButton.show();
         }
     });
 
@@ -60,6 +75,8 @@ function addLanguageEntry(entry) {
         listItem.remove();
         if (!tg.MainButton.isVisible) {
             tg.MainButton.show();
+            tg.MainButton.color = '#2CAB37';
+            tg.MainButton.setText("Save");
         }
     });
 
@@ -82,30 +99,37 @@ function editLanguageEntry(entry) {
 }
 
 // Add button click event listener
-addButton.addEventListener('click', () => {
+function addEntry() {
     const entryData = {
         language: document.getElementById('language').value,
         fluency: document.getElementById('fluency').value,
     };
     addLanguageEntry(entryData);
     languagesForm.reset();
-    if (!tg.MainButton.isVisible) {
-        tg.MainButton.show();
-    }
 });
 
 Telegram.WebApp.onEvent("mainButtonClicked", function() {
-    const listItems = languagesList.querySelectorAll('li');
-    const langs = [];
-    listItems.forEach((item) => {
-        const strongElements = item.querySelectorAll('i');
-        langs.push({
-            language: strongElements[0].textContent.trim(),
-            fluency: strongElements[1].textContent.trim()
-        });
+    if (tg.MainButton.text === "Add to List") {
+        addEntry();
+        tg.MainButton.color = '#2CAB37';
+        tg.MainButton.setText("Save");
+        return;
+    }
+    if (tg.MainButton.text === "Save changes") {
+        addEntry();
+        tg.MainButton.color = '#2CAB37';
+        tg.MainButton.setText("Save");
+        return;
+    }
+}
+const listItems = languagesList.querySelectorAll('li');
+const langs = []; listItems.forEach((item) => {
+    const strongElements = item.querySelectorAll('i');
+    langs.push({
+        language: strongElements[0].textContent.trim(),
+        fluency: strongElements[1].textContent.trim()
     });
-    tg.sendData(JSON.stringify({
-        languages: langs
-    }));
-    tg.close();
+}); tg.sendData(JSON.stringify({
+    languages: langs
+})); tg.close();
 });

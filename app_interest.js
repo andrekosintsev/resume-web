@@ -3,8 +3,8 @@ let tg = window.Telegram.WebApp;
 tg.expand();
 
 tg.MainButton.textColor = '#FFFFFF';
-tg.MainButton.color = '#2cab37';
-tg.MainButton.setText("Save");
+tg.MainButton.color = '#229ED9';
+tg.MainButton.setText("Add to List");
 
 
 function getQueryParam(name) {
@@ -14,9 +14,21 @@ function getQueryParam(name) {
 
 const encodedJsonData = getQueryParam("json_data");
 
-const addInterestButton = document.getElementById('add_interest_button');
 const interestsForm = document.getElementById('interests_form');
 const interestsList = document.getElementById('interests_list');
+
+[document.getElementById('name'),
+    document.getElementById('keyword'),
+].forEach(item => {
+    item.addEventListener('mouseover', function() {
+        tg.MainButton.color = '#229ED9';
+        tg.MainButton.setText("Add to List");
+        tg.MainButton.hide();
+        if (!tg.MainButton.isVisible) {
+            tg.MainButton.show();
+        }
+    });
+});
 
 
 if (encodedJsonData) {
@@ -48,8 +60,11 @@ function addInterestEntry(entry) {
     editButton.addEventListener('click', () => {
         populateFormForEditing(entry);
         listItem.remove();
-        if (tg.MainButton.isVisible) {
-            tg.MainButton.hide();
+        tg.MainButton.color = '#229ED9';
+        tg.MainButton.setText("Save changes");
+        tg.MainButton.hide();
+        if (!tg.MainButton.isVisible) {
+            tg.MainButton.show();
         }
     });
 
@@ -62,6 +77,8 @@ function addInterestEntry(entry) {
         listItem.remove();
         if (!tg.MainButton.isVisible) {
             tg.MainButton.show();
+            tg.MainButton.color = '#2CAB37';
+            tg.MainButton.setText("Save");
         }
     });
 
@@ -84,7 +101,7 @@ function editInterestEntry(entry) {
 }
 
 // Add button click event listener
-addInterestButton.addEventListener('click', () => {
+function addEntry() {
     if (validateInput(['name', 'keyword'])) {
         return;
     }
@@ -94,12 +111,21 @@ addInterestButton.addEventListener('click', () => {
     };
     addInterestEntry(entryData);
     interestsForm.reset();
-    if (!tg.MainButton.isVisible) {
-        tg.MainButton.show();
-    }
 });
 
 Telegram.WebApp.onEvent("mainButtonClicked", function() {
+    if (tg.MainButton.text === "Add to List") {
+        addEntry();
+        tg.MainButton.color = '#2CAB37';
+        tg.MainButton.setText("Save");
+        return;
+    }
+    if (tg.MainButton.text === "Save changes") {
+        addEntry();
+        tg.MainButton.color = '#2CAB37';
+        tg.MainButton.setText("Save");
+        return;
+    }
     const listItems = interestsList.querySelectorAll('li');
     const inters = [];
     listItems.forEach((item) => {
