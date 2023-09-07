@@ -94,7 +94,7 @@ addButton.addEventListener('click', () => {
     }
 });
 
-Telegram.WebApp.onEvent("mainButtonClicked", function(){
+Telegram.WebApp.onEvent("mainButtonClicked", function() {
     const listItems = languagesList.querySelectorAll('li');
     const langs = [];
     listItems.forEach((item) => {

@@ -14,9 +14,9 @@ function getQueryParam(name) {
 
 const encodedJsonData = getQueryParam("json_data");
 
-const addButton = document.getElementById('add_button');
-const certificatesForm = document.getElementById('certificates_form');
-const certificatesList = document.getElementById('certificates_list');
+let addButton = document.getElementById('add_button');
+let certificatesForm = document.getElementById('certificates_form');
+let certificatesList = document.getElementById('certificates_list');
 
 if (encodedJsonData) {
     const jsonData = decodeURIComponent(encodedJsonData);
@@ -89,6 +89,9 @@ function editCertificateEntry(entry) {
 
 // Add button click event listener
 addButton.addEventListener('click', () => {
+    if (validateInput(['name', 'date'])) {
+        return;
+    }
     const entryData = {
         name: document.getElementById('name').value,
         date: document.getElementById('date').value,

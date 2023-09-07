@@ -85,6 +85,9 @@ function editInterestEntry(entry) {
 
 // Add button click event listener
 addInterestButton.addEventListener('click', () => {
+    if (validateInput(['name', 'keyword'])) {
+        return;
+    }
     const entryData = {
         name: document.getElementById('name').value,
         keyword: document.getElementById('keyword').value,

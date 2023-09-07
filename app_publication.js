@@ -89,6 +89,9 @@ function editPublicationEntry(entry) {
 
 // Add button click event listener
 addButton.addEventListener('click', () => {
+    if (validateInput(['name', 'releaseDate'])) {
+        return;
+    }
     const entryData = {
         name: document.getElementById('name').value,
         publisher: document.getElementById('publisher').value,

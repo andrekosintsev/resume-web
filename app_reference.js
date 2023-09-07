@@ -81,6 +81,9 @@ function editReferenceEntry(entry) {
 
 // Add button click event listener
 addReferenceButton.addEventListener('click', () => {
+    if (validateInput(['name', 'reference'])) {
+        return;
+    }
     const entryData = {
         name: document.getElementById('name').value,
         reference: document.getElementById('reference').value,

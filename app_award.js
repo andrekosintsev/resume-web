@@ -90,6 +90,9 @@ function editAwardEntry(entry) {
 
 // Add button click event listener
 addButton.addEventListener('click', () => {
+    if (validateInput(['title', 'date'])) {
+        return;
+    }
     const entryData = {
         title: document.getElementById('title').value,
         date: document.getElementById('date').value,

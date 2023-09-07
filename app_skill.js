@@ -5,8 +5,6 @@ tg.expand();
 tg.MainButton.textColor = '#FFFFFF';
 tg.MainButton.color = '#2cab37';
 tg.MainButton.setText("Save");
-tg.MainButton.show();
-
 
 function getQueryParam(name) {
     const urlSearchParams = new URLSearchParams(window.location.search);
@@ -85,6 +83,9 @@ function editSkillEntry(entry) {
 
 // Add button click event listener
 addButton.addEventListener('click', () => {
+    if (validateInput(['name', 'level'])) {
+        return;
+    }
     const entryData = {
         name: document.getElementById('name').value,
         level: document.getElementById('level').value,

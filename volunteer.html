@@ -7,14 +7,21 @@
 
     <!-- Add Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Define a CSS class for highlighting required fields */
+        .required-field {
+            border: 1px solid red;
+        }
+    </style>
 </head>
 <body>
     <div class="container mt-5">
         <h1 class="text-center">Volunteer Work Form</h1>
+        <div id="message"></div>
         <form id="volunteer_work_form">
             <div class="mb-3">
                 <label for="organization" class="form-label">Organization:</label>
-                <input type="text" class="form-control" id="organization" name="organization" placeholder="Organization">
+                <input type="text" class="form-control" id="organization" name="organization" placeholder="Organization" class="required-field" required>
             </div>
 
             <div class="mb-3">
@@ -29,12 +36,14 @@
 
             <div class="mb-3">
                 <label for="start_date" class="form-label">Start Date:</label>
-                <input type="date" class="form-control" id="start_date" name="start_date">
+                <input type="date" class="form-control" id="start_date" name="start_date" pattern="\d{4}-\d{2}-\d{2}"
+                title="Enter a date in the format YYYY-MM-DD" class="required-field" required>
             </div>
 
             <div class="mb-3">
                 <label for="end_date" class="form-label">End Date:</label>
-                <input type="date" class="form-control" id="end_date" name="end_date">
+                <input type="date" class="form-control" id="end_date" name="end_date" pattern="\d{4}-\d{2}-\d{2}"
+                title="Enter a date in the format YYYY-MM-DD" class="required-field" required>
             </div>
 
             <div class="mb-3">

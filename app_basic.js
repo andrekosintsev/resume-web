@@ -17,7 +17,6 @@ const encodedJsonData = getQueryParam("json_data");
 
 let fullNameInput = document.getElementById('full_name');
 let labelInput = document.getElementById('label');
-//let imageInput = document.getElementById('image');
 let emailInput = document.getElementById('email');
 let phoneInput = document.getElementById('phone');
 let summaryInput = document.getElementById('summary');
@@ -98,11 +97,13 @@ function populateCountryDropdown() {
 populateCountryDropdown();
 
 Telegram.WebApp.onEvent("mainButtonClicked", function() {
+  if (validateInput(['full_name', 'email', 'phone'])) {
+    return;
+  }
   tg.sendData(JSON.stringify({
     basic: {
       name: fullNameInput.value,
       label: labelInput.value,
-      // image: imageInput.value,
       email: emailInput.value,
       phone: phoneInput.value,
       summary: summaryInput.value,
