@@ -16,10 +16,8 @@ const encodedJsonData = getQueryParam("json_data");
 
 let awardsForm = document.getElementById('awards_form');
 let awardsList = document.getElementById('awards_list');
-let inputElements = [document.getElementById('title'),document.getElementById('date'),document.getElementById('awarder'),document.getElementById('summary')]
 
-
-inputElements.forEach(item => {
+[document.getElementById('title'),document.getElementById('date'),document.getElementById('awarder'),document.getElementById('summary')].forEach(item => {
                      item.addEventListener('mouseover', function() {
                                  tg.MainButton.color = '#0000FF';
                                  tg.MainButton.setText("Add to List");
