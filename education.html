@@ -19,7 +19,7 @@
     <form id="education_form">
         <div class="mb-3">
             <label for="institution" class="form-label">Institution:</label>
-            <input type="text" class="form-control" id="institution" name="institution" placeholder="Institution">
+            <input type="text" class="form-control" id="institution" name="institution" placeholder="Institution" class="required-field" required>
         </div>
 
         <div class="mb-3">
@@ -29,22 +29,24 @@
 
         <div class="mb-3">
             <label for="area" class="form-label">Area:</label>
-            <input type="text" class="form-control" id="area" name="area" placeholder="Area">
+            <input type="text" class="form-control" id="area" name="area" placeholder="Area" class="required-field" required>
         </div>
 
         <div class="mb-3">
-            <label for="study_type" class="form-label">Study Type:</label>
-            <input type="text" class="form-control" id="study_type" name="study_type" placeholder="Study Type">
+            <label for="type" class="form-label">Study Type:</label>
+            <input type="text" class="form-control" id="type" name="type" placeholder="Study Type" class="required-field" required>
         </div>
 
         <div class="mb-3">
-            <label for="start_date" class="form-label">Start Date:</label>
-            <input type="date" class="form-control" id="start_date" name="start_date">
+            <label for="startDate" class="form-label">Start Date:</label>
+            <input type="date" class="form-control" id="startDate" name="startDate" pattern="\d{4}-\d{2}-\d{2}"
+                   title="Enter a date in the format YYYY-MM-DD" class="required-field" required>
         </div>
 
         <div class="mb-3">
-            <label for="end_date" class="form-label">End Date:</label>
-            <input type="date" class="form-control" id="end_date" name="end_date">
+            <label for="endDate" class="form-label">End Date:</label>
+            <input type="date" class="form-control" id="endDate" name="endDate" pattern="\d{4}-\d{2}-\d{2}"
+                   title="Enter a date in the format YYYY-MM-DD" class="required-field" required>
         </div>
 
         <div class="mb-3">
@@ -68,106 +70,11 @@
         </ul>
     </div>
 </div>
-<!-- Floating "+" button -->
-<div class="fixed-action-btn" id="add_button">
-    <a class="btn-floating btn-large blue">
-        <i class="large material-icons">add</i>
-    </a>
-</div>
-
-<script>
-        const addButton = document.getElementById('add_button');
-        const educationForm = document.getElementById('education_form');
-        const educationList = document.getElementById('education_list');
-
-    // Sample data for education entries
-        const sampleEducationEntries = [];
-
-    // Function to generate and append education entry HTML
-        function addEducationEntry(entry) {
-            const listItem = document.createElement('li');
-            listItem.className = 'list-group-item';
-
-            const entryHTML = `
-            <strong>Institution:</strong> ${entry.institution}<br>
-            <strong>URL:</strong> <a href="${entry.url}" target="_blank">${entry.url}</a><br>
-            <strong>Area:</strong> ${entry.area}<br>
-            <strong>Study Type:</strong> ${entry.study_type}<br>
-            <strong>Start Date:</strong> ${entry.start_date}<br>
-            <strong>End Date:</strong> ${entry.end_date}<br>
-            <strong>Courses:</strong> ${entry.courses.join(', ')}<br>
-            <strong>Score:</strong> ${entry.score}<br>
-            `;
-
-            listItem.innerHTML = entryHTML;
-            educationList.appendChild(listItem);
-
-        // Delete button event listener
-            const deleteButton = document.createElement('button');
-            deleteButton.className = 'btn btn-danger btn-sm delete-button';
-            deleteButton.textContent = 'Delete';
-            listItem.appendChild(deleteButton);
-
-            deleteButton.addEventListener('click', () => {
-                listItem.remove();
-            });
-
-        // Edit button event listener
-            const editButton = document.createElement('button');
-            editButton.className = 'btn btn-primary btn-sm edit-button';
-            editButton.textContent = 'Edit';
-            listItem.appendChild(editButton);
-
-            editButton.addEventListener('click', () => {
-                populateFormForEditing(entry);
-            });
-        }
-
-    // Function to populate the education form with data for editing
-        function populateFormForEditing(entry) {
-            document.getElementById('institution').value = entry.institution;
-            document.getElementById('url').value = entry.url;
-            document.getElementById('area').value = entry.area;
-            document.getElementById('study_type').value = entry.study_type;
-            document.getElementById('start_date').value = entry.start_date;
-            document.getElementById('end_date').value = entry.end_date;
-            document.getElementById('courses').value = entry.courses.join(', ');
-            document.getElementById('score').value = entry.score;
-        }
-
-    // Edit button event listener
-        function editEducationEntry(entry) {
-            populateFormForEditing(entry);
-        }
-
-    // Add button click event listener
-        addButton.addEventListener('click', () => {
-            const entryData = {
-                institution: document.getElementById('institution').value,
-                url: document.getElementById('url').value,
-                area: document.getElementById('area').value,
-                study_type: document.getElementById('study_type').value,
-                start_date: document.getElementById('start_date').value,
-                end_date: document.getElementById('end_date').value,
-                courses: document.getElementById('courses').value.split(',').map(course => course.trim()),
-                score: document.getElementById('score').value,
-            };
-
-            addEducationEntry(entryData);
-            educationForm.reset();
-        });
-
-
-
-
-
-
-
-</script>
-
 <!-- Add Materialize JS for button behavior -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <!-- Include Bootstrap JS (optional) -->
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script src="app_education.js"></script>
+<script src="validation.js"></script>
 </body>
 </html>
