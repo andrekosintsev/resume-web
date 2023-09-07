@@ -9,72 +9,72 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<div class="container mt-5">
-    <h1 class="text-center">Volunteer Work Form</h1>
-    <form id="volunteer_work_form">
-        <div class="mb-3">
-            <label for="organization" class="form-label">Organization:</label>
-            <input type="text" class="form-control" id="organization" name="organization" placeholder="Organization">
+    <div class="container mt-5">
+        <h1 class="text-center">Volunteer Work Form</h1>
+        <form id="volunteer_work_form">
+            <div class="mb-3">
+                <label for="organization" class="form-label">Organization:</label>
+                <input type="text" class="form-control" id="organization" name="organization" placeholder="Organization">
+            </div>
+
+            <div class="mb-3">
+                <label for="position" class="form-label">Position:</label>
+                <input type="text" class="form-control" id="position" name="position" placeholder="Position">
+            </div>
+
+            <div class="mb-3">
+                <label for="url" class="form-label">URL:</label>
+                <input type="url" class="form-control" id="url" name="url" placeholder="URL (e.g., http://example.com)">
+            </div>
+
+            <div class="mb-3">
+                <label for="start_date" class="form-label">Start Date:</label>
+                <input type="date" class="form-control" id="start_date" name="start_date">
+            </div>
+
+            <div class="mb-3">
+                <label for="end_date" class="form-label">End Date:</label>
+                <input type="date" class="form-control" id="end_date" name="end_date">
+            </div>
+
+            <div class="mb-3">
+                <label for="summary" class="form-label">Summary:</label>
+                <textarea class="form-control" id="summary" name="summary"
+                placeholder="Give an overview of your responsibilities..."></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="highlights" class="form-label">Highlights:</label>
+                <textarea class="form-control" id="highlights" name="highlights"
+                placeholder="Specify accomplishments and achievements..."></textarea>
+            </div>
+
+            <button type="button" class="btn btn-primary" id="add_button">Add</button>
+        </form>
+
+        <!-- List of Volunteer Work Entries -->
+        <div class="mt-5">
+            <h2>List of Volunteer Work Entries</h2>
+            <ul id="volunteer_work_list" class="list-group">
+                <!-- Dynamically generated volunteer work entries will be placed here -->
+            </ul>
         </div>
-
-        <div class="mb-3">
-            <label for="position" class="form-label">Position:</label>
-            <input type="text" class="form-control" id="position" name="position" placeholder="Position">
-        </div>
-
-        <div class="mb-3">
-            <label for="url" class="form-label">URL:</label>
-            <input type="url" class="form-control" id="url" name="url" placeholder="URL (e.g., http://example.com)">
-        </div>
-
-        <div class="mb-3">
-            <label for="start_date" class="form-label">Start Date:</label>
-            <input type="date" class="form-control" id="start_date" name="start_date">
-        </div>
-
-        <div class="mb-3">
-            <label for="end_date" class="form-label">End Date:</label>
-            <input type="date" class="form-control" id="end_date" name="end_date">
-        </div>
-
-        <div class="mb-3">
-            <label for="summary" class="form-label">Summary:</label>
-            <textarea class="form-control" id="summary" name="summary"
-                      placeholder="Give an overview of your responsibilities..."></textarea>
-        </div>
-
-        <div class="mb-3">
-            <label for="highlights" class="form-label">Highlights:</label>
-            <textarea class="form-control" id="highlights" name="highlights"
-                      placeholder="Specify accomplishments and achievements..."></textarea>
-        </div>
-
-        <button type="button" class="btn btn-primary" id="add_button">Add</button>
-    </form>
-
-    <!-- List of Volunteer Work Entries -->
-    <div class="mt-5">
-        <h2>List of Volunteer Work Entries</h2>
-        <ul id="volunteer_work_list" class="list-group">
-            <!-- Dynamically generated volunteer work entries will be placed here -->
-        </ul>
     </div>
-</div>
 
-<script>
-    const addButton = document.getElementById('add_button');
-    const volunteerWorkForm = document.getElementById('volunteer_work_form');
-    const volunteerWorkList = document.getElementById('volunteer_work_list');
+    <script>
+        const addButton = document.getElementById('add_button');
+        const volunteerWorkForm = document.getElementById('volunteer_work_form');
+        const volunteerWorkList = document.getElementById('volunteer_work_list');
 
     // Sample data for volunteer work entries
-    const sampleVolunteerWorkEntries = [];
+        const sampleVolunteerWorkEntries = [];
 
     // Function to generate and append volunteer work entry HTML
-    function addVolunteerWorkEntry(entry) {
-        const listItem = document.createElement('li');
-        listItem.className = 'list-group-item';
+        function addVolunteerWorkEntry(entry) {
+            const listItem = document.createElement('li');
+            listItem.className = 'list-group-item';
 
-        const entryHTML = `
+            const entryHTML = `
             <strong>Organization:</strong> ${entry.organization}<br>
             <strong>Position:</strong> ${entry.position}<br>
             <strong>URL:</strong> <a href="${entry.url}" target="_blank">${entry.url}</a><br>
@@ -82,67 +82,67 @@
             <strong>End Date:</strong> ${entry.end_date}<br>
             <strong>Summary:</strong> ${entry.summary}<br>
             <strong>Highlights:</strong> ${entry.highlights.join(', ')}<br>
-        `;
+            `;
 
-        listItem.innerHTML = entryHTML;
-        volunteerWorkList.appendChild(listItem);
+            listItem.innerHTML = entryHTML;
+            volunteerWorkList.appendChild(listItem);
 
         // Delete button event listener
-        const deleteButton = document.createElement('button');
-        deleteButton.className = 'btn btn-danger btn-sm delete-button';
-        deleteButton.textContent = 'Delete';
-        listItem.appendChild(deleteButton);
+            const deleteButton = document.createElement('button');
+            deleteButton.className = 'btn btn-danger btn-sm delete-button';
+            deleteButton.textContent = 'Delete';
+            listItem.appendChild(deleteButton);
 
-        deleteButton.addEventListener('click', () => {
-            listItem.remove();
-        });
+            deleteButton.addEventListener('click', () => {
+                listItem.remove();
+            });
 
         // Edit button event listener
-        const editButton = document.createElement('button');
-        editButton.className = 'btn btn-primary btn-sm edit-button';
-        editButton.textContent = 'Edit';
-        listItem.appendChild(editButton);
+            const editButton = document.createElement('button');
+            editButton.className = 'btn btn-primary btn-sm edit-button';
+            editButton.textContent = 'Edit';
+            listItem.appendChild(editButton);
 
-        editButton.addEventListener('click', () => {
-            populateFormForEditing(entry);
-        });
-    }
+            editButton.addEventListener('click', () => {
+                populateFormForEditing(entry);
+            });
+        }
 
     // Function to populate the volunteer work form with data for editing
-    function populateFormForEditing(entry) {
-        document.getElementById('organization').value = entry.organization;
-        document.getElementById('position').value = entry.position;
-        document.getElementById('url').value = entry.url;
-        document.getElementById('start_date').value = entry.start_date;
-        document.getElementById('end_date').value = entry.end_date;
-        document.getElementById('summary').value = entry.summary;
-        document.getElementById('highlights').value = entry.highlights.join('\n');
-    }
+        function populateFormForEditing(entry) {
+            document.getElementById('organization').value = entry.organization;
+            document.getElementById('position').value = entry.position;
+            document.getElementById('url').value = entry.url;
+            document.getElementById('start_date').value = entry.start_date;
+            document.getElementById('end_date').value = entry.end_date;
+            document.getElementById('summary').value = entry.summary;
+            document.getElementById('highlights').value = entry.highlights.join('\n');
+        }
 
     // Edit button event listener
-    function editVolunteerWorkEntry(entry) {
-        populateFormForEditing(entry);
-    }
+        function editVolunteerWorkEntry(entry) {
+            populateFormForEditing(entry);
+        }
 
     // Add button click event listener
-    addButton.addEventListener('click', () => {
-        const entryData = {
-            organization: document.getElementById('organization').value,
-            position: document.getElementById('position').value,
-            url: document.getElementById('url').value,
-            start_date: document.getElementById('start_date').value,
-            end_date: document.getElementById('end_date').value,
-            summary: document.getElementById('summary').value,
-            highlights: document.getElementById('highlights').value.split('\n'),
-        };
+        addButton.addEventListener('click', () => {
+            const entryData = {
+                organization: document.getElementById('organization').value,
+                position: document.getElementById('position').value,
+                url: document.getElementById('url').value,
+                start_date: document.getElementById('start_date').value,
+                end_date: document.getElementById('end_date').value,
+                summary: document.getElementById('summary').value,
+                highlights: document.getElementById('highlights').value.split('\n'),
+            };
 
-        addVolunteerWorkEntry(entryData);
-        volunteerWorkForm.reset();
-    });
+            addVolunteerWorkEntry(entryData);
+            volunteerWorkForm.reset();
+        });
 
-</script>
+    </script>
 
-<!-- Add Bootstrap JS (Optional) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>
+    <!-- Add Bootstrap JS (Optional) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
