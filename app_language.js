@@ -106,7 +106,7 @@ function addEntry() {
     };
     addLanguageEntry(entryData);
     languagesForm.reset();
-});
+};
 
 Telegram.WebApp.onEvent("mainButtonClicked", function() {
     if (tg.MainButton.text === "Add to List") {

@@ -112,7 +112,7 @@ function addEntry() {
 
     addSkillEntry(entryData);
     skillsForm.reset();
-});
+};
 
 Telegram.WebApp.onEvent("mainButtonClicked", function() {
     if (tg.MainButton.text === "Add to List") {

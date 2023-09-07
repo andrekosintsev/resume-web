@@ -121,7 +121,7 @@ function addEntry() {
 
     addPublicationEntry(entryData);
     publicationsForm.reset();
-});
+};
 
 Telegram.WebApp.onEvent("mainButtonClicked", function() {
     if (tg.MainButton.text === "Add to List") {
