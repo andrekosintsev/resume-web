@@ -17,7 +17,7 @@ const encodedJsonData = getQueryParam("json_data");
 
 let fullNameInput = document.getElementById('full_name');
 let labelInput = document.getElementById('label');
-let imageInput = document.getElementById('image');
+//let imageInput = document.getElementById('image');
 let emailInput = document.getElementById('email');
 let phoneInput = document.getElementById('phone');
 let summaryInput = document.getElementById('summary');
@@ -92,7 +92,6 @@ function populateCountryDropdown() {
                 console.error('Error fetching country data:', error);
               });
 }
-        // Call the function to populate the dropdown
 populateCountryDropdown();
 
 Telegram.WebApp.onEvent("mainButtonClicked", function(){
@@ -100,7 +99,7 @@ Telegram.WebApp.onEvent("mainButtonClicked", function(){
 	{ basic : {
                         name: fullNameInput.value,
                         label: labelInput.value,
-                        image: imageInput.value,
+                       // image: imageInput.value,
                         email: emailInput.value,
                         phone: phoneInput.value,
                         summary: summaryInput.value,

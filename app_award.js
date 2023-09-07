@@ -5,7 +5,6 @@ tg.expand();
 tg.MainButton.textColor = '#FFFFFF';
 tg.MainButton.color = '#2cab37';
 tg.MainButton.setText("Save");
-tg.MainButton.show();
 
 
 function getQueryParam(name) {
@@ -52,6 +51,9 @@ function addAwardEntry(entry) {
          editButton.addEventListener('click', () => {
              populateFormForEditing(entry);
              listItem.remove();
+             if (tg.MainButton.isVisible){
+                 tg.MainButton.hide();
+             }
          });
 
         // Delete button event listener
@@ -61,6 +63,9 @@ function addAwardEntry(entry) {
 
         deleteButton.addEventListener('click', () => {
             listItem.remove();
+             if (!tg.MainButton.isVisible){
+                   tg.MainButton.show();
+             }
         });
 
         const div = document.createElement('div');
@@ -93,6 +98,9 @@ addButton.addEventListener('click', () => {
         };
         addAwardEntry(entryData);
         awardsForm.reset();
+        if (!tg.MainButton.isVisible){
+            tg.MainButton.show();
+        }
 });
 
 Telegram.WebApp.onEvent("mainButtonClicked", function(){
