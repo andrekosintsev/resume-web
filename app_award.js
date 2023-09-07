@@ -26,14 +26,6 @@ let awardsList = document.getElementById('awards_list');
                                      tg.MainButton.show();
                                  }
                              });
-                     /*item.addEventListener('mouseout', function() {
-                                 tg.MainButton.color = '#2cab37';
-                                 tg.MainButton.setText("Save");
-                                 tg.MainButton.hide();
-                                 if (!tg.MainButton.isVisible) {
-                                     tg.MainButton.show();
-                                 }
-                    });*/
             }
 );
 
@@ -69,6 +61,12 @@ function addAwardEntry(entry) {
     editButton.addEventListener('click', () => {
         populateFormForEditing(entry);
         listItem.remove();
+        tg.MainButton.color = '#0000FF';
+        tg.MainButton.setText("Save changes");
+        tg.MainButton.hide();
+        if (!tg.MainButton.isVisible) {
+            tg.MainButton.show();
+        }
     });
 
     // Delete button event listener
@@ -126,6 +124,12 @@ Telegram.WebApp.onEvent("mainButtonClicked", function() {
         tg.MainButton.color = '#2cab37';
         tg.MainButton.setText("Save");
         return;
+    }
+    if (tg.MainButton.text==="Save changes") {
+            addEntry();
+            tg.MainButton.color = '#2cab37';
+            tg.MainButton.setText("Save");
+            return;
     }
 
     const listItems = awardsList.querySelectorAll('li');
