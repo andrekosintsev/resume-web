@@ -121,7 +121,7 @@ function addEntry(){
 };
 
 Telegram.WebApp.onEvent("mainButtonClicked", function() {
-    if (tg.MainButton.text==="Add") {
+    if (tg.MainButton.text==="Add to List") {
         addEntry();
         tg.MainButton.color = '#2cab37';
         tg.MainButton.setText("Save");
