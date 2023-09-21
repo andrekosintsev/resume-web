@@ -30,8 +30,9 @@
 
         <div class="mb-3">
             <label for="releaseDate" class="form-label">Дата выпуска:</label>
-            <input type="date" class="form-control" id="releaseDate" name="releaseDate" pattern="\d{4}-\d{2}-\d{2}"
-                   title="Введите дату в формате YYYY-MM-DD" class="required-field" required>
+            <input type="text" class="date-input required-field" id="releaseDate" name="releaseDate"
+                   pattern="-\d{2}.\d{2}.\d{4}" placeholder="ДД.ММ.ГГГГ" title="Введите дату в формате ДД.MM.ГГГГ"
+                   required>
         </div>
 
         <div class="mb-3">

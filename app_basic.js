@@ -111,7 +111,7 @@ Telegram.WebApp.onEvent("mainButtonClicked", function() {
         address: addressInput.value,
         postalCode: postalCodeInput.value,
         city: cityInput.value,
-        countryCode: country.value,
+        countryCode: countryCodeInput.value,
         region: regionInput.value
       }
     }

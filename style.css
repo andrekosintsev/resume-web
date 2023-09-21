@@ -2,3 +2,21 @@
 input:required {
      border-bottom: 2px solid #FF0000; /* Red border color */
 }
+
+.date-input {
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            width: 200px;
+        }
+
+        /* Define the input pattern for valid date format (YYYY-MM-DD) */
+        .date-input:valid {
+            border: 1px solid #0a0; /* Green border for valid input */
+        }
+
+        /* Define styles for invalid input */
+        .date-input:invalid {
+            border: 1px solid #a00; /* Red border for invalid input */
+        }

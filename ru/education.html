@@ -42,14 +42,12 @@
 
         <div class="mb-3">
             <label for="startDate" class="form-label">Дата начала:</label>
-            <input type="date" class="form-control" id="startDate" name="startDate" pattern="\d{4}-\d{2}-\d{2}"
-                   title="Введите дату в формате ГГГГ-ММ-ДД" class="required-field" required>
+            <input type="text" class="date-input required-field" id="startDate" name="startDate"  pattern="-\d{2}.\d{2}.\d{4}" placeholder="ДД.ММ.ГГГГ" title="Введите дату в формате ДД.MM.ГГГГ" required>
         </div>
 
         <div class="mb-3">
             <label for="endDate" class="form-label">Дата окончания:</label>
-            <input type="date" class="form-control" id="endDate" name="endDate" pattern="\d{4}-\d{2}-\d{2}"
-                   title="Введите дату в формате ГГГГ-ММ-ДД" class="required-field" required>
+            <input type="text" class="date-input required-field" id="endDate" name="endDate"  pattern="-\d{2}.\d{2}.\d{4}" placeholder="ДД.ММ.ГГГГ" title="Введите дату в формате ДД.MM.ГГГГ" required>
         </div>
 
         <div class="mb-3">

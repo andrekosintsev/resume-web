@@ -24,7 +24,8 @@
 
         <div class="mb-3">
             <label for="description" class="form-label">Описание:</label>
-            <textarea class="materialize-textarea" id="description" name="description" placeholder="Введите описание проекта" required></textarea>
+            <textarea class="materialize-textarea" id="description" name="description"
+                      placeholder="Введите описание проекта" required></textarea>
         </div>
 
         <div class="mb-3">
@@ -41,16 +42,16 @@
 
         <div class="mb-3">
             <label for="startDate" class="form-label">Дата начала:</label>
-            <input type="date" class="form-control" id="startDate" name="startDate"
-                   pattern="\d{4}-\d{2}-\d{2}"
-                   title="Введите дату в формате YYYY-MM-DD" class="required-field" required>
+            <input type="text" class="date-input required-field" id="startDate" name="startDate"
+                   pattern="-\d{2}.\d{2}.\d{4}" placeholder="ДД.ММ.ГГГГ" title="Введите дату в формате ДД.MM.ГГГГ"
+                   required>
         </div>
 
         <div class="mb-3">
             <label for="endDate" class="form-label">Дата завершения:</label>
-            <input type="date" class="form-control" id="endDate" name="endDate"
-                   pattern="\d{4}-\d{2}-\d{2}"
-                   title="Введите дату в формате YYYY-MM-DD" class="required-field" required>
+            <input type="text" class="date-input required-field" id="endDate" name="endDate"
+                   pattern="-\d{2}.\d{2}.\d{4}" placeholder="ДД.ММ.ГГГГ" title="Введите дату в формате ДД.MM.ГГГГ"
+                   required>
         </div>
 
         <div class="mb-3">
