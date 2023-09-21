@@ -12,6 +12,7 @@ function getQueryParam(name) {
   const urlSearchParams = new URLSearchParams(window.location.search);
   return urlSearchParams.get(name);
 }
+populateCountryDropdown();
 
 const encodedJsonData = getQueryParam("json_data");
 
@@ -29,8 +30,7 @@ let regionInput = document.getElementById('region');
 if (encodedJsonData) {
 
   const jsonData = decodeURIComponent(encodedJsonData);
-  const fixedJson = jsonData.replace(/(['"])?([a-zA-Z0-9_]+)(['"])?:/g, '"$2":');
-  const jsonObject = JSON.parse(fixedJson);
+  const jsonObject = JSON.parse(jsonData);
 
   if (fullNameInput) {
     fullNameInput.value = jsonObject.name || "";
@@ -56,24 +56,13 @@ if (encodedJsonData) {
   if (cityInput && jsonObject.location) {
     cityInput.value = jsonObject.location.city || "";
   }
-  if (countryCodeInput && jsonObject.location) {
-    countryCodeInput.value = jsonObject.location.countryCode || "";
-    if(jsonObject.location.countryCode) {
-         countrySelect.forEach((item) => {
-                 const option = item.querySelectorAll('option');
-                 if(option.code === jsonObject.location.countryCode) {
-                    option.selected = true;
-                 }
-               });
-     }
-  }
   if (regionInput && jsonObject.location) {
     regionInput.value = jsonObject.location.region || "";
   }
+  populateCountryDropdown(jsonObject);
 }
 
-function populateCountryDropdown() {
-  let countrySelect = document.getElementById("country");
+function populateCountryDropdown(jsonObject) {
   const countries = [];
 
   fetch('https://restcountries.com/v3.1/all')
@@ -92,14 +81,20 @@ function populateCountryDropdown() {
         const option = document.createElement("option");
         option.value = country.code;
         option.text = country.name;
-        countrySelect.appendChild(option);
+        if (jsonObject && jsonObject.location) {
+                if (option.value === jsonObject.location.countryCode) {
+                    option.selected = true;
+                }
+        }
+        countryCodeInput.appendChild(option);
       });
+
     })
     .catch(error => {
       console.error('Error fetching country data:', error);
     });
 }
-populateCountryDropdown();
+
 
 Telegram.WebApp.onEvent("mainButtonClicked", function() {
   if (validateInput(['full_name', 'email', 'phone'])) {
