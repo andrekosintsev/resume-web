@@ -54,7 +54,7 @@ function addWorkEntry(entry) {
 
     const entryHTML = `
                 <strong>Company Name:</strong> <i>${entry.name}</i><br>
-                <strong>Company Address:</strong> <i>${entry.address}<br>
+                <strong>Company Address:</strong> <i>${entry.address}</i><br>
                 <strong>Company Website:</strong> <a href="${entry.website}" target="_blank"><i>${entry.website}</i></a><br>
                 <strong>Industry:</strong> <i>${entry.industry}</i><br>
                 <strong>Position:</strong> <i>${entry.position}</i><br>
