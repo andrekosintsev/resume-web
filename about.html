@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Наша Миссия</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Add your custom styles here */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 2rem;
+            align-items: center;
+            justify-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content {
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #333;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        .email {
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .donate {
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .subscribe {
+            color: #28a745;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        /* Pseudo-elements to create abstract shapes with transparency */
+        .container::before,
+        .container::after {
+            content: "";
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0) 50%, #fff 100%);
+            opacity: 0.5;
+            z-index: -1;
+        }
+
+        .container::before {
+            top: 10%;
+            left: 10%;
+        }
+
+        .container::after {
+            bottom: 10%;
+            right: 10%;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="content">
+        <h1>Наша Миссия</h1>
+        <p>
+            Мы представляем собой небольшую, но страстную команду разработчиков, которая стремится создавать бесплатные решения, направленные на автоматизацию и улучшение жизни всех людей во всех областях.
+            Наша команда состоит из добровольцев, которые разделяют общую страсть к программированию и технологиям.
+        </p>
+        <p>
+            Мы верим, что автоматизация может сделать нашу повседневную жизнь более эффективной, комфортной и увлекательной.
+            Наши решения разрабатываются с любовью и заботой, чтобы помочь каждому человеку встретить вызовы современного мира с уверенностью.
+        </p>
+        <p>
+            Мы искренне рады делиться нашими навыками и усилиями с миром.
+            Нашей целью является обеспечение бесплатных инструментов и сервисов, которые позволят обычным людям справляться с повседневными задачами более эффективно.
+        </p>
+        <p>
+            Мы видим свою миссию в том, чтобы сделать технологии более доступными и полезными для всех.
+            Если вы разделяете нашу страсть к технологиям и хотите внести свой вклад, будем рады приветствовать вас в нашей команде.
+        </p>
+        <p>
+            Любой, кто желает помочь нам улучшить наши сервисы, может связаться с нами по электронной почте:
+            <code class="email">kvad.software@rambler.ru</code>.
+        </p>
+        <p>
+            Также вы можете поддержать нас финансово, перечислив пожертвования на наш кошелек в TON:
+            <code class="donate">EQAs93RvbAoGoXO0Goyg6cqS2A8RN2oaFtbr4d8xg-u-ZUrn</code>
+        </p>
+        <p>
+            Вместе мы создаём лучшее будущее, где технологии работают на благо каждого человека!
+        </p>
+        <p>
+            Подписывайтесь на нас в телеграмм канале <a class="subscribe" href="https://t.me/kvadbots" target="_blank">@kvadbots</a>
+            и следите за новостями и обновлениями наших ботов.
+        </p>
+    </div>
+</div>
+</body>
+</html>
