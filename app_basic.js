@@ -58,6 +58,14 @@ if (encodedJsonData) {
   }
   if (countryCodeInput && jsonObject.location) {
     countryCodeInput.value = jsonObject.location.countryCode || "";
+    if(jsonObject.location.countryCode) {
+         countrySelect.forEach((item) => {
+                 const option = item.querySelectorAll('option');
+                 if(option.code === jsonObject.location.countryCode) {
+                    option.selected = true;
+                 }
+               });
+     }
   }
   if (regionInput && jsonObject.location) {
     regionInput.value = jsonObject.location.region || "";
@@ -84,9 +92,6 @@ function populateCountryDropdown() {
         const option = document.createElement("option");
         option.value = country.code;
         option.text = country.name;
-        if (jsonObject.location.countryCode && option.value === jsonObject.location.countryCode) {
-          option.selected = true;
-        }
         countrySelect.appendChild(option);
       });
     })
