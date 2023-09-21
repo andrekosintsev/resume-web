@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Образование</title>
+    <!-- Добавить Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Добавить иконки Material Icons для кнопки "+" -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- Добавить стили Materialize для дизайна Material Design -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="text-center">Образование</h1>
+    <div id="message"></div>
+    <form id="education_form">
+        <div class="mb-3">
+            <label for="institution" class="form-label">Учебное заведение:</label>
+            <input type="text" class="form-control" id="institution" name="institution" placeholder="Учебное заведение"
+                   class="required-field" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="url" class="form-label">URL:</label>
+            <input type="url" class="form-control" id="url" name="url" placeholder="URL (например, http://example.com)">
+        </div>
+
+        <div class="mb-3">
+            <label for="area" class="form-label">Область:</label>
+            <input type="text" class="form-control" id="area" name="area" placeholder="Область" class="required-field"
+                   required>
+        </div>
+
+        <div class="mb-3">
+            <label for="type" class="form-label">Тип обучения:</label>
+            <input type="text" class="form-control" id="type" name="type" placeholder="Тип обучения"
+                   class="required-field" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="startDate" class="form-label">Дата начала:</label>
+            <input type="date" class="form-control" id="startDate" name="startDate" pattern="\d{4}-\d{2}-\d{2}"
+                   title="Введите дату в формате ГГГГ-ММ-ДД" class="required-field" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="endDate" class="form-label">Дата окончания:</label>
+            <input type="date" class="form-control" id="endDate" name="endDate" pattern="\d{4}-\d{2}-\d{2}"
+                   title="Введите дату в формате ГГГГ-ММ-ДД" class="required-field" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="courses" class="form-label">Курсы (через запятую):</label>
+            <textarea id="courses" class="materialize-textarea" name="courses"
+                      placeholder="Перечислите важные курсы/предметы"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="score" class="form-label">Средний балл (например, средний балл GPA):</label>
+            <input type="text" class="form-control" id="score" name="score" placeholder="Средний балл">
+        </div>
+    </form>
+
+    <!-- Список записей об образовании -->
+    <div class="mt-5">
+        <h2>Список учебных заведений</h2>
+        <ul id="education_list" class="list-group">
+            <!-- Динамически создаваемые записи об образовании будут размещены здесь -->
+        </ul>
+    </div>
+</div>
+<!-- Добавить Materialize JS для поведения кнопки -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<!-- Включить Bootstrap JS (по желанию) -->
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script src="../app_education.js"></script>
+<script src="../validation.js"></script>
+</body>
+</html>

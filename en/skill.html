@@ -3,39 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reference</title>
+    <title>Skills</title>
     <!-- Add Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Add Material Icons for the "+" button -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <!-- Add Materialize CSS for Material Design styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
 <div class="container mt-5">
-    <h1 class="text-center">Reference</h1>
+    <h1 class="text-center">Skills</h1>
     <div id="message"></div>
-    <form id="references_form">
+    <form id="skills_form">
         <div class="mb-3">
             <label for="name" class="form-label">Name:</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="Name" class="required-field"
-                   required>
+            <input type="text" class="form-control" id="name" name="name" placeholder="e.g. Web Development"
+                   class="required-field" required>
         </div>
 
         <div class="mb-3">
-            <label for="reference" class="form-label">Reference:</label>
-            <textarea class="materialize-textarea" id="reference" name="reference"
-                      placeholder="Enter reference or URL link" class="required-field"></textarea>
+            <label for="level" class="form-label">Level:</label>
+            <input type="text" class="form-control" id="level" name="level" placeholder="e.g. Master"
+                   class="required-field" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="keywords" class="form-label">Keywords:</label>
+            <textarea class="materialize-textarea" id="keywords" name="keywords"
+                      placeholder="e.g. HTML, Javascript, Spring boot, Css"></textarea>
         </div>
 
     </form>
 
-    <!-- List of References -->
+    <!-- List of Skill Entries -->
     <div class="mt-5">
-        <h2>List of References</h2>
-        <ul id="references_list" class="list-group">
-            <!-- Dynamically generated reference entries will be placed here -->
+        <h2>List of Skills</h2>
+        <ul id="skills_list" class="list-group">
+            <!-- Dynamically generated skill entries will be placed here -->
         </ul>
     </div>
 </div>
@@ -44,7 +50,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <!-- Include Bootstrap JS (optional) -->
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
-<script src="app_reference.js"></script>
-<script src="validation.js"></script>
+<script src="../app_skill.js"></script>
+<script src="../validation.js"></script>
 </body>
 </html>

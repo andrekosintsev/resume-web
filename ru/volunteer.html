@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Волонтерская работа</title>
+    <!-- Добавить Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Добавить Material Icons для кнопки "+" -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- Добавить Materialize CSS для стилей Material Design -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="text-center">Волонтерская работа</h1>
+    <div id="message"></div>
+    <form id="volunteer_work_form">
+        <div class="mb-3">
+            <label for="organization" class="form-label">Организация:</label>
+            <input type="text" class="form-control" id="organization" name="organization" placeholder="Организация"
+                   class="required-field" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="position" class="form-label">Должность:</label>
+            <input type="text" class="form-control" id="position" name="position" placeholder="Должность"
+                   class="required-field" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="url" class="form-label">URL:</label>
+            <input type="url" class="form-control" id="url" name="url" placeholder="URL (например, http://example.com)">
+        </div>
+
+        <div class="mb-3">
+            <label for="startDate" class="form-label">Дата начала:</label>
+            <input type="date" class="form-control" id="startDate" name="startDate" pattern="\d{4}-\d{2}-\d{2}"
+                   title="Введите дату в формате ГГГГ-ММ-ДД" class="required-field" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="endDate" class="form-label">Дата окончания:</label>
+            <input type="date" class="form-control" id="endDate" name="endDate" pattern="\d{4}-\d{2}-\d{2}"
+                   title="Введите дату в формате ГГГГ-ММ-ДД" class="required-field" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="summary" class="form-label">Описание:</label>
+            <textarea class="materialize-textarea" id="summary" name="summary"
+                      placeholder="Дайте обзор ваших обязанностей..."></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="highlights" class="form-label">Особенности:</label>
+            <textarea class="materialize-textarea" id="highlights" name="highlights"
+                      placeholder="Укажите достижения и результаты..."></textarea>
+        </div>
+    </form>
+
+    <!-- Список записей о волонтерской работе -->
+    <div class="mt-5">
+        <h2>Список волонтерских мероприятий</h2>
+        <ul id="volunteer_work_list" class="list-group">
+            <!-- Динамически сгенерированные записи о волонтерской работе будут размещены здесь -->
+        </ul>
+    </div>
+</div>
+<!-- Добавить Materialize JS для функциональности кнопки -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<!-- Включить Bootstrap JS (по желанию) -->
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script src="../app_volunteer.js"></script>
+<script src="../validation.js"></script>
+</body>
+</html>

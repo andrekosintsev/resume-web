@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личная информация</title> <!-- Updated title to "Личная информация" (Personal Information in Russian) -->
+
+    <!-- Add Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Add Material Icons for the "+" button -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- Add Materialize CSS for Material Design styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="text-center">Личная информация</h1> <!-- Updated heading to "Личная информация" -->
+    <div id="message"></div>
+    <form enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="full_name" class="form-label">Полное имя:</label> <!-- Updated label to "Полное имя" (Full Name in Russian) -->
+            <input type="text" class="form-control" id="full_name" name="full_name" placeholder="например, Иван Иванов"
+                   class="required-field" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="label" class="form-label">Label:</label> <!-- Updated label to "Метка" (Label in Russian) -->
+            <input type="text" class="form-control" id="label" name="label"
+                   placeholder="например, Full Stack Java Developer">
+        </div>
+
+        <div class="mb-3">
+            <label for="email" class="form-label">Электронная почта:</label> <!-- Updated label to "Электронная почта" (Email in Russian) -->
+            <input type="email" class="form-control" id="email" name="email" placeholder="например, ivan.ivanov@gmail.com"
+                   class="required-field" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="phone" class="form-label">Телефон:</label> <!-- Updated label to "Телефон" (Phone in Russian) -->
+            <input type="tel" class="form-control" id="phone" name="phone" placeholder="например, +79123456789"
+                   class="required-field" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="summary" class="form-label">Описание:</label> <!-- Updated label to "Описание" (Summary in Russian) -->
+            <textarea class="materialize-textarea" id="summary" name="summary" rows="4"
+                      placeholder="Напишите краткое описание о себе и вашем опыте работы..."></textarea>
+        </div>
+
+        <h2>Адрес</h2> <!-- Updated heading to "Адрес" (Address in Russian) -->
+
+        <div class="mb-3">
+            <label for="address" class="form-label">Адрес:</label> <!-- Updated label to "Адрес" (Address in Russian) -->
+            <input type="text" class="form-control" id="address" name="address" placeholder="например, ул. Ленина, д. 123">
+        </div>
+
+        <div class="mb-3">
+            <label for="postal_code" class="form-label">Почтовый индекс:</label> <!-- Updated label to "Почтовый индекс" (Postal Code in Russian) -->
+            <input type="text" class="form-control" id="postal_code" name="postal_code" placeholder="например, 123456">
+        </div>
+
+        <div class="mb-3">
+            <label for="country" class="form-label">Страна:</label> <!-- Updated label to "Страна" (Country in Russian) -->
+            <select class="form-select" id="country" name="country">
+            </select>
+        </div>
+
+
+        <div class="mb-3">
+            <label for="city" class="form-label">Город:</label> <!-- Updated label to "Город" (City in Russian) -->
+            <input type="text" class="form-control" id="city" name="city" placeholder="например, Москва">
+        </div>
+
+        <div class="mb-3">
+            <label for="region" class="form-label">Регион:</label> <!-- Updated label to "Регион" (Region in Russian) -->
+            <input type="text" class="form-control" id="region" name="region" placeholder="например, Московская область">
+        </div>
+    </form>
+</div>
+
+
+<!-- Add Materialize JS for button behavior -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<!-- Include Bootstrap JS (optional) -->
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script src="../app_basic.js"></script>
+<script src="../validation.js"></script>
+</body>
+</html>
