@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Детали поездки</title>
+
+    <!-- Добавляем Material Design Lite CSS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+
+    <!-- Добавляем Material Design Lite JavaScript -->
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+</head>
+<body>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+            <span class="mdl-layout-title">Детали поездки</span>
+        </div>
+    </header>
+    <main class="mdl-layout__content">
+        <div class="mdl-card mdl-shadow--6dp">
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">Информация о поездке</h2>
+            </div>
+            <div class="mdl-card__supporting-text">
+                <form action="submit.php" method="POST">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <select class="mdl-textfield__input" id="departure_country" name="departure_country">
+                            <option value="Беларусь">Беларусь</option>
+                            <option value="Литва">Литва</option>
+                            <option value="Польша">Польша</option>
+                        </select>
+                        <label class="mdl-textfield__label" for="departure_country">Страна отправления</label>
+                    </div>
+
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <select class="mdl-textfield__input" id="departure_city" name="departure_city">
+                            <!-- Заполняется динамически с помощью JavaScript -->
+                        </select>
+                        <label class="mdl-textfield__label" for="departure_city">Город отправления</label>
+                    </div>
+
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <select class="mdl-textfield__input" id="arrival_country" name="arrival_country">
+                            <option value="Беларусь">Беларусь</option>
+                            <option value="Литва">Литва</option>
+                            <option value="Польша">Польша</option>
+                        </select>
+                        <label class="mdl-textfield__label" for="arrival_country">Страна назначения</label>
+                    </div>
+
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <select class="mdl-textfield__input" id="arrival_city" name="arrival_city">
+                            <!-- Заполняется динамически с помощью JavaScript -->
+                        </select>
+                        <label class="mdl-textfield__label" for="arrival_city">Город назначения</label>
+                    </div>
+
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input type="text" class="mdl-textfield__input" id="trip_date" name="trip_date"
+                               pattern="-\d{2}.\d{2}.\d{4}" placeholder="ДД.ММ.ГГГГ" title="Введите дату в формате ДД.MM.ГГГГ"
+                               required>
+                        <label class="mdl-textfield__label" for="trip_date">Дата</label>
+                    </div>
+
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="time" id="trip_time" name="trip_time" required>
+                        <label class="mdl-textfield__label" for="trip_time">Время</label>
+                    </div>
+
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="number" id="trip_price" name="trip_price" required>
+                        <label class="mdl-textfield__label" for="trip_price">Цена</label>
+                    </div>
+
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <select class="mdl-textfield__input" id="trip_currency" name="trip_currency">
+                            <option value="Белорусский рубль">Белорусский рубль</option>
+                            <option value="Российский рубль">Российский рубль</option>
+                            <option value="Доллар">Доллар</option>
+                            <option value="Евро">Евро</option>
+                            <option value="Польский злотый">Польский злотый</option>
+                        </select>
+                        <label class="mdl-textfield__label" for="trip_currency">Валюта</label>
+                    </div>
+
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="number" id="passenger_count" name="passenger_count" required>
+                        <label class="mdl-textfield__label" for="passenger_count">Количество пассажиров</label>
+                    </div>
+
+                    <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="add_trip">
+                        Добавить
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+</div>
+<!-- Подключаем файл populateCities.js здесь -->
+<script src="populateCities.js"></script>
+</body>
+</html>

@@ -29,7 +29,8 @@ function validateInput(fieldsToValidate) {
 
 // Get the input element
 [document.getElementById("date"),document.getElementById("startDate"),document.getElementById("endDate"),
-document.getElementById("releaseDate")]
+document.getElementById("releaseDate"),
+document.getElementById("d_date")]
 .forEach(item => {
         if(!item) {
             return;

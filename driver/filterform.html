@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Фильтр</title>
+
+    <!-- Добавляем Material Design Lite CSS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="../styles.css">
+
+</head>
+<body>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+            <span class="mdl-layout-title">Фильтр</span>
+        </div>
+    </header>
+    <main class="mdl-layout__content">
+        <div class="mdl-card mdl-shadow--10dp">
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">Новый фильтр</h2>
+            </div>
+            <div class="mdl-card__supporting-text">
+                <div id="message"></div>
+                <form id="filter_form">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <select class="mdl-textfield__input" id="d_country" name="d_country">
+                            <option value="Беларусь">Беларусь</option>
+                            <option value="Литва">Литва</option>
+                            <option value="Польша">Польша</option>
+                        </select>
+                        <label class="mdl-textfield__label" for="d_country">Страна отправления</label>
+                    </div>
+
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <select class="mdl-textfield__input" id="d_city" name="d_city">
+                            <!-- Заполняется динамически с помощью JavaScript -->
+                        </select>
+                        <label class="mdl-textfield__label" for="d_city">Город отправления</label>
+                    </div>
+
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <select class="mdl-textfield__input" id="a_country" name="a_country">
+                            <option value="Беларусь">Беларусь</option>
+                            <option value="Литва">Литва</option>
+                            <option value="Польша">Польша</option>
+                        </select>
+                        <label class="mdl-textfield__label" for="a_country">Страна назначения</label>
+                    </div>
+
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <select class="mdl-textfield__input" id="a_city" name="a_city">
+                            <!-- Заполняется динамически с помощью JavaScript -->
+                        </select>
+                        <label class="mdl-textfield__label" for="a_city">Город назначения</label>
+                    </div>
+
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input type="text" class="mdl-textfield__input" id="d_date" name="d_date"
+                               pattern="-\d{2}.\d{2}.\d{4}" placeholder="ДД.ММ.ГГГГ"
+                               title="Введите дату в формате ДД.MM.ГГГГ">
+                        <label class="mdl-textfield__label" for="d_date">Дата</label>
+                    </div>
+                </form>
+                <!-- Список наград (List of Awards) -->
+                <div class="mt-5">
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">Сохраненные фильтры</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text"><!-- Updated heading to "Список наград" -->
+                        <ul id="filter_list" class="list-group">
+                            <!-- Динамически созданные записи о наградах будут размещены здесь (Dynamically generated award entries will be placed here) -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+<!-- Подключаем файл populateCities.js здесь -->
+<!-- Добавляем Material Design Lite JavaScript -->
+<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script src="app_filter.js"></script>
+<script src="../validation.js"></script>
+<script src="populateCities.js"></script>
+</body>
+</html>
