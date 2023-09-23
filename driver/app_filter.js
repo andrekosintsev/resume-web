@@ -17,11 +17,11 @@ const encodedJsonData = getQueryParam("json_data");
 let filterForm = document.getElementById('filter_form');
 let filterList = document.getElementById('filter_list');
 
-[document.getElementById('departure_country'),
-    document.getElementById('departure_city'),
-    document.getElementById('arrival_country'),
-    document.getElementById('arrival_city'),
-    document.getElementById('trip_date')
+[document.getElementById('d_country'),
+    document.getElementById('d_city'),
+    document.getElementById('a_country'),
+    document.getElementById('a_city'),
+    document.getElementById('d_date')
 ].forEach(item => {
     item.addEventListener('mouseover', function() {
         tg.MainButton.color = '#3F51B5';
