@@ -7,8 +7,7 @@ tg.MainButton.color = '#2CAB37';
 tg.MainButton.setText("Save");
 
 tg.BackButton.textColor = '#FFFFFF';
-tg.BackButton.color = '#2CAB37';
-tg.BackButton.setText("Delete Job");
+tg.BackButton.color = '#FF0000';
 
 tg.MainButton.show();
 tg.BackButton.show();
