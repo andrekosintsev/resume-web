@@ -28,6 +28,7 @@ if (encodedJsonData) {
 }
 
 function populateFormForEditing(entry) {
+    document.getElementById('id').value = entry.id || "";
     document.getElementById('name').value = entry.name || "";
     document.getElementById('address').value = entry.address || "";
     document.getElementById('website').value = entry.website || "";
@@ -47,6 +48,7 @@ Telegram.WebApp.onEvent("mainButtonClicked", function() {
     }
     tg.sendData(JSON.stringify({
         works: [{
+                           id: document.getElementById('id').value,
                            name: document.getElementById('name').value,
                            address: document.getElementById('address').value,
                            website: document.getElementById('website').value,
