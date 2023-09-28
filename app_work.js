@@ -6,11 +6,9 @@ tg.MainButton.textColor = '#FFFFFF';
 tg.MainButton.color = '#2CAB37';
 tg.MainButton.setText("Save");
 
-tg.BackButton.textColor = '#FFFFFF';
-tg.BackButton.color = '#FF0000';
+tg.SettingsButton =[{"type":"destructive", "text": "Remove Job"}];
 
 tg.MainButton.show();
-tg.BackButton.show();
 
 function getQueryParam(name) {
     const urlSearchParams = new URLSearchParams(window.location.search);
