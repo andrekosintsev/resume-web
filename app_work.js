@@ -26,16 +26,16 @@ if (encodedJsonData) {
 }
 
 function populateFormForEditing(entry) {
-    document.getElementById('name').value = entry.name;
-    document.getElementById('address').value = entry.address;
-    document.getElementById('website').value = entry.website;
-    document.getElementById('industry').value = entry.industry;
-    document.getElementById('position').value = entry.position;
-    document.getElementById('startDate').value = entry.startDate;
-    document.getElementById('endDate').value = entry.endDate;
-    document.getElementById('summary').value = entry.summary;
-    document.getElementById('highlights').value = entry.highlights;
-    document.getElementById('keywords').value = entry.keywords;
+    document.getElementById('name').value = entry.name || "";
+    document.getElementById('address').value = entry.address || "";
+    document.getElementById('website').value = entry.website || "";
+    document.getElementById('industry').value = entry.industry || "";
+    document.getElementById('position').value = entry.position || "";
+    document.getElementById('startDate').value = entry.startDate|| "";
+    document.getElementById('endDate').value = entry.endDate || "";
+    document.getElementById('summary').value = entry.summary || "";
+    document.getElementById('highlights').value = entry.highlights || "";
+    document.getElementById('keywords').value = entry.keywords || "";
 }
 
 
