@@ -44,7 +44,6 @@ Telegram.WebApp.onEvent("mainButtonClicked", function() {
             return;
     }
     const jobs = [];
-    listItems.forEach((item) => {
         jobs.push({
             name: document.getElementById('name').value,
             address: document.getElementById('address').value,
@@ -57,7 +56,6 @@ Telegram.WebApp.onEvent("mainButtonClicked", function() {
             highlights: document.getElementById('highlights').value,
             keywords: document.getElementById('keywords').value
         });
-    });
     tg.sendData(JSON.stringify({
         works: jobs
     }));
