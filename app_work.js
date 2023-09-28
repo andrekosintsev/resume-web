@@ -43,20 +43,19 @@ Telegram.WebApp.onEvent("mainButtonClicked", function() {
     if (validateInput(['name', 'industry', 'position', 'startDate', 'endDate'])) {
             return;
     }
-    const jobs = [{
-            name: document.getElementById('name').value,
-            address: document.getElementById('address').value,
-            website: document.getElementById('website').value,
-            industry: document.getElementById('industry').value,
-            position: document.getElementById('position').value,
-            startDate: document.getElementById('startDate').value,
-            endDate: document.getElementById('endDate').value,
-            summary: document.getElementById('summary').value,
-            highlights: document.getElementById('highlights').value,
-            keywords: document.getElementById('keywords').value
-        }];
     tg.sendData(JSON.stringify({
-        works: jobs
+        works: [{
+                           name: document.getElementById('name').value,
+                           address: document.getElementById('address').value,
+                           website: document.getElementById('website').value,
+                           industry: document.getElementById('industry').value,
+                           position: document.getElementById('position').value,
+                           startDate: document.getElementById('startDate').value,
+                           endDate: document.getElementById('endDate').value,
+                           summary: document.getElementById('summary').value,
+                           highlights: document.getElementById('highlights').value,
+                           keywords: document.getElementById('keywords').value
+                       }]
     }));
     tg.close();
 });
