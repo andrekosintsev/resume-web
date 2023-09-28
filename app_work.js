@@ -18,6 +18,48 @@ function getQueryParam(name) {
 const encodedJsonData = getQueryParam("json_data");
 
 let workExperienceForm = document.getElementById('work_experience_form');
+let button = document.getElementById("myButton");
+var maxCharacters = 1000;
+let summaryText = new SimpleMDE({
+            element: document.getElementById("summary"),
+            spellChecker: false, // Enable spell checker if desired
+            toolbar: [
+                "bold",           // Bold text
+                "italic",         // Italic text
+                "heading",        // Headings (h1, h2, h3, etc.)
+                "|",              // Separator
+                "unordered-list", // Unordered list (bullets)
+                "ordered-list",   // Ordered list (numbers)
+                "|",              // Separator
+                "preview"        // Toggle preview mode
+            ]
+        });
+let highlightsText = new SimpleMDE({
+            element: document.getElementById("highlights"),
+            spellChecker: false, // Enable spell checker if desired
+            toolbar: [
+                "bold",           // Bold text
+                "italic",         // Italic text
+                "heading",        // Headings (h1, h2, h3, etc.)
+                "|",              // Separator
+                "unordered-list", // Unordered list (bullets)
+                "ordered-list",   // Ordered list (numbers)
+                "|",              // Separator
+                "preview"        // Toggle preview mode
+            ]
+        });
+
+[summaryText,highlightsText].forEach(item => {
+            item.codemirror.on("change", function () {
+                        var currentText = summaryText.value();
+                        var currentLength = currentText.length;
+
+                        if (currentLength > maxCharacters) {
+                            currentText = currentText.substring(0, maxCharacters);
+                            summaryText.value(currentText);
+                        }
+                    });
+        });
 
 if (encodedJsonData) {
     const jsonData = decodeURIComponent(encodedJsonData);

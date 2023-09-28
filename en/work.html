@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <!-- Add Materialize CSS for Material Design styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
     <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
@@ -73,24 +74,26 @@
         <div class="mb-3">
             <label for="summary" class="form-label">Summary:</label>
             <textarea class="materialize-textarea" id="summary" name="summary"
-                      placeholder="Write a short summary..."></textarea>
+                      placeholder="Write a short summary...(Max character count is 1000)"></textarea>
         </div>
 
         <div class="mb-3">
             <label for="highlights" class="form-label">Highlights:</label>
             <textarea class="materialize-textarea" id="highlights" name="highlights"
-                      placeholder="Enter highlights..."></textarea>
+                      placeholder="Enter highlights...(Max character count is 1000)"></textarea>
         </div>
 
         <div class="mb-3">
             <label for="keywords" class="form-label">Keywords:</label>
             <textarea class="materialize-textarea" id="keywords" name="keywords"
-                      placeholder="Enter keywords..."></textarea>
+                      placeholder="Enter keywords...(Max character count is 300)"></textarea>
         </div>
     </form>
+
 </div>
 <!-- Add Materialize JS for button behavior -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
 <!-- Include Bootstrap JS (optional) -->
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script src="../app_work.js"></script>
