@@ -23,6 +23,8 @@ if (encodedJsonData) {
     const jsonData = decodeURIComponent(encodedJsonData);
     const jsonObject = JSON.parse(jsonData);
     populateFormForEditing(jsonObject);
+} else {
+    populateFormForEditing({"industry":"Technology"});
 }
 
 function populateFormForEditing(entry) {
