@@ -27,6 +27,8 @@ let cityInput = document.getElementById('city');
 let countryCodeInput = document.getElementById('country');
 let regionInput = document.getElementById('region');
 
+summaryInput.setAttribute("maxlength", "500");
+
 if (encodedJsonData) {
 
   const jsonData = decodeURIComponent(encodedJsonData);
