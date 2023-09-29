@@ -104,3 +104,6 @@ Telegram.WebApp.onEvent("mainButtonClicked", function() {
     }));
     tg.close();
 });
+Telegram.WebApp.onEvent('settingsButtonClicked', function() {
+        alert('Settings opened!');
+});
