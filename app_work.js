@@ -6,10 +6,9 @@ tg.MainButton.textColor = '#FFFFFF';
 tg.MainButton.color = '#2CAB37';
 tg.MainButton.setText("Save");
 
-tg.SettingsButton =[{"type":"destructive", "text": "Remove Job"}];
+tg.PopupParams =[{"title":"Popup", "message": "Edit Job", "buttons": [{"id":"delete", "type":"destructive","text": "Remove Job"}]}];
 
 tg.MainButton.show();
-eruda.init()
 
 function getQueryParam(name) {
     const urlSearchParams = new URLSearchParams(window.location.search);
