@@ -7,7 +7,8 @@ tg.MainButton.setText("Save");
 tg.PopupParams =[{
 "buttons": [{"type":"ok"},{"type":"close"},{"type":"cancel"}]
 }];
-tg.SettingsButton.isVisible=false;
+tg.SettingsButton.isVisible=true;
+tg.SettingsButton.isVisible=true;
 
 tg.MainButton.show();
 
