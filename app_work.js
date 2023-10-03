@@ -2,8 +2,6 @@ let tg = window.Telegram.WebApp;
 
 tg.expand();
 
-tg.MainButton.textColor = '#FFFFFF';
-tg.MainButton.color = '#2CAB37';
 tg.MainButton.setText("Save");
 
 tg.PopupParams =[{
