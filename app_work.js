@@ -14,6 +14,7 @@ function getQueryParam(name) {
 const encodedJsonData = getQueryParam("json_data");
 
 let workExperienceForm = document.getElementById('work_experience_form');
+let deleteButton = document.getElementById("delete-button");
 var maxCharacters = 1000;
 let summaryText = new SimpleMDE({
             element: document.getElementById("summary"),
@@ -89,6 +90,13 @@ function populateFormForEditing(entry) {
     highlightsText.value(entry.highlights || "");
     document.getElementById('keywords').value = entry.keywords || "";
 }
+
+deleteButton.addEventListener("click", function () {
+            // Handle the click event here (replace with your desired logic)
+            alert("Delete button clicked!");
+            tg.showConfirm("Are you sure you want to delete this bulshit?",()=>{
+            });
+});
 
 
 Telegram.WebApp.onEvent("mainButtonClicked", function() {
