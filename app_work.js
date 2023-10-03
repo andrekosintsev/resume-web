@@ -4,11 +4,6 @@ tg.expand();
 
 tg.MainButton.setText("Save");
 
-tg.PopupParams =[{
-"buttons": [{"type":"ok"},{"type":"close"},{"type":"cancel"}]
-}];
-tg.SettingsButton.hide();
-
 tg.MainButton.show();
 
 function getQueryParam(name) {
@@ -65,9 +60,20 @@ if (encodedJsonData) {
     const jsonData = decodeURIComponent(encodedJsonData);
     const jsonObject = JSON.parse(jsonData);
     populateFormForEditing(jsonObject);
+    toggleDeleteButton(true);
 } else {
     populateFormForEditing({"industry":"Technology"});
 }
+
+function toggleDeleteButton(showButton) {
+    let deleteButton = document.getElementById("delete-button");
+    if (showButton) {
+        deleteButton.style.display = "block"; // Show the button
+    } else {
+        deleteButton.style.display = "none"; // Hide the button
+    }
+}
+
 
 function populateFormForEditing(entry) {
     document.getElementById('id').value = entry.id || "";
