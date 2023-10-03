@@ -7,7 +7,7 @@ tg.MainButton.color = '#2CAB37';
 tg.MainButton.setText("Save");
 
 tg.PopupParams =[{
-"buttons": [{"type":"close"},{"type":"close"},{"type":"close"}]
+"buttons": [{"type":"ok"},{"type":"close"},{"type":"cancel"}]
 }];
 
 tg.MainButton.show();
