@@ -62,6 +62,7 @@ if (encodedJsonData) {
     populateFormForEditing(jsonObject);
     toggleDeleteButton(true);
 } else {
+    toggleDeleteButton(false);
     populateFormForEditing({"industry":"Technology"});
 }
 
