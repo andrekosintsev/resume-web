@@ -6,7 +6,9 @@ tg.MainButton.textColor = '#FFFFFF';
 tg.MainButton.color = '#2CAB37';
 tg.MainButton.setText("Save");
 
-tg.PopupParams =[{"title":"Popup", "message": "Edit Job", "buttons": [{"id":"delete", "type":"destructive","text": "Remove Job"}]}];
+tg.PopupParams =[{
+"buttons": [{"type":"close"},{"type":"close"},{"type":"close"}]
+}];
 
 tg.MainButton.show();
 
@@ -103,7 +105,4 @@ Telegram.WebApp.onEvent("mainButtonClicked", function() {
                        }]
     }));
     tg.close();
-});
-Telegram.WebApp.onEvent('settingsButtonClicked', function() {
-        alert('Settings opened!');
 });
