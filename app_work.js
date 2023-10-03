@@ -9,6 +9,7 @@ tg.MainButton.setText("Save");
 tg.SettingsButton =[{"type":"destructive", "text": "Remove Job"}];
 
 tg.MainButton.show();
+eruda.init()
 
 function getQueryParam(name) {
     const urlSearchParams = new URLSearchParams(window.location.search);

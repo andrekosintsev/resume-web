@@ -3,8 +3,8 @@ let tg = window.Telegram.WebApp;
 tg.expand();
 
 tg.MainButton.textColor = '#FFFFFF';
-tg.MainButton.color = '#229ED9';
-tg.MainButton.setText("Add to List");
+tg.MainButton.color = '#2CAB37';
+tg.MainButton.setText("Save");
 
 
 function getQueryParam(name) {
