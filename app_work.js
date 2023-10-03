@@ -93,7 +93,6 @@ function populateFormForEditing(entry) {
 
 deleteButton.addEventListener("click", function () {
             // Handle the click event here (replace with your desired logic)
-            alert("Delete button clicked!");
             tg.showConfirm("Are you sure you want to delete this bulshit?",()=>{
             });
 });
