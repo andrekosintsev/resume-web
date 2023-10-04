@@ -93,6 +93,7 @@ function populateFormForEditing(entry) {
 
 deleteButton.addEventListener("click", function () {
             tg.showPopup({
+                              title: 'Action Delete',
                               message: 'Are you sure you want to delete this job?',
                               buttons: [
                                   {id: 'delete', type: 'destructive', text: 'Delete anyway'},
