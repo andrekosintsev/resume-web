@@ -92,16 +92,8 @@ function populateFormForEditing(entry) {
 }
 
 deleteButton.addEventListener("click", function () {
-            // Handle the click event here (replace with your desired logic)
-            tg.showPopup({
-                              title: 'Delete job',
-                              message: 'Are you sure you want to delete this job?',
-                              buttons: [
-                                  {id: 'delete', type: 'destructive', text: 'Delete anyway'},
-                                  {type: 'cancel'},
-                              ]
-                          }, function(buttonId) {
-                              if (buttonId === 'delete') {
+            tg.showConfirm('Are you sure you want to delete this job?', function(buttonId) {
+                              if (buttonId === 'ok') {
                                  tg.sendData(JSON.stringify(
                                  {
                                      del_element: {
