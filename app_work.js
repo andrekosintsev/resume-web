@@ -55,7 +55,7 @@ let highlightsText = new SimpleMDE({
                             item.value(currentText);
                         }
                     });
-        });
+});
 
 if (encodedJsonData) {
     const jsonData = decodeURIComponent(encodedJsonData);
@@ -93,8 +93,25 @@ function populateFormForEditing(entry) {
 
 deleteButton.addEventListener("click", function () {
             // Handle the click event here (replace with your desired logic)
-            tg.showConfirm("Are you sure you want to delete this bulshit?",()=>{
-            });
+            tg.showPopup({
+                              title: 'Delete job',
+                              message: 'Are you sure you want to delete this job?',
+                              buttons: [
+                                  {id: 'delete', type: 'destructive', text: 'Delete anyway'},
+                                  {type: 'cancel'},
+                              ]
+                          }, function(buttonId) {
+                              if (buttonId === 'delete') {
+                                 tg.sendData(JSON.stringify(
+                                 {
+                                     del_element: {
+                                         work: { job_id: document.getElementById('id').value}
+                                     }
+                                 }
+                                 ));
+                                 tg.close();
+                              }
+                          });
 });
 
 
