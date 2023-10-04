@@ -105,7 +105,7 @@ deleteButton.addEventListener("click", function () {
                                  tg.sendData(JSON.stringify(
                                  {
                                      del_element: {
-                                         work: { job_id: document.getElementById('id').value}
+                                         work: { id: document.getElementById('id').value}
                                      }
                                  }
                                  ));
