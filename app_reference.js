@@ -64,7 +64,7 @@ function toggleDeleteButton(showButton) {
 function populateFormForEditing(entry) {
     document.getElementById('id').value = entry.id || "";
     document.getElementById('name').value = entry.name || "";
-    document.getElementById('reference').value = entry.reference || "";
+    referenceText.value(entry.reference || "");
 }
 
 deleteButton.addEventListener("click", function () {
@@ -97,7 +97,8 @@ Telegram.WebApp.onEvent("mainButtonClicked", function() {
         references: [{
             id: document.getElementById('id').value,
             name: document.getElementById('name').value,
-            reference: document.getElementById('reference').value
+            reference: referenceText.value()
+
         }]
     }));
     tg.close();
