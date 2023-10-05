@@ -35,6 +35,7 @@ if (encodedJsonData) {
 
 // Function to populate the certificate form with data for editing
 function populateFormForEditing(entry) {
+    document.getElementById('id').value = entry.id || "";
     document.getElementById('name').value = entry.name || "";
     document.getElementById('date').value = entry.date || "";
     document.getElementById('url').value = entry.url || "";
@@ -70,6 +71,7 @@ Telegram.WebApp.onEvent("mainButtonClicked", function() {
         }
     tg.sendData(JSON.stringify({
         certificates: [{
+                id: document.getElementById('id').value,
                 name: document.getElementById('name').value,
                 date: document.getElementById('date').value,
                 url: document.getElementById('url').value,
