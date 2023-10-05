@@ -13,7 +13,6 @@ function getQueryParam(name) {
 
 const encodedJsonData = getQueryParam("json_data");
 
-let workExperienceForm = document.getElementById('work_experience_form');
 let deleteButton = document.getElementById("delete-button");
 var maxCharacters = 1000;
 let summaryText = new SimpleMDE({

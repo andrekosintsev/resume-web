@@ -13,7 +13,6 @@ function getQueryParam(name) {
 
 const encodedJsonData = getQueryParam("json_data");
 
-let awardsForm = document.getElementById('awards_form');
 let deleteButton = document.getElementById("delete-button");
 var maxCharacters = 1000;
 
