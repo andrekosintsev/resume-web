@@ -10,13 +10,26 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <!-- Add Materialize CSS for Material Design styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
     <link rel="stylesheet" href="../styles.css">
+    <style>
+        /* Style to position the delete button in the top-right corner */
+        .delete-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+    </style>
 </head>
 <body>
 <div class="container mt-5">
     <h1 class="text-center">Projects</h1>
+    <a id="delete-button" class="btn-floating btn-large waves-effect waves-light red delete-button">
+        <i class="material-icons">delete</i>
+    </a>
     <div id="message"></div>
     <form id="projects_form">
+        <input type="hidden" name="id" id="id">
         <div class="mb-3">
             <label for="name" class="form-label">Name:</label>
             <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
@@ -25,13 +38,13 @@
         <div class="mb-3">
             <label for="description" class="form-label">Description:</label>
             <textarea class="materialize-textarea" id="description" name="description"
-                      placeholder="Enter project description" required></textarea>
+                      placeholder="Enter project description(Max character count is 1000)" required></textarea>
         </div>
 
         <div class="mb-3">
             <label for="highlights" class="form-label">Highlights:</label>
             <textarea class="materialize-textarea" id="highlights" name="highlights"
-                      placeholder="Enter project highlights"></textarea>
+                      placeholder="Enter project highlights(Max character count is 1000)"></textarea>
         </div>
 
         <div class="mb-3">
@@ -63,7 +76,7 @@
         <div class="mb-3">
             <label for="roles" class="form-label">Roles:</label>
             <textarea class="materialize-textarea" id="roles" name="roles"
-                      placeholder="Enter project roles"></textarea>
+                      placeholder="Enter project roles(Max character count is 1000)"></textarea>
         </div>
 
         <div class="mb-3">
@@ -77,17 +90,10 @@
             <input type="text" class="form-control" id="type" name="type" placeholder="Type">
         </div>
     </form>
-
-    <!-- List of Projects -->
-    <div class="mt-5">
-        <h2>List of Projects</h2>
-        <ul id="projects_list" class="list-group">
-            <!-- Dynamically generated project entries will be placed here -->
-        </ul>
-    </div>
 </div>
 <!-- Add Materialize JS for button behavior -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
 <!-- Include Bootstrap JS (optional) -->
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script src="../app_project.js"></script>
