@@ -2,10 +2,9 @@ let tg = window.Telegram.WebApp;
 
 tg.expand();
 
-tg.MainButton.textColor = '#FFFFFF';
-tg.MainButton.color = '#2CAB37';
 tg.MainButton.setText("Save");
 
+tg.MainButton.show();
 
 function getQueryParam(name) {
     const urlSearchParams = new URLSearchParams(window.location.search);
@@ -15,138 +14,97 @@ function getQueryParam(name) {
 const encodedJsonData = getQueryParam("json_data");
 
 let awardsForm = document.getElementById('awards_form');
-let awardsList = document.getElementById('awards_list');
+let deleteButton = document.getElementById("delete-button");
+var maxCharacters = 1000;
 
-[document.getElementById('title'),
-    document.getElementById('date'),
-    document.getElementById('awarder'),
-    document.getElementById('summary')
-].forEach(item => {
-    item.addEventListener('mouseover', function() {
-        tg.MainButton.color = '#229ED9';
-        tg.MainButton.setText("Add to List");
-        tg.MainButton.hide();
-        if (!tg.MainButton.isVisible) {
-            tg.MainButton.show();
-        }
-    });
+let summaryText = new SimpleMDE({
+            element: document.getElementById("summary"),
+            spellChecker: false, // Enable spell checker if desired
+            toolbar: [
+                "bold",           // Bold text
+                "italic",         // Italic text
+                "heading",        // Headings (h1, h2, h3, etc.)
+                "|",              // Separator
+                "unordered-list", // Unordered list (bullets)
+                "ordered-list",   // Ordered list (numbers)
+                "|",              // Separator
+                "preview"        // Toggle preview mode
+            ]
+        });
+[summaryText].forEach(item => {
+            item.codemirror.on("change", function () {
+                        var currentText = item.value();
+                        var currentLength = currentText.length;
+
+                        if (currentLength > maxCharacters) {
+                            currentText = currentText.substring(0, maxCharacters);
+                            item.value(currentText);
+                        }
+                    });
 });
 
 if (encodedJsonData) {
     const jsonData = decodeURIComponent(encodedJsonData);
     const fixedJson = jsonData.replace(/(['"])?([a-zA-Z0-9_]+)(['"])?:/g, '"$2":');
     const jsonObject = JSON.parse(fixedJson);
-    jsonObject.forEach(item => {
-        addAwardEntry(item);
-    });
+    populateFormForEditing(jsonObject);
+    toggleDeleteButton(true);
+} else {
+    toggleDeleteButton(false);
 }
 
-
-// Function to generate and append award entry HTML
-function addAwardEntry(entry) {
-    const listItem = document.createElement('li');
-    listItem.className = 'list-group-item justify-content-between align-items-center';
-
-    const entryHTML = `
-            <strong>Title:</strong> <i>${entry.title}</i><br>
-            <strong>Date:</strong> <i>${entry.date}</i><br>
-            <strong>Awarder:</strong> <i>${entry.awarder}</i><br>
-            <strong>Summary:</strong> <i>${entry.summary}</i><br>
-        `;
-
-    listItem.innerHTML = entryHTML;
-
-    // Edit button event listener
-    const editButton = document.createElement('button');
-    editButton.className = 'btn btn-info btn-sm me-2';
-    editButton.textContent = 'Edit';
-
-    editButton.addEventListener('click', () => {
-        populateFormForEditing(entry);
-        listItem.remove();
-        tg.MainButton.color = '#229ED9';
-        tg.MainButton.setText("Save changes");
-        tg.MainButton.hide();
-        if (!tg.MainButton.isVisible) {
-            tg.MainButton.show();
-        }
-    });
-
-    // Delete button event listener
-    const deleteButton = document.createElement('button');
-    deleteButton.className = 'btn btn-danger btn-sm me-2';
-    deleteButton.textContent = 'Delete';
-
-    deleteButton.addEventListener('click', () => {
-        listItem.remove();
-        if (!tg.MainButton.isVisible) {
-            tg.MainButton.show();
-            tg.MainButton.color = '#2CAB37';
-            tg.MainButton.setText("Save");
-        }
-    });
-
-    const div = document.createElement('div');
-    div.appendChild(editButton);
-    div.appendChild(deleteButton);
-    listItem.appendChild(div);
-    awardsList.appendChild(listItem);
+function toggleDeleteButton(showButton) {
+    let deleteButton = document.getElementById("delete-button");
+    if (showButton) {
+        deleteButton.style.display = "block"; // Show the button
+    } else {
+        deleteButton.style.display = "none"; // Hide the button
+    }
 }
 
 // Function to populate the award form with data for editing
 function populateFormForEditing(entry) {
-    document.getElementById('title').value = entry.title;
-    document.getElementById('date').value = entry.date;
-    document.getElementById('awarder').value = entry.awarder;
-    document.getElementById('summary').value = entry.summary;
+    document.getElementById('id').value = entry.id || "";
+    document.getElementById('title').value = entry.title || "";
+    document.getElementById('date').value = entry.date || "";
+    document.getElementById('awarder').value = entry.awarder || "";
+    document.getElementById('summary').value = entry.summary || "";
 }
 
-// Edit button event listener
-function editAwardEntry(entry) {
-    populateFormForEditing(entry);
-}
+deleteButton.addEventListener("click", function () {
+            tg.showPopup({
+                              title: 'Action Delete',
+                              message: 'Are you sure you want to delete this award?',
+                              buttons: [
+                                  {id: 'delete', type: 'destructive', text: 'Delete anyway'},
+                                  {type: 'cancel'},
+                              ]
+                          }, function(buttonId) {
+                              if (buttonId === 'delete') {
+                                 tg.sendData(JSON.stringify(
+                                 {
+                                     del_element: {
+                                         award_id: document.getElementById('id').value
+                                     }
+                                 }
+                                 ));
+                                 tg.close();
+                              }
+                          });
+});
 
-// Add button click event listener
-function addEntry() {
+Telegram.WebApp.onEvent("mainButtonClicked", function() {
     if (validateInput(['title', 'date'])) {
         return;
     }
-    const entryData = {
-        title: document.getElementById('title').value,
-        date: document.getElementById('date').value,
-        awarder: document.getElementById('awarder').value,
-        summary: document.getElementById('summary').value,
-    };
-    addAwardEntry(entryData);
-    awardsForm.reset();
-};
-
-Telegram.WebApp.onEvent("mainButtonClicked", function() {
-    if (tg.MainButton.text === "Add to List") {
-        addEntry();
-        tg.MainButton.color = '#2CAB37';
-        tg.MainButton.setText("Save");
-        return;
-    }
-    if (tg.MainButton.text === "Save changes") {
-        addEntry();
-        tg.MainButton.color = '#2CAB37';
-        tg.MainButton.setText("Save");
-        return;
-    }
-    const listItems = awardsList.querySelectorAll('li');
-    const aws = [];
-    listItems.forEach((item) => {
-        const strongElements = item.querySelectorAll('i');
-        aws.push({
-            title: strongElements[0].textContent.trim(),
-            date: strongElements[1].textContent.trim(),
-            awarder: strongElements[2].textContent.trim(),
-            summary: strongElements[3].textContent.trim()
-        });
-    });
     tg.sendData(JSON.stringify({
-        awards: aws
-    }));
+        awards: [
+            {
+                id: document.getElementById('id').value,
+                title: document.getElementById('title').value,
+                date: document.getElementById('date').value,
+                awarder: document.getElementById('awarder').value,
+                summary: document.getElementById('summary').value
+            }]}));
     tg.close();
 });
