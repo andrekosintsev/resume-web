@@ -90,7 +90,7 @@ deleteButton.addEventListener("click", function () {
 });
 
 Telegram.WebApp.onEvent("mainButtonClicked", function() {
-    if (validateInput(['name', 'reference'])) {
+    if (validateInput(['name'])) {
             return;
         }
     tg.sendData(JSON.stringify({
