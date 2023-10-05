@@ -68,7 +68,7 @@ function populateFormForEditing(entry) {
     document.getElementById('title').value = entry.title || "";
     document.getElementById('date').value = entry.date || "";
     document.getElementById('awarder').value = entry.awarder || "";
-    document.getElementById('summary').value = entry.summary || "";
+    summaryText.value(entry.summary || "");
 }
 
 deleteButton.addEventListener("click", function () {
