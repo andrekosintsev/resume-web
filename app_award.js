@@ -104,7 +104,7 @@ Telegram.WebApp.onEvent("mainButtonClicked", function() {
                 title: document.getElementById('title').value,
                 date: document.getElementById('date').value,
                 awarder: document.getElementById('awarder').value,
-                summary: document.getElementById('summary').value
+                summary: summaryText.value()
             }]}));
     tg.close();
 });
