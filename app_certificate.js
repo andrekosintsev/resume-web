@@ -21,17 +21,17 @@ if (encodedJsonData) {
     populateFormForEditing(jsonObject);
     toggleDeleteButton(true);
 } else {
-     toggleDeleteButton(false);
- }
+    toggleDeleteButton(false);
+}
 
- function toggleDeleteButton(showButton) {
-     let deleteButton = document.getElementById("delete-button");
-     if (showButton) {
-         deleteButton.style.display = "block"; // Show the button
-     } else {
-         deleteButton.style.display = "none"; // Hide the button
-     }
- }
+function toggleDeleteButton(showButton) {
+    let deleteButton = document.getElementById("delete-button");
+    if (showButton) {
+        deleteButton.style.display = "block"; // Show the button
+    } else {
+        deleteButton.style.display = "none"; // Hide the button
+    }
+}
 
 // Function to populate the certificate form with data for editing
 function populateFormForEditing(entry) {
@@ -43,39 +43,40 @@ function populateFormForEditing(entry) {
 }
 
 
-deleteButton.addEventListener("click", function () {
-            tg.showPopup({
-                              title: 'Action Delete',
-                              message: 'Are you sure you want to delete this certificate?',
-                              buttons: [
-                                  {id: 'delete', type: 'destructive', text: 'Delete anyway'},
-                                  {type: 'cancel'},
-                              ]
-                          }, function(buttonId) {
-                              if (buttonId === 'delete') {
-                                 tg.sendData(JSON.stringify(
-                                 {
-                                     del_element: {
-                                         cert_id: document.getElementById('id').value
-                                     }
-                                 }
-                                 ));
-                                 tg.close();
-                              }
-                          });
+deleteButton.addEventListener("click", function() {
+    tg.showPopup({
+        title: 'Action Delete',
+        message: 'Are you sure you want to delete this certificate?',
+        buttons: [{
+            id: 'delete',
+            type: 'destructive',
+            text: 'Delete anyway'
+        }, {
+            type: 'cancel'
+        }, ]
+    }, function(buttonId) {
+        if (buttonId === 'delete') {
+            tg.sendData(JSON.stringify({
+                del_element: {
+                    cert_id: document.getElementById('id').value
+                }
+            }));
+            tg.close();
+        }
+    });
 });
 
 Telegram.WebApp.onEvent("mainButtonClicked", function() {
-     if (validateInput(['name', 'date'])) {
-            return;
-        }
+    if (validateInput(['name', 'date'])) {
+        return;
+    }
     tg.sendData(JSON.stringify({
         certificates: [{
-                id: document.getElementById('id').value,
-                name: document.getElementById('name').value,
-                date: document.getElementById('date').value,
-                url: document.getElementById('url').value,
-                issuer: document.getElementById('issuer').value
+            id: document.getElementById('id').value,
+            name: document.getElementById('name').value,
+            date: document.getElementById('date').value,
+            url: document.getElementById('url').value,
+            issuer: document.getElementById('issuer').value
         }]
     }));
     tg.close();

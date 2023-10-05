@@ -11,11 +11,24 @@
     <!-- Add Materialize CSS for Material Design styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="../styles.css">
+    <style>
+        /* Style to position the delete button in the top-right corner */
+        .delete-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+    </style>
 </head>
 <body>
 <div class="container mt-5">
     <h1 class="text-center">Languages</h1>
+    <a id="delete-button" class="btn-floating btn-large waves-effect waves-light red delete-button">
+        <i class="material-icons">delete</i>
+    </a>
+    <div id="message"></div>
     <form id="languages_form">
+        <input type="hidden" name="id" id="id">
         <div class="mb-3">
             <label for="language" class="form-label">Language:</label>
             <select class="form-select" id="language" name="language">
@@ -44,18 +57,8 @@
                 <option value="Beginner">Beginner</option>
             </select>
         </div>
-
     </form>
-
-    <!-- List of Language Entries -->
-    <div class="mt-5">
-        <h2>List of Languages</h2>
-        <ul id="languages_list" class="list-group">
-            <!-- Dynamically generated language entries will be placed here -->
-        </ul>
-    </div>
 </div>
-
 <!-- Add Materialize JS for button behavior -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <!-- Include Bootstrap JS (optional) -->

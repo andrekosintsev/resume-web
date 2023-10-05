@@ -19,20 +19,20 @@ if (encodedJsonData) {
     const jsonData = decodeURIComponent(encodedJsonData);
     const fixedJson = jsonData.replace(/(['"])?([a-zA-Z0-9_]+)(['"])?:/g, '"$2":');
     const jsonObject = JSON.parse(fixedJson);
-     populateFormForEditing(jsonObject);
-        toggleDeleteButton(true);
-    } else {
-        toggleDeleteButton(false);
-    }
+    populateFormForEditing(jsonObject);
+    toggleDeleteButton(true);
+} else {
+    toggleDeleteButton(false);
+}
 
-    function toggleDeleteButton(showButton) {
-        let deleteButton = document.getElementById("delete-button");
-        if (showButton) {
-            deleteButton.style.display = "block"; // Show the button
-        } else {
-            deleteButton.style.display = "none"; // Hide the button
-        }
+function toggleDeleteButton(showButton) {
+    let deleteButton = document.getElementById("delete-button");
+    if (showButton) {
+        deleteButton.style.display = "block"; // Show the button
+    } else {
+        deleteButton.style.display = "none"; // Hide the button
     }
+}
 
 // Function to populate the skill form with data for editing
 function populateFormForEditing(entry) {
@@ -42,38 +42,39 @@ function populateFormForEditing(entry) {
     document.getElementById('keywords').value = entry.keywords || "";
 }
 
-deleteButton.addEventListener("click", function () {
-            tg.showPopup({
-                              title: 'Action Delete',
-                              message: 'Are you sure you want to delete this skill?',
-                              buttons: [
-                                  {id: 'delete', type: 'destructive', text: 'Delete anyway'},
-                                  {type: 'cancel'},
-                              ]
-                          }, function(buttonId) {
-                              if (buttonId === 'delete') {
-                                 tg.sendData(JSON.stringify(
-                                 {
-                                     del_element: {
-                                         skill_id: document.getElementById('id').value
-                                     }
-                                 }
-                                 ));
-                                 tg.close();
-                              }
-                          });
+deleteButton.addEventListener("click", function() {
+    tg.showPopup({
+        title: 'Action Delete',
+        message: 'Are you sure you want to delete this skill?',
+        buttons: [{
+            id: 'delete',
+            type: 'destructive',
+            text: 'Delete anyway'
+        }, {
+            type: 'cancel'
+        }, ]
+    }, function(buttonId) {
+        if (buttonId === 'delete') {
+            tg.sendData(JSON.stringify({
+                del_element: {
+                    skill_id: document.getElementById('id').value
+                }
+            }));
+            tg.close();
+        }
+    });
 });
 
 Telegram.WebApp.onEvent("mainButtonClicked", function() {
-   if (validateInput(['name', 'level'])) {
-           return;
+    if (validateInput(['name', 'level'])) {
+        return;
     }
     tg.sendData(JSON.stringify({
         skills: [{
-                id: document.getElementById('id').value,
-                name: document.getElementById('name').value,
-                level: document.getElementById('level').value,
-                keywords: document.getElementById('keywords').value,
+            id: document.getElementById('id').value,
+            name: document.getElementById('name').value,
+            level: document.getElementById('level').value,
+            keywords: document.getElementById('keywords').value,
         }]
     }));
     tg.close();

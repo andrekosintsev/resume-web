@@ -17,39 +17,39 @@ let deleteButton = document.getElementById("delete-button");
 var maxCharacters = 1000;
 
 let referenceText = new SimpleMDE({
-            element: document.getElementById("reference"),
-            spellChecker: false, // Enable spell checker if desired
-            toolbar: [
-                "bold",           // Bold text
-                "italic",         // Italic text
-                "heading",        // Headings (h1, h2, h3, etc.)
-                "|",              // Separator
-                "unordered-list", // Unordered list (bullets)
-                "ordered-list",   // Ordered list (numbers)
-                "|",              // Separator
-                "preview"        // Toggle preview mode
-            ]
-        });
+    element: document.getElementById("reference"),
+    spellChecker: false, // Enable spell checker if desired
+    toolbar: [
+        "bold", // Bold text
+        "italic", // Italic text
+        "heading", // Headings (h1, h2, h3, etc.)
+        "|", // Separator
+        "unordered-list", // Unordered list (bullets)
+        "ordered-list", // Ordered list (numbers)
+        "|", // Separator
+        "preview" // Toggle preview mode
+    ]
+});
 [referenceText].forEach(item => {
-            item.codemirror.on("change", function () {
-                        var currentText = item.value();
-                        var currentLength = currentText.length;
+    item.codemirror.on("change", function() {
+        var currentText = item.value();
+        var currentLength = currentText.length;
 
-                        if (currentLength > maxCharacters) {
-                            currentText = currentText.substring(0, maxCharacters);
-                            item.value(currentText);
-                        }
-                    });
+        if (currentLength > maxCharacters) {
+            currentText = currentText.substring(0, maxCharacters);
+            item.value(currentText);
+        }
+    });
 });
 
 if (encodedJsonData) {
     const jsonData = decodeURIComponent(encodedJsonData);
     const jsonObject = JSON.parse(jsonData);
     populateFormForEditing(jsonObject);
-        toggleDeleteButton(true);
-    } else {
-        toggleDeleteButton(false);
-    }
+    toggleDeleteButton(true);
+} else {
+    toggleDeleteButton(false);
+}
 
 function toggleDeleteButton(showButton) {
     let deleteButton = document.getElementById("delete-button");
@@ -67,32 +67,33 @@ function populateFormForEditing(entry) {
     referenceText.value(entry.reference || "");
 }
 
-deleteButton.addEventListener("click", function () {
-            tg.showPopup({
-                              title: 'Action Delete',
-                              message: 'Are you sure you want to delete this reference?',
-                              buttons: [
-                                  {id: 'delete', type: 'destructive', text: 'Delete anyway'},
-                                  {type: 'cancel'},
-                              ]
-                          }, function(buttonId) {
-                              if (buttonId === 'delete') {
-                                 tg.sendData(JSON.stringify(
-                                 {
-                                     del_element: {
-                                         ref_id: document.getElementById('id').value
-                                     }
-                                 }
-                                 ));
-                                 tg.close();
-                              }
-                          });
+deleteButton.addEventListener("click", function() {
+    tg.showPopup({
+        title: 'Action Delete',
+        message: 'Are you sure you want to delete this reference?',
+        buttons: [{
+            id: 'delete',
+            type: 'destructive',
+            text: 'Delete anyway'
+        }, {
+            type: 'cancel'
+        }, ]
+    }, function(buttonId) {
+        if (buttonId === 'delete') {
+            tg.sendData(JSON.stringify({
+                del_element: {
+                    ref_id: document.getElementById('id').value
+                }
+            }));
+            tg.close();
+        }
+    });
 });
 
 Telegram.WebApp.onEvent("mainButtonClicked", function() {
     if (validateInput(['name'])) {
-            return;
-        }
+        return;
+    }
     tg.sendData(JSON.stringify({
         references: [{
             id: document.getElementById('id').value,

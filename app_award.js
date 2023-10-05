@@ -17,29 +17,29 @@ let deleteButton = document.getElementById("delete-button");
 var maxCharacters = 1000;
 
 let summaryText = new SimpleMDE({
-            element: document.getElementById("summary"),
-            spellChecker: false, // Enable spell checker if desired
-            toolbar: [
-                "bold",           // Bold text
-                "italic",         // Italic text
-                "heading",        // Headings (h1, h2, h3, etc.)
-                "|",              // Separator
-                "unordered-list", // Unordered list (bullets)
-                "ordered-list",   // Ordered list (numbers)
-                "|",              // Separator
-                "preview"        // Toggle preview mode
-            ]
-        });
+    element: document.getElementById("summary"),
+    spellChecker: false, // Enable spell checker if desired
+    toolbar: [
+        "bold", // Bold text
+        "italic", // Italic text
+        "heading", // Headings (h1, h2, h3, etc.)
+        "|", // Separator
+        "unordered-list", // Unordered list (bullets)
+        "ordered-list", // Ordered list (numbers)
+        "|", // Separator
+        "preview" // Toggle preview mode
+    ]
+});
 [summaryText].forEach(item => {
-            item.codemirror.on("change", function () {
-                        var currentText = item.value();
-                        var currentLength = currentText.length;
+    item.codemirror.on("change", function() {
+        var currentText = item.value();
+        var currentLength = currentText.length;
 
-                        if (currentLength > maxCharacters) {
-                            currentText = currentText.substring(0, maxCharacters);
-                            item.value(currentText);
-                        }
-                    });
+        if (currentLength > maxCharacters) {
+            currentText = currentText.substring(0, maxCharacters);
+            item.value(currentText);
+        }
+    });
 });
 
 if (encodedJsonData) {
@@ -70,26 +70,27 @@ function populateFormForEditing(entry) {
     summaryText.value(entry.summary || "");
 }
 
-deleteButton.addEventListener("click", function () {
-            tg.showPopup({
-                              title: 'Action Delete',
-                              message: 'Are you sure you want to delete this award?',
-                              buttons: [
-                                  {id: 'delete', type: 'destructive', text: 'Delete anyway'},
-                                  {type: 'cancel'},
-                              ]
-                          }, function(buttonId) {
-                              if (buttonId === 'delete') {
-                                 tg.sendData(JSON.stringify(
-                                 {
-                                     del_element: {
-                                         award_id: document.getElementById('id').value
-                                     }
-                                 }
-                                 ));
-                                 tg.close();
-                              }
-                          });
+deleteButton.addEventListener("click", function() {
+    tg.showPopup({
+        title: 'Action Delete',
+        message: 'Are you sure you want to delete this award?',
+        buttons: [{
+            id: 'delete',
+            type: 'destructive',
+            text: 'Delete anyway'
+        }, {
+            type: 'cancel'
+        }, ]
+    }, function(buttonId) {
+        if (buttonId === 'delete') {
+            tg.sendData(JSON.stringify({
+                del_element: {
+                    award_id: document.getElementById('id').value
+                }
+            }));
+            tg.close();
+        }
+    });
 });
 
 Telegram.WebApp.onEvent("mainButtonClicked", function() {
@@ -97,13 +98,13 @@ Telegram.WebApp.onEvent("mainButtonClicked", function() {
         return;
     }
     tg.sendData(JSON.stringify({
-        awards: [
-            {
-                id: document.getElementById('id').value,
-                title: document.getElementById('title').value,
-                date: document.getElementById('date').value,
-                awarder: document.getElementById('awarder').value,
-                summary: summaryText.value()
-            }]}));
+        awards: [{
+            id: document.getElementById('id').value,
+            title: document.getElementById('title').value,
+            date: document.getElementById('date').value,
+            awarder: document.getElementById('awarder').value,
+            summary: summaryText.value()
+        }]
+    }));
     tg.close();
 });

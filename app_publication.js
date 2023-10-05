@@ -18,29 +18,29 @@ let deleteButton = document.getElementById("delete-button");
 var maxCharacters = 1000;
 
 let summaryText = new SimpleMDE({
-            element: document.getElementById("summary"),
-            spellChecker: false, // Enable spell checker if desired
-            toolbar: [
-                "bold",           // Bold text
-                "italic",         // Italic text
-                "heading",        // Headings (h1, h2, h3, etc.)
-                "|",              // Separator
-                "unordered-list", // Unordered list (bullets)
-                "ordered-list",   // Ordered list (numbers)
-                "|",              // Separator
-                "preview"        // Toggle preview mode
-            ]
-        });
+    element: document.getElementById("summary"),
+    spellChecker: false, // Enable spell checker if desired
+    toolbar: [
+        "bold", // Bold text
+        "italic", // Italic text
+        "heading", // Headings (h1, h2, h3, etc.)
+        "|", // Separator
+        "unordered-list", // Unordered list (bullets)
+        "ordered-list", // Ordered list (numbers)
+        "|", // Separator
+        "preview" // Toggle preview mode
+    ]
+});
 [summaryText].forEach(item => {
-            item.codemirror.on("change", function () {
-                        var currentText = item.value();
-                        var currentLength = currentText.length;
+    item.codemirror.on("change", function() {
+        var currentText = item.value();
+        var currentLength = currentText.length;
 
-                        if (currentLength > maxCharacters) {
-                            currentText = currentText.substring(0, maxCharacters);
-                            item.value(currentText);
-                        }
-                    });
+        if (currentLength > maxCharacters) {
+            currentText = currentText.substring(0, maxCharacters);
+            item.value(currentText);
+        }
+    });
 });
 
 
@@ -54,12 +54,12 @@ if (encodedJsonData) {
 }
 
 function toggleDeleteButton(showButton) {
-        let deleteButton = document.getElementById("delete-button");
-        if (showButton) {
-            deleteButton.style.display = "block"; // Show the button
-        } else {
-            deleteButton.style.display = "none"; // Hide the button
-        }
+    let deleteButton = document.getElementById("delete-button");
+    if (showButton) {
+        deleteButton.style.display = "block"; // Show the button
+    } else {
+        deleteButton.style.display = "none"; // Hide the button
+    }
 }
 
 // Function to populate the publication form with data for editing
@@ -72,40 +72,41 @@ function populateFormForEditing(entry) {
     summaryText.value(entry.summary || "");
 }
 
-deleteButton.addEventListener("click", function () {
-            tg.showPopup({
-                              title: 'Action Delete',
-                              message: 'Are you sure you want to delete this publication?',
-                              buttons: [
-                                  {id: 'delete', type: 'destructive', text: 'Delete anyway'},
-                                  {type: 'cancel'},
-                              ]
-                          }, function(buttonId) {
-                              if (buttonId === 'delete') {
-                                 tg.sendData(JSON.stringify(
-                                 {
-                                     del_element: {
-                                         pub_id: document.getElementById('id').value
-                                     }
-                                 }
-                                 ));
-                                 tg.close();
-                              }
-                          });
+deleteButton.addEventListener("click", function() {
+    tg.showPopup({
+        title: 'Action Delete',
+        message: 'Are you sure you want to delete this publication?',
+        buttons: [{
+            id: 'delete',
+            type: 'destructive',
+            text: 'Delete anyway'
+        }, {
+            type: 'cancel'
+        }, ]
+    }, function(buttonId) {
+        if (buttonId === 'delete') {
+            tg.sendData(JSON.stringify({
+                del_element: {
+                    pub_id: document.getElementById('id').value
+                }
+            }));
+            tg.close();
+        }
+    });
 });
 
 Telegram.WebApp.onEvent("mainButtonClicked", function() {
     if (validateInput(['name', 'releaseDate'])) {
-            return;
+        return;
     }
     tg.sendData(JSON.stringify({
         publications: [{
-                id: document.getElementById('id').value,
-                name: document.getElementById('name').value,
-                publisher: document.getElementById('publisher').value,
-                releaseDate: document.getElementById('releaseDate').value,
-                url: document.getElementById('url').value,
-                summary: summaryText.value()
+            id: document.getElementById('id').value,
+            name: document.getElementById('name').value,
+            publisher: document.getElementById('publisher').value,
+            releaseDate: document.getElementById('releaseDate').value,
+            url: document.getElementById('url').value,
+            summary: summaryText.value()
         }]
     }));
     tg.close();

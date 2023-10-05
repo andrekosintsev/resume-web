@@ -1,1 +1,1 @@
-# resume-web
+# simple front end forms for bot in order to fulfill information for cv

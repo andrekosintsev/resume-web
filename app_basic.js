@@ -84,9 +84,9 @@ function populateCountryDropdown(jsonObject) {
         option.value = country.code;
         option.text = country.name;
         if (jsonObject && jsonObject.location) {
-                if (option.value === jsonObject.location.countryCode) {
-                    option.selected = true;
-                }
+          if (option.value === jsonObject.location.countryCode) {
+            option.selected = true;
+          }
         }
         countryCodeInput.appendChild(option);
       });
