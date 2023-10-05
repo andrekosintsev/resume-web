@@ -60,7 +60,7 @@ deleteButton.addEventListener("click", function() {
         if (buttonId === 'delete') {
             tg.sendData(JSON.stringify({
                 del_element: {
-                    award_id: document.getElementById('id').value
+                    edu_id: document.getElementById('id').value
                 }
             }));
             tg.close();
