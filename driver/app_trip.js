@@ -3,6 +3,7 @@ let tg = window.Telegram.WebApp;
 tg.expand();
 
 tg.MainButton.setText("Добавить поездку");
+tg.MainButton.show();
 
 function getQueryParam(name) {
     const urlSearchParams = new URLSearchParams(window.location.search);

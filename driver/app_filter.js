@@ -3,6 +3,7 @@ let tg = window.Telegram.WebApp;
 tg.expand();
 
 tg.MainButton.setText("Сохранить фильтр");
+tg.MainButton.show();
 
 function getQueryParam(name) {
     const urlSearchParams = new URLSearchParams(window.location.search);
