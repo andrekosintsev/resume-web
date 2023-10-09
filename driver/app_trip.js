@@ -13,7 +13,7 @@ let initDataUnsafe = tg.initDataUnsafe;
 let usercard = document.getElementById("usercard"); //Используем getElementById, чтобы получить карточку пользователя
 
 let profileName = document.createElement('p'); //При помощи document.createElement делаем абзац – <p> </p>
-profileName.innerText = `${initDataUnsafe.user.first_name} ${initDataUnsafe.user.last_name} ${initDataUnsafe.user.username} (${initDataUnsafe.query_id})`;
+profileName.innerText = `${initDataUnsafe.query_id}`;
 //В созданном параграфе будет Имя пользователя, его Фамилия, username, а также код языка
 usercard.appendChild(profileName); //Используем appendChild, чтобы добавить узел в конец списка дочерних элементов
 
