@@ -39,8 +39,7 @@ if (encodedJsonData) {
 }
 
 Telegram.WebApp.onEvent("mainButtonClicked", function() {
-
-    tg.showPopup({
+tg.showPopup({
             title: 'Сохранение поездки',
             message: 'Вы уверены в правильности заполнении информации о поездке?',
             buttons: [{
@@ -52,51 +51,41 @@ Telegram.WebApp.onEvent("mainButtonClicked", function() {
             }, ]
         }, function(buttonId) {
             if (buttonId === 'delete') {
-               const data = {
-                 d_country: document.getElementById('d_country').value,
-                 d_city: document.getElementById('d_city').value,
-                 a_country: document.getElementById('a_country').value,
-                 a_city: document.getElementById('a_city').value,
-                 d_date: document.getElementById('d_date').value,
-                 d_time: document.getElementById('d_time').value,
-                 price: document.getElementById('price').value,
-                 count: document.getElementById('count').value
-               };
-
-               fetch('https://httpbin.org/post', {
-                 method: 'POST',
-                 headers: {
-                   'Content-Type': 'application/json'
-                 },
-                 body: JSON.stringify(data)
-               })
-                 .then(response => response.json())
-                 .then(responseData => {
-                 tg.showPopup({
-                                     title: 'Результат',
-                                     message: responseData,
-                                     buttons: [{
-                                         type: 'cancel'
-                                     }, ]
-                                 }, function(buttonId) {
-                                     if (buttonId === 'delete') {
-                                        tg.close();
-                                     }
-                                 });
-                         });
-                 }
-                   //console.log(responseData);
-
-                 })
-                 .catch(error => {
-                   // Handle any errors that occurred during the fetch.
-                   //console.error('Error:', error);
-                 });
-                //tg.close();
+                        const data = {
+                             d_country: document.getElementById('d_country').value,
+                             d_city: document.getElementById('d_city').value,
+                             a_country: document.getElementById('a_country').value,
+                             a_city: document.getElementById('a_city').value,
+                             d_date: document.getElementById('d_date').value,
+                             d_time: document.getElementById('d_time').value,
+                             price: document.getElementById('price').value,
+                             count: document.getElementById('count').value
+                           };
+                        fetch('https://httpbin.org/post', {
+                          method: 'POST',
+                          headers: {
+                            'Content-Type': 'application/json'
+                          },
+                          body: JSON.stringify(data)
+                        })
+                          .then(response => response.json())
+                          .then(responseData => {
+                            tg.showPopup({
+                                                                 title: 'Результат',
+                                                                 message: responseData,
+                                                                 buttons: [{
+                                                                     type: 'cancel'
+                                                                 }, ]
+                                                             }, function(buttonId) {
+                                                                 if (buttonId === 'delete') {
+                                                                    tg.close();
+                                                                 }
+                                                             });
+                          })
+                          .catch(error => {
+                            // Handle any errors that occurred during the fetch.
+                            //console.error('Error:', error);
+                          });
             }
         });
-
-
-
-
 });
