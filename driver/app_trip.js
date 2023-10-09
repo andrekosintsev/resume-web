@@ -45,17 +45,32 @@ Telegram.WebApp.onEvent("mainButtonClicked", function() {
     if (validateInput(['d_country', 'd_city','a_country', 'a_country', 'a_city', 'd_date','d_time', 'count'])) {
         return;
     }
-    tg.sendData(JSON.stringify({
-        trips: [{
-                    d_country: document.getElementById('d_country').value,
-                    d_city: document.getElementById('d_city').value,
-                    a_country: document.getElementById('a_country').value,
-                    a_city: document.getElementById('a_city').value,
-                    d_date: document.getElementById('d_date').value,
-                    d_time: document.getElementById('d_time').value,
-                    price: document.getElementById('price').value,
-                    count: document.getElementById('count').value
-        }]
-    }));
-    tg.close();
+
+    tg.showPopup({
+            title: 'Сохранение поездки',
+            message: 'Вы уверены в правильности заполнении информации о поездке?',
+            buttons: [{
+                id: 'delete',
+                type: 'destructive',
+                text: 'Сохранить'
+            }, {
+                type: 'cancel'
+            }, ]
+        }, function(buttonId) {
+            if (buttonId === 'delete') {
+                JSON.stringify({
+                        trips: [{
+                                    d_country: document.getElementById('d_country').value,
+                                    d_city: document.getElementById('d_city').value,
+                                    a_country: document.getElementById('a_country').value,
+                                    a_city: document.getElementById('a_city').value,
+                                    d_date: document.getElementById('d_date').value,
+                                    d_time: document.getElementById('d_time').value,
+                                    price: document.getElementById('price').value,
+                                    count: document.getElementById('count').value
+                        }]
+                    })
+                tg.close();
+            }
+        });
 });
