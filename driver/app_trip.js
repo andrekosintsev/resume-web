@@ -10,12 +10,25 @@ function getQueryParam(name) {
     return urlSearchParams.get(name);
 }
 let initDataUnsafe = tg.initDataUnsafe;
+let userData = tg.initDataUnsafe.user;
+let chatData = tg.initDataUnsafe.chat;
 let usercard = document.getElementById("usercard"); //Используем getElementById, чтобы получить карточку пользователя
 
-let profileName = document.createElement('p'); //При помощи document.createElement делаем абзац – <p> </p>
-profileName.innerText = `${initDataUnsafe.query_id}`;
-//В созданном параграфе будет Имя пользователя, его Фамилия, username, а также код языка
-usercard.appendChild(profileName); //Используем appendChild, чтобы добавить узел в конец списка дочерних элементов
+let queryId = document.createElement('p');
+queryId.innerText = `${initDataUnsafe.query_id}`;
+usercard.appendChild(queryId);
+
+if (userData) {
+    let userNames = document.createElement('p');
+    userNames.innerText = `${userData.first_name }`;
+    usercard.appendChild(userNames);
+}
+if (chatData) {
+    let chatInfo = document.createElement('p');
+    chatInfo.innerText = `${chatData.id }`;
+    usercard.appendChild(chatInfo);
+}
+
 
 const encodedJsonData = getQueryParam("json_data");
 
