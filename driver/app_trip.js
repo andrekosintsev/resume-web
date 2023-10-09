@@ -39,9 +39,6 @@ if (encodedJsonData) {
 }
 
 Telegram.WebApp.onEvent("mainButtonClicked", function() {
-    /*if (validateInput(['d_country', 'd_city','a_country', 'a_country', 'a_city', 'd_date','d_time', 'count'])) {
-        return;
-    }*/
 
     tg.showPopup({
             title: 'Сохранение поездки',
@@ -55,7 +52,7 @@ Telegram.WebApp.onEvent("mainButtonClicked", function() {
             }, ]
         }, function(buttonId) {
             if (buttonId === 'delete') {
-                JSON.stringify({
+                /*JSON.stringify({
                         trips: [{
                                     d_country: document.getElementById('d_country').value,
                                     d_city: document.getElementById('d_city').value,
@@ -66,7 +63,7 @@ Telegram.WebApp.onEvent("mainButtonClicked", function() {
                                     price: document.getElementById('price').value,
                                     count: document.getElementById('count').value
                         }]
-                    })
+                    })*/
                 tg.close();
             }
         });
