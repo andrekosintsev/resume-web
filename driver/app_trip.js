@@ -52,6 +52,7 @@ Telegram.WebApp.onEvent("mainButtonClicked", function() {
             }, ]
         }, function(buttonId) {
             if (buttonId === 'delete') {
+            tg.sendData("send data");
                 /*JSON.stringify({
                         trips: [{
                                     d_country: document.getElementById('d_country').value,
