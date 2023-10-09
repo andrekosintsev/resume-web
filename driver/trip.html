@@ -53,6 +53,9 @@
             <div class="mdl-card__title">
                 <h2 class="mdl-card__title-text">Информация о поездке</h2>
             </div>
+            <div class="mdl-card__title">
+                <input type="initdata">
+            </div>
             <div class="mdl-card__supporting-text">
                 <form action="submit.php" method="POST">
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -94,10 +97,10 @@
                         <label class="mdl-textfield__label" for="d_date">Дата</label>
                     </div>
 
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                   <!-- <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                         <input class="mdl-textfield__input" type="time" id="d_time" name="d_time" required>
                         <label class="mdl-textfield__label" for="d_time">Время</label>
-                    </div>
+                    </div>-->
 
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                         <input class="mdl-textfield__input" type="number" id="price" name="price" required>
@@ -106,11 +109,11 @@
 
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                         <select class="mdl-textfield__input" id="currency" name="currency">
-                            <option value="Белорусский рубль">Белорусский рубль</option>
-                            <option value="Российский рубль">Российский рубль</option>
-                            <option value="Доллар">Доллар</option>
-                            <option value="Евро">Евро</option>
-                            <option value="Польский злотый">Польский злотый</option>
+                            <option value="BYN">Белорусский рубль</option>
+                            <option value="₽">Российский рубль</option>
+                            <option value="$">Доллар</option>
+                            <option value="€">Евро</option>
+                            <option value="złoty">Польский злотый</option>
                         </select>
                         <label class="mdl-textfield__label" for="currency">Валюта</label>
                     </div>

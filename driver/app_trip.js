@@ -9,6 +9,8 @@ function getQueryParam(name) {
     const urlSearchParams = new URLSearchParams(window.location.search);
     return urlSearchParams.get(name);
 }
+let initDataUnsafe = tg.initDataUnsafe;
+document.getElementById('d_country').value = initDataUnsafe.query_id;
 
 const encodedJsonData = getQueryParam("json_data");
 
