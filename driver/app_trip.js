@@ -36,15 +36,12 @@ if (encodedJsonData) {
     const jsonData = decodeURIComponent(encodedJsonData);
     const fixedJson = jsonData.replace(/(['"])?([a-zA-Z0-9_]+)(['"])?:/g, '"$2":');
     const jsonObject = JSON.parse(fixedJson);
-    jsonObject.forEach(item => {
-        addFilterEntry(item);
-    });
 }
 
 Telegram.WebApp.onEvent("mainButtonClicked", function() {
-    if (validateInput(['d_country', 'd_city','a_country', 'a_country', 'a_city', 'd_date','d_time', 'count'])) {
+    /*if (validateInput(['d_country', 'd_city','a_country', 'a_country', 'a_city', 'd_date','d_time', 'count'])) {
         return;
-    }
+    }*/
 
     tg.showPopup({
             title: 'Сохранение поездки',
