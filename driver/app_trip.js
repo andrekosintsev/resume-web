@@ -86,7 +86,6 @@ tg.showPopup({
                              a_country: document.getElementById('a_country').value,
                              a_city: document.getElementById('a_city').value,
                              d_date: document.getElementById('d_date').value,
-                             d_time: document.getElementById('d_time').value,
                              price: document.getElementById('price').value,
                              count: document.getElementById('count').value
                            };
