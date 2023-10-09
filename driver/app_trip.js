@@ -11,24 +11,6 @@ function getQueryParam(name) {
 }
 let initDataUnsafe = tg.initDataUnsafe;
 let userData = tg.initDataUnsafe.user;
-let chatData = tg.initDataUnsafe.chat;
-let usercard = document.getElementById("usercard"); //Используем getElementById, чтобы получить карточку пользователя
-
-let queryId = document.createElement('p');
-queryId.innerText = `${initDataUnsafe.query_id}`;
-usercard.appendChild(queryId);
-
-if (userData) {
-    let userNames = document.createElement('p');
-    userNames.innerText = `${userData.id }`;
-    usercard.appendChild(userNames);
-}
-if (chatData) {
-    let chatInfo = document.createElement('p');
-    chatInfo.innerText = `${chatData.id }`;
-    usercard.appendChild(chatInfo);
-}
-
 
 const encodedJsonData = getQueryParam("json_data");
 
