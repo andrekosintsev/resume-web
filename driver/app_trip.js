@@ -18,6 +18,8 @@ let queryId = document.createElement('p');
 queryId.innerText = `${initDataUnsafe.query_id}`;
 usercard.appendChild(queryId);
 
+let myButton = document.getElementById('myButton');
+
 if (userData) {
     let userNames = document.createElement('p');
     userNames.innerText = `${userData.first_name }`;
@@ -37,6 +39,33 @@ if (encodedJsonData) {
     const fixedJson = jsonData.replace(/(['"])?([a-zA-Z0-9_]+)(['"])?:/g, '"$2":');
     const jsonObject = JSON.parse(fixedJson);
 }
+
+myButton.addEventListener('click', function() {
+           const data = {
+                                        d_country: document.getElementById('d_country').value,
+                                        d_city: document.getElementById('d_city').value,
+                                        a_country: document.getElementById('a_country').value,
+                                        a_city: document.getElementById('a_city').value,
+                                        d_date: document.getElementById('d_date').value,
+                                        price: document.getElementById('price').value,
+                                        count: document.getElementById('count').value
+                                      };
+                                   fetch('https://httpbin.org/post', {
+                                     method: 'POST',
+                                     headers: {
+                                       'Content-Type': 'application/json'
+                                     },
+                                     body: JSON.stringify(data)
+                                   })
+                                     .then(response => response.json())
+                                     .then(responseData => {
+                                       console.log(responseData.data);
+                                       })
+                                     .catch(error => {
+                                       // Handle any errors that occurred during the fetch.
+                                       //console.error('Error:', error);
+                                     });
+        });
 
 Telegram.WebApp.onEvent("mainButtonClicked", function() {
 tg.showPopup({
@@ -72,7 +101,7 @@ tg.showPopup({
                           .then(responseData => {
                             tg.showPopup({
                                                                  title: 'Результат',
-                                                                 message: responseData,
+                                                                 message: responseData.data,
                                                                  buttons: [{
                                                                      type: 'cancel'
                                                                  }, ]
