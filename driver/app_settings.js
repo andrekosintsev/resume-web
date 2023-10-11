@@ -32,6 +32,8 @@ if (encodedJsonData) {
 function populateFormForEditing(entry) {
     document.getElementById('id').value = entry.id || "";
     document.getElementById('username').value = entry.username || "";
+    document.getElementById('firstName').value = entry.firstName || "";
+    document.getElementById('lastName').value = entry.lastName || "";
     document.getElementById('car').value = entry.car || "";
     document.getElementById('experience').value = entry.experience || "";
 }
@@ -41,6 +43,8 @@ Telegram.WebApp.onEvent("mainButtonClicked", function() {
         settings: {
                      id: document.getElementById('id').value,
                      username: document.getElementById('username').value,
+                     firstname: document.getElementById('firstName').value,
+                     lastname: document.getElementById('lastName').value,
                      car: document.getElementById('car').value,
                      experience: document.getElementById('experience').value
         }
