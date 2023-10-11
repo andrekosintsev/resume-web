@@ -43,8 +43,8 @@ Telegram.WebApp.onEvent("mainButtonClicked", function() {
         settings: {
                      id: document.getElementById('id').value,
                      username: document.getElementById('username').value,
-                     firstname: document.getElementById('firstName').value,
-                     lastname: document.getElementById('lastName').value,
+                     firstName: document.getElementById('firstName').value,
+                     lastName: document.getElementById('lastName').value,
                      car: document.getElementById('car').value,
                      experience: document.getElementById('experience').value
         }
