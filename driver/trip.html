@@ -45,6 +45,13 @@
             cursor: pointer;
             z-index: 2; /* Ensure it's on top of other elements */
         }
+        .preview-button {
+            position: absolute;
+            top: 5px;
+            right: 70px;
+            cursor: pointer;
+            z-index: 2; /* Ensure it's on top of other elements */
+        }
 
         .mdl-card__supporting-text {
             padding: 16px;
@@ -66,6 +73,7 @@
             <div class="mdl-card__title">
                 <h2 class="mdl-card__title-text">Информация о поездке</h2>
                 <i id="delete-button" class="material-icons delete-button" style="cursor: pointer; background-color: red; color: white; border-radius: 50%; padding: 15px;">delete</i>
+                <i id="preview-button" class="material-icons preview-button" style="cursor: pointer; background-color: blue; color: white; border-radius: 50%; padding: 15px;">preview</i>
             </div>
             <div class="mdl-card__supporting-text">
                 <div id="message"></div>

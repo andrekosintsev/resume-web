@@ -6,6 +6,7 @@ tg.MainButton.setText("Добавить поездку");
 tg.MainButton.show();
 
 let deleteButton = document.getElementById("delete-button");
+let previewButton = document.getElementById("preview-button");
 
 document.addEventListener("DOMContentLoaded", function() {
     const encodedJsonData = getQueryParam("json_data");
@@ -41,8 +42,10 @@ let userData = tg.initDataUnsafe.user;
 function toggleDeleteButton(showButton) {
     if (showButton) {
         deleteButton.style.display = "block"; // Show the button
+        previewButton.style.display = "block";
     } else {
         deleteButton.style.display = "none"; // Hide the button
+        previewButton.style.display = "none";
     }
 }
 
@@ -81,6 +84,30 @@ deleteButton.addEventListener("click", function() {
         if (buttonId === 'delete') {
             tg.sendData(JSON.stringify({
                 del_element: {
+                    trip_id: document.getElementById('id').value
+                }
+            }));
+            tg.close();
+        }
+    });
+});
+
+previewButton.addEventListener("click", function() {
+    tg.showPopup({
+        title: 'Сообщение превью',
+        message: 'Сгенерировать сообщение-превью для рассылки?',
+        buttons: [{
+            id: 'ok',
+            type: 'destructive',
+            text: 'Да'
+        }, {
+            type: 'cancel',
+            text: 'Отмена'
+        }, ]
+    }, function(buttonId) {
+        if (buttonId === 'ok') {
+            tg.sendData(JSON.stringify({
+                gen_element: {
                     trip_id: document.getElementById('id').value
                 }
             }));
