@@ -90,9 +90,10 @@ deleteButton.addEventListener("click", function() {
 });
 
 Telegram.WebApp.onEvent("mainButtonClicked", function() {
-    if(document.getElementById('dDate').value=== "" || document.getElementById('price').value==="" || document.getElementById('count').value==="") {
-        document.getElementById("message").textContent = "Необходимо заполнить все обязательные поля";
-    }
+    if (validateInput(['dDate', 'price', 'count','currency'])) {
+            document.getElementById("message").textContent = "Необходимо заполнить все обязательные поля";
+            return;
+        }
     if (tg.MainButton.text ==="Сохранить изменения") {
         update();
     } else {
@@ -101,6 +102,9 @@ Telegram.WebApp.onEvent("mainButtonClicked", function() {
 });
 
 function update() {
+    if (validateInput(['dDate', 'price', 'count','currency'])) {
+        return;
+    }
     tg.sendData(JSON.stringify({
         trip: {
             id: document.getElementById('id').value,
