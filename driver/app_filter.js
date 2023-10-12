@@ -2,37 +2,111 @@ let tg = window.Telegram.WebApp;
 
 tg.expand();
 
-tg.MainButton.setText("Сохранить фильтр");
+tg.MainButton.setText("Добавить фильтр");
 tg.MainButton.show();
+
+let deleteButton = document.getElementById("delete-button");
+
+document.addEventListener("DOMContentLoaded", function() {
+    const encodedJsonData = getQueryParam("json_data");
+
+    if (encodedJsonData) {
+        tg.MainButton.hide();
+        const jsonData = decodeURIComponent(encodedJsonData);
+        const fixedJson = jsonData.replace(/(['"])?([a-zA-Z0-9_]+)(['"])?:/g, '"$2":');
+        const jsonObject = JSON.parse(fixedJson);
+        populateFormForEditing(jsonObject);
+        toggleDeleteButton(true);
+    } else {
+        toggleDeleteButton(false);
+    }
+});
 
 function getQueryParam(name) {
     const urlSearchParams = new URLSearchParams(window.location.search);
     return urlSearchParams.get(name);
 }
+let initDataUnsafe = tg.initDataUnsafe;
+let userData = tg.initDataUnsafe.user;
 
-const encodedJsonData = getQueryParam("json_data");
-
-if (encodedJsonData) {
-    const jsonData = decodeURIComponent(encodedJsonData);
-    const fixedJson = jsonData.replace(/(['"])?([a-zA-Z0-9_]+)(['"])?:/g, '"$2":');
-    const jsonObject = JSON.parse(fixedJson);
-    jsonObject.forEach(item => {
-        addFilterEntry(item);
-    });
+function toggleDeleteButton(showButton) {
+    if (showButton) {
+        deleteButton.style.display = "block"; // Show the button
+    } else {
+        deleteButton.style.display = "none"; // Hide the button
+    }
 }
 
+
+// Function to populate the award form with data for editing
+function populateFormForEditing(entry) {
+    document.getElementById('id').value = entry.id || "";
+    document.getElementById('dCountry').value = entry.dCountry || "";
+    document.getElementById('dCountry').disabled = true;
+    document.getElementById('dCity').value = entry.dCity || "";
+    document.getElementById('dCity').disabled = true;
+    document.getElementById('aCountry').value = entry.aCountry || "";
+    document.getElementById('aCountry').disabled = true;
+    document.getElementById('aCity').value = entry.aCity || "";
+    document.getElementById('aCity').disabled = true;
+    document.getElementById('dDate').value = entry.dDate || "";
+    document.getElementById('dDate').disabled = true;
+}
+
+deleteButton.addEventListener("click", function() {
+    tg.showPopup({
+        title: 'Удаление',
+        message: 'Вы уверены, что хотите удалить фильтр?',
+        buttons: [{
+            id: 'delete',
+            type: 'destructive',
+            text: 'Конечно удалить'
+        }, {
+            type: 'cancel',
+            text: 'Отмена'
+        }, ]
+    }, function(buttonId) {
+        if (buttonId === 'delete') {
+            tg.sendData(JSON.stringify({
+                del_element: {
+                    trip_id: document.getElementById('id').value
+                }
+            }));
+            tg.close();
+        }
+    });
+});
+
 Telegram.WebApp.onEvent("mainButtonClicked", function() {
-    if (validateInput(['dDate'])) {
-        return;
-    }
-    tg.sendData(JSON.stringify({
-        filters: [{
-                     dCountry: document.getElementById('dCountry').value,
-                     dCity: document.getElementById('dCity').value,
-                     aCountry: document.getElementById('aCountry').value,
-                     aCity: document.getElementById('aCity').value,
-                     dDate: document.getElementById('dDate').value
-        }]
-    }));
-    tg.close();
+    tg.showPopup({
+            title: 'Сохранение поездки',
+            message: 'Вы уверены в правильности заполнении информации?',
+            buttons: [{
+                id: 'delete',
+                type: 'destructive',
+                text: 'Сохранить'
+            }, {
+                type: 'cancel'
+            }, ]
+        }, function(buttonId) {
+            if (buttonId === 'delete') {
+                const data = {
+                    dCountry: document.getElementById('dCountry').value,
+                    dCity: document.getElementById('dCity').value,
+                    aCountry: document.getElementById('aCountry').value,
+                    aCity: document.getElementById('aCity').value,
+                    dDate: document.getElementById('dDate').value,
+                };
+                fetch('https://httpbin.org/post?userId=' + `${userData.id }`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    }).then(response => response.json())
+                    .then(responseData => {
+                        tg.close();
+                    }).catch(error => {});
+            }
+        });
 });
