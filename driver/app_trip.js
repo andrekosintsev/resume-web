@@ -75,7 +75,7 @@ deleteButton.addEventListener("click", function() {
             text: 'Конечно удалить'
         }, {
             type: 'cancel',
-            text: 'Нет передумал'
+            text: 'Отмена'
         }, ]
     }, function(buttonId) {
         if (buttonId === 'delete') {
@@ -90,7 +90,7 @@ deleteButton.addEventListener("click", function() {
 });
 
 Telegram.WebApp.onEvent("mainButtonClicked", function() {
-    if (validateInput(['dDate', 'price', 'count'])) {
+    if (validateInput(['dDate', 'price', 'count','currency'])) {
         return;
     }
     if (encodedJsonData) {

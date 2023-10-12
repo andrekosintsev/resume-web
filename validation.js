@@ -8,7 +8,7 @@ function validateInput(fieldsToValidate) {
         if (value === "") {
             field.classList.add('invalid');
         } else {
-            field.classList.add('invalid');
+            field.classList.remove('invalid');
         }
     });
     fieldsToValidate.forEach(item => {
