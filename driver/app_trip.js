@@ -93,14 +93,13 @@ Telegram.WebApp.onEvent("mainButtonClicked", function() {
     if(document.getElementById('dDate').value=== "" || document.getElementById('price').value==="" || document.getElementById('count').value==="") {
         document.getElementById("message").textContent = "Необходимо заполнить все обязательные поля";
     }
-    if (encodedJsonData) {
+    if (tg.MainButton.text ==="Сохранить изменения") {
         update();
     } else {
         save();
     }
 });
 
-// Function to populate the award form with data for editing
 function update() {
     tg.sendData(JSON.stringify({
         trip: {
@@ -138,7 +137,8 @@ function save() {
                 aCity: document.getElementById('aCity').value,
                 dDate: document.getElementById('dDate').value,
                 price: document.getElementById('price').value,
-                count: document.getElementById('count').value
+                count: document.getElementById('count').value,
+                currency: document.getElementById('currency').value
             };
             fetch('https://httpbin.org/post?userId=' + `${userData.id }`, {
                     method: 'POST',
