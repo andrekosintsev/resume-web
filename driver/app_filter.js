@@ -79,7 +79,7 @@ deleteButton.addEventListener("click", function() {
 
 Telegram.WebApp.onEvent("mainButtonClicked", function() {
     tg.showPopup({
-            title: 'Сохранение поездки',
+            title: 'Сохранение фильтра',
             message: 'Вы уверены в правильности заполнении информации?',
             buttons: [{
                 id: 'delete',
