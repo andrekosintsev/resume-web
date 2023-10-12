@@ -46,6 +46,16 @@
         }
 
         /* Add additional custom CSS here if needed */
+   /* Style to position the delete button in the top-right corner */
+        .delete-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 15px;
+        }
     </style>
 </head>
 <body>
@@ -58,51 +68,54 @@
     <main class="mdl-layout__content">
         <div class="mdl-grid mdl-grid--no-spacing">
             <div class="mdl-cell mdl-cell--12-col">
-                <div class="mdl-card mdl-shadow--6dp">
+                <div class="mdl-card mdl-shadow--12dp mdl-cell--12-col">
                     <div class="mdl-card__title">
                         <h2 class="mdl-card__title-text">Новый фильтр</h2>
                     </div>
+                    <a id="delete-button" class="btn-floating btn-large waves-effect waves-light red delete-button">
+                        <i class="material-icons">delete</i>
+                    </a>
                     <div class="mdl-card__supporting-text">
                         <div id="message"></div>
                         <form id="filter_form">
                             <input type="hidden" name="id" id="id">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
-                                <select class="mdl-textfield__input" id="d_country" name="d_country">
+                                <select class="mdl-textfield__input" id="dCountry" name="dCountry">
                                     <option value="Беларусь">Беларусь</option>
                                     <option value="Литва">Литва</option>
                                     <option value="Польша">Польша</option>
                                 </select>
-                                <label class="mdl-textfield__label" for="d_country">Страна отправления</label>
+                                <label class="mdl-textfield__label" for="dCountry">Страна отправления</label>
                             </div>
 
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
-                                <select class="mdl-textfield__input" id="d_city" name="d_city">
+                                <select class="mdl-textfield__input" id="dCity" name="dCity">
                                     <!-- Заполняется динамически с помощью JavaScript -->
                                 </select>
-                                <label class="mdl-textfield__label" for="d_city">Город отправления</label>
+                                <label class="mdl-textfield__label" for="dCity">Город отправления</label>
                             </div>
 
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
-                                <select class="mdl-textfield__input" id="a_country" name="a_country">
+                                <select class="mdl-textfield__input" id="aCountry" name="aCountry">
                                     <option value="Беларусь">Беларусь</option>
                                     <option value="Литва">Литва</option>
                                     <option value="Польша">Польша</option>
                                 </select>
-                                <label class="mdl-textfield__label" for="a_country">Страна назначения</label>
+                                <label class="mdl-textfield__label" for="aCountry">Страна назначения</label>
                             </div>
 
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
-                                <select class="mdl-textfield__input" id="a_city" name="a_city">
+                                <select class="mdl-textfield__input" id="aCity" name="aCity">
                                     <!-- Заполняется динамически с помощью JavaScript -->
                                 </select>
-                                <label class="mdl-textfield__label" for="a_city">Город назначения</label>
+                                <label class="mdl-textfield__label" for="aCity">Город назначения</label>
                             </div>
 
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
-                                <input type="text" class="mdl-textfield__input" id="d_date" name="d_date"
+                                <input type="text" class="mdl-textfield__input" id="dDate" name="dDate"
                                        pattern="-\d{2}.\d{2}.\d{4}" placeholder="ДД.ММ.ГГГГ"
                                        title="Введите дату в формате ДД.MM.ГГГГ">
-                                <label class="mdl-textfield__label" for="d_date">Дата</label>
+                                <label class="mdl-textfield__label" for="dDate">Дата</label>
                             </div>
                         </form>
                     </div>

@@ -22,16 +22,16 @@ if (encodedJsonData) {
 }
 
 Telegram.WebApp.onEvent("mainButtonClicked", function() {
-    if (validateInput(['d_country', 'd_city','a_country', 'a_country', 'a_city', 'd_date'])) {
+    if (validateInput(['dDate'])) {
         return;
     }
     tg.sendData(JSON.stringify({
         filters: [{
-                     d_country: document.getElementById('d_country').value,
-                     d_city: document.getElementById('d_city').value,
-                     a_country: document.getElementById('a_country').value,
-                     a_city: document.getElementById('a_city').value,
-                     d_date: document.getElementById('d_date').value
+                     dCountry: document.getElementById('dCountry').value,
+                     dCity: document.getElementById('dCity').value,
+                     aCountry: document.getElementById('aCountry').value,
+                     aCity: document.getElementById('aCity').value,
+                     dDate: document.getElementById('dDate').value
         }]
     }));
     tg.close();

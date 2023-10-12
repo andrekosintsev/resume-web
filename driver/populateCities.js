@@ -810,12 +810,12 @@ const ltCities = {
 };
 
 // Get references to the city dropdowns
-const departureCityDropdown = document.getElementById("d_city");
-const arrivalCityDropdown = document.getElementById("a_city");
+const departureCityDropdown = document.getElementById("dCity");
+const arrivalCityDropdown = document.getElementById("aCity");
 
 // Get references to the country dropdowns
-const departureCountryDropdown = document.getElementById("d_country");
-const arrivalCountryDropdown = document.getElementById("a_country");
+const departureCountryDropdown = document.getElementById("dCountry");
+const arrivalCountryDropdown = document.getElementById("aCountry");
 
 // Function to populate city dropdown based on selected country
 function populateCityDropdown(cityDropdown, countryDropdown) {
