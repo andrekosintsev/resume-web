@@ -30,7 +30,7 @@ function validateInput(fieldsToValidate) {
 // Get the input element
 [document.getElementById("date"), document.getElementById("startDate"), document.getElementById("endDate"),
     document.getElementById("releaseDate"),
-    document.getElementById("d_date")
+    document.getElementById("dDate")
 ]
 .forEach(item => {
     if (!item) {
