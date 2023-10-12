@@ -49,7 +49,7 @@ if (encodedJsonData) {
     populateFormForEditing(jsonObject);
     toggleDeleteButton(true);
 } else {
-    toggleDeleteButton(true);
+    toggleDeleteButton(false);
 }
 
 function toggleDeleteButton(showButton) {
