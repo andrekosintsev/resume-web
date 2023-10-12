@@ -90,8 +90,8 @@ deleteButton.addEventListener("click", function() {
 });
 
 Telegram.WebApp.onEvent("mainButtonClicked", function() {
-    if (validateInput(['dDate', 'price', 'count','currency'])) {
-        return;
+    if(document.getElementById('dDate').value=== "" || price: document.getElementById('price').value==="" || document.getElementById('count').value==="") {
+        document.getElementById("message").textContent = "Необходимо заполнить все обязательные поля";
     }
     if (encodedJsonData) {
         update();
