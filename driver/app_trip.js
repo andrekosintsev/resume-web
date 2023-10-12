@@ -90,7 +90,7 @@ deleteButton.addEventListener("click", function() {
 });
 
 Telegram.WebApp.onEvent("mainButtonClicked", function() {
-    if(document.getElementById('dDate').value=== "" || price: document.getElementById('price').value==="" || document.getElementById('count').value==="") {
+    if(document.getElementById('dDate').value=== "" || document.getElementById('price').value==="" || document.getElementById('count').value==="") {
         document.getElementById("message").textContent = "Необходимо заполнить все обязательные поля";
     }
     if (encodedJsonData) {
