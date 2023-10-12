@@ -60,7 +60,7 @@ deleteButton.addEventListener("click", function() {
         buttons: [{
             id: 'delete',
             type: 'destructive',
-            text: 'Конечно удалить'
+            text: 'Удалить'
         }, {
             type: 'cancel',
             text: 'Отмена'

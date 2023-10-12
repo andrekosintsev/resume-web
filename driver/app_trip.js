@@ -75,7 +75,7 @@ deleteButton.addEventListener("click", function() {
         buttons: [{
             id: 'delete',
             type: 'destructive',
-            text: 'Конечно удалить'
+            text: 'Удалить'
         }, {
             type: 'cancel',
             text: 'Отмена'
@@ -98,7 +98,6 @@ previewButton.addEventListener("click", function() {
         message: 'Сгенерировать сообщение-превью для рассылки?',
         buttons: [{
             id: 'ok',
-            type: 'destructive',
             text: 'Да'
         }, {
             type: 'cancel',
