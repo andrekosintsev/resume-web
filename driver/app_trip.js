@@ -9,6 +9,18 @@ let deleteButton = document.getElementById("delete-button");
 let previewButton = document.getElementById("preview-button");
 let token;
 
+const package = document.getElementById("package");
+const countInput = document.getElementById("count");
+
+package.addEventListener("change", function () {
+    if (package.checked) {
+        countInput.disabled = true;
+        countInput.value = "";
+    } else {
+       countInput.disabled = false;
+    }
+});
+
 const tokenJson = getQueryParam("token");
 if(tokenJson) {
         const decodedToken = decodeURIComponent(tokenJson);
@@ -76,6 +88,8 @@ function populateFormForEditing(entry) {
     document.getElementById('price').value = entry.price || "";
     document.getElementById('count').value = entry.count || "";
     document.getElementById('currency').value = entry.currency || "";
+    document.getElementById('package').value = entry.package || "";
+    document.getElementById('package').disabled = true;
 }
 
 deleteButton.addEventListener("click", function() {
@@ -151,7 +165,8 @@ function update() {
             dDate: document.getElementById('dDate').value,
             price: document.getElementById('price').value,
             count: document.getElementById('count').value,
-            currency: document.getElementById('currency').value
+            currency: document.getElementById('currency').value,
+            package: document.getElementById('package').value
         }
     }));
     tg.close();
@@ -178,7 +193,8 @@ function save() {
                 dDate: document.getElementById('dDate').value,
                 price: document.getElementById('price').value,
                 count: document.getElementById('count').value,
-                currency: document.getElementById('currency').value
+                currency: document.getElementById('currency').value,
+                package: document.getElementById('package').value
             };
             fetch('https://httpbin.org/post?userId=' + `${userData.id }`, {
                     method: 'POST',

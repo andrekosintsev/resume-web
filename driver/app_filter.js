@@ -51,6 +51,8 @@ function populateFormForEditing(entry) {
     document.getElementById('aCity').disabled = true;
     document.getElementById('dDate').value = entry.dDate || "";
     document.getElementById('dDate').disabled = true;
+    document.getElementById('package').value = entry.package || "";
+    document.getElementById('package').disabled = true;
 }
 
 deleteButton.addEventListener("click", function() {
@@ -96,6 +98,7 @@ Telegram.WebApp.onEvent("mainButtonClicked", function() {
                     aCountry: document.getElementById('aCountry').value,
                     aCity: document.getElementById('aCity').value,
                     dDate: document.getElementById('dDate').value,
+                    package: document.getElementById('package').value
                 };
                 fetch('https://httpbin.org/post?userId=' + `${userData.id }`, {
                         method: 'POST',
