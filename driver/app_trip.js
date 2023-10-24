@@ -15,7 +15,7 @@ const countInput = document.getElementById("count");
 package.addEventListener("change", function () {
     if (package.checked) {
         countInput.disabled = true;
-        countInput.value = "";
+        countInput.value = "0";
     } else {
        countInput.disabled = false;
     }
