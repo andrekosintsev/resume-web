@@ -33,7 +33,10 @@ document.addEventListener("DOMContentLoaded", function() {
     hideAnother(basic);
 });
 
-['fat','fatsat', 'fattrn','mono','poly','carb','fiber','sugar','protein','cholesterol','sodium', 'calcium','magnesium','potassium','iron','phos', 'vita', 'vitc'].forEach(item => {
+['fat','fatsat', 'fattrn','mono','poly','carb','fiber','sugar','protein',
+'cholesterol','sodium', 'calcium','magnesium','potassium','iron','phos',
+'vita', 'vitc','thiaminb1','riboflavinB2', 'niacinB3','vitB6','folate',
+'vitb12','vitD','vitE','vitK'].forEach(item => {
            const element = document.getElementById(item+'Toggle');
 
            element.addEventListener('change', function () {
@@ -46,7 +49,10 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 (function ($) {
-['fat','fatsat', 'fattrn','mono','poly','carb','fiber','sugar','protein','cholesterol','sodium', 'calcium','magnesium','potassium','iron','phos', 'vita', 'vitc'].forEach(item => {
+['fat','fatsat', 'fattrn','mono','poly','carb','fiber','sugar','protein',
+'cholesterol','sodium', 'calcium','magnesium','potassium','iron','phos',
+ 'vita', 'vitc','thiaminb1','riboflavinB2', 'niacinB3','vitB6','folate',
+ 'vitb12','vitD','vitE','vitK'].forEach(item => {
            $(document).ready(function() {
                // Slider example 3
                $('#'+item+'Slider').customSlider({
