@@ -49,10 +49,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 (function ($) {
-['fat','fatsat', 'fattrn','mono','poly','carb','fiber','sugar','protein',
-'cholesterol','sodium', 'calcium','magnesium','potassium','iron','phos',
- 'vita', 'vitc','thiaminb1','riboflavinB2', 'niacinB3','vitB6','folate',
- 'vitb12','vitD','vitE','vitK'].forEach(item => {
+['fat','fatsat', 'fattrn','mono','poly','carb','fiber','sugar','protein'].forEach(item => {
            $(document).ready(function() {
                // Slider example 3
                $('#'+item+'Slider').customSlider({
@@ -60,7 +57,55 @@ document.addEventListener("DOMContentLoaded", function() {
                  step: 1,
                  range: {
                    min: 0,
-                   max: 100,
+                   max: 1000,
+                 },
+                 connect: true,
+                 tooltips: true,
+                 pips: {
+                   mode: 'positions',
+                   values: [0, 25, 50, 75, 100],
+                   density: 10
+                 }
+               });
+});
+});
+})(jQuery);
+
+(function ($) {
+[ 'cholesterol','sodium','magnesium','potassium','iron','phos',
+ 'vitc','thiaminb1','riboflavinB2', 'niacinB3','vitB6','vitE','calcium'].forEach(item => {
+           $(document).ready(function() {
+               // Slider example 3
+               $('#'+item+'Slider').customSlider({
+                 start: [3000, 6000],
+                 step: 1,
+                 range: {
+                   min: 0,
+                   max: 10000,
+                 },
+                 connect: true,
+                 tooltips: true,
+                 pips: {
+                   mode: 'positions',
+                   values: [0, 25, 50, 75, 100],
+                   density: 10
+                 }
+               });
+});
+});
+})(jQuery);
+
+(function ($) {
+[ 'vita','folate',
+ 'vitb12','vitD','vitK'].forEach(item => {
+           $(document).ready(function() {
+               // Slider example 3
+               $('#'+item+'Slider').customSlider({
+                 start: [3.5, 6.5],
+                 step: 0.1,
+                 range: {
+                   min: 0,
+                   max: 1000,
                  },
                  connect: true,
                  tooltips: true,
