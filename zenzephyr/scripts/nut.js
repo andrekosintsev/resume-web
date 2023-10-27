@@ -10,9 +10,6 @@ document.addEventListener("DOMContentLoaded", function() {
     if (encodedJsonData) {
         const jsonData = decodeURIComponent(encodedJsonData);
         const jsonObject = JSON.parse(jsonData);
-        document.getElementById("daily").href="daily.html?json_data="+encodedJsonData;
-        document.getElementById("ingredients").href="ingredients.html?json_data="+encodedJsonData;
-        document.getElementById("nut").href="nut.html?json_data="+encodedJsonData;
         populateFormForEditing(jsonObject);
     }
 });
