@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Daily Meal Zen Zephyr Telegram Bot</title>
-    <meta name="description" content="Daily Meal Component Zen Zephyr Telegram Bot">
+    <title>Nutrition Information Zen Zephyr Telegram Bot</title>
+    <meta name="description" content="Nutrition Information Component Zen Zephyr Telegram Bot">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -40,19 +40,19 @@
             <div class="nav-wrapper">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link " href="daily.html">
+                        <a id="daily" class="nav-link" href="daily.html">
                             <i class="material-icons">restaurant_menu</i>
                             <span>Daily Meal</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="ingredients.html">
+                        <a id="ingredients" class="nav-link " href="ingredients.html">
                             <i class="material-icons">receipt</i>
                             <span>Ingredients</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="nut.html">
+                        <a id="nut" class="nav-link " href="nut.html">
                             <i class="material-icons">content_paste</i>
                             <span>Nutrition Facts</span>
                         </a>
@@ -100,103 +100,15 @@
                                         </th>
                                     </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id ="nutritionFacts">
                                     <tr>
                                         <th colspan="2">
-                                            <h3>Calories 379</h3>
+                                            <h3 id="calories">c</h3>
                                         </th>
-                                        <td>
-                                            Calories from Fat
-                                            130
-                                        </td>
                                     </tr>
                                     <tr class="thick-row">
                                         <td colspan="3" class="small-info">
                                             % Daily Value*
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="2">
-                                            <b>Total Fat</b>
-                                            0.11g
-                                        </th>
-                                        <td>
-                                            22%
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="blank-cell"></td>
-                                        <th>
-                                            <b>Saturated Fat</b>
-                                            0.07g
-                                        </th>
-                                        <td>
-                                            <b>22%</b>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="blank-cell"></td>
-                                        <th>
-                                            <b><i>Trans</i> Fat</b>
-                                            0g
-                                        </th>
-                                        <td>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="2">
-                                            <b>Cholesterol</b>
-                                            55mg
-                                        </th>
-                                        <td>
-                                            <b>18%</b>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="2">
-                                            <b>Sodium</b>
-                                            40mg
-                                        </th>
-                                        <td>
-                                            <b>2%</b>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="2">
-                                            <b>Total Carbohydrate</b>
-                                            17g
-                                        </th>
-                                        <td>
-                                            <b>6%</b>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="blank-cell">
-                                        </td>
-                                        <th>
-                                            <b>Dietary Fiber</b>
-                                            1g
-                                        </th>
-                                        <td>
-                                            <b>4%</b>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="blank-cell">
-                                        </td>
-                                        <th>
-                                            <b>Sugars</b>
-                                            14g
-                                        </th>
-                                        <td>
-                                        </td>
-                                    </tr>
-                                    <tr class="thick-end">
-                                        <th colspan="2">
-                                            <b>Protein</b>
-                                            3g
-                                        </th>
-                                        <td>
                                         </td>
                                     </tr>
                                     </tbody>

@@ -1,81 +1,3 @@
-const jsonDailyData = {
-    "label": "Jello Aquarium",
-    "image": "https://image.com",
-    "source": "Foodista",
-    "url": "http://www.foodista.com/recipe/X3RFGDTT/jello-aquarium",
-    "dietLabels": [
-      "High-Protein",
-      "Low-Fat",
-      "Low-Carb",
-      "Low-Sodium"
-    ],
-    "healthLabels": [
-      "Sugar-Conscious",
-      "Low Sugar",
-      "Low Potassium",
-      "Kidney-Friendly",
-      "Keto-Friendly",
-      "Dairy-Free",
-      "Gluten-Free",
-      "Wheat-Free",
-      "Egg-Free",
-      "Peanut-Free",
-      "Tree-Nut-Free",
-      "Soy-Free",
-      "Fish-Free",
-      "Shellfish-Free",
-      "Red-Meat-Free",
-      "Crustacean-Free",
-      "Celery-Free",
-      "Mustard-Free",
-      "Sesame-Free",
-      "Lupine-Free",
-      "Mollusk-Free",
-      "Alcohol-Free",
-      "No oil added",
-      "FODMAP-Free"
-    ],
-    "cautions" : ["Gluten"],
-    "ingredients": [
-      {
-        "text": "4 ounces Jell-o berry blue gelatin",
-        "quantity": 4.0,
-        "measure": "ounce",
-        "food": "gelatin",
-        "weight": 113.3980925,
-        "foodCategory": "candy",
-        "foodId": "food_bh3w81wbiqrfmhbaw9hgwa3u7lky",
-        "image": "https://www.edamam.com/food-img/47a/47a5b5c20c3cbfaf7332d572a5bfddbe.jpg"
-      },
-      {
-        "text": "cup Water -- cold",
-        "quantity": 1.0,
-        "measure": "cup",
-        "food": "Water",
-        "weight": 236.5882365,
-        "foodCategory": "water",
-        "foodId": "food_a99vzubbk1ayrsad318rvbzr3dh0",
-        "image": "https://www.edamam.com/food-img/5dd/5dd9d1361847b2ca53c4b19a8f92627e.jpg"
-      },
-      {
-        "text": "cup Water -- boiling",
-        "quantity": 1.0,
-        "measure": "cup",
-        "food": "Water",
-        "weight": 236.5882365,
-        "foodCategory": "water",
-        "foodId": "food_a99vzubbk1ayrsad318rvbzr3dh0",
-        "image": "https://www.edamam.com/food-img/5dd/5dd9d1361847b2ca53c4b19a8f92627e.jpg"
-      }
-    ],
-    "calories": 379.88360987500005,
-    "totalWeight": 586.5745655000001,
-    "totalTime": 365.0,
-    "cuisineType": ["british"],
-    "mealType": ["lunch/dinner"],
-    "dishType": ["desserts"]
-};
-
 //let tg = window.Telegram.WebApp;
 
 //tg.expand();
@@ -91,16 +13,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
     if (encodedJsonData) {
         const jsonData = decodeURIComponent(encodedJsonData);
-        const fixedJson = jsonData.replace(/(['"])?([a-zA-Z0-9_]+)(['"])?:/g, '"$2":');
-        const jsonObject = JSON.parse(fixedJson);
+        const jsonObject = JSON.parse(jsonData);
+        document.getElementById("daily").href="daily.html?json_data="+encodedJsonData;
+        document.getElementById("ingredients").href="ingredients.html?json_data="+encodedJsonData;
+        document.getElementById("nut").href="nut.html?json_data="+encodedJsonData;
         populateFormForEditing(jsonObject);
-    } else {
-
-
     }
 });
-
-populateFormForEditing(jsonDailyData);
 
 function populateFormForEditing(entry) {
     if(entry.dietLabels) {
