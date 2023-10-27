@@ -19,6 +19,20 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function populateFormForEditing(entry) {
+    if(entry.image) {
+        //document.getElementById("image").style.backgroundImage = `url('${entry.image}')`;
+        document.getElementById("image").style.backgroundImage = "url('https://zira.uz/wp-content/uploads/2023/02/zhayma-1.jpg')";
+
+    }
+    if(entry.ingredientLines) {
+     const ul = document.createElement("ul");
+        entry.ingredientLines.forEach(ingredient => {
+            const li = document.createElement("li");
+            li.textContent = ingredient;
+            ul.appendChild(li);
+        });
+        document.getElementById("ingredients").appendChild(ul);
+    }
     if(entry.dietLabels) {
         document.getElementById("dietLabels").innerHTML = formatDietLabels(entry.dietLabels);
     }

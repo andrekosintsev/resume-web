@@ -31,8 +31,7 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
                         <div class="card card-small card-post card-post--1">
-                            <div class="card-post__image"
-                                 style="background-image: url('https://healthyfitnessmeals.com/wp-content/uploads/2022/11/Leftover-turkey-soup-recipe-7.jpg');">
+                            <div id="image" class="card-post__image">
                                 <a href="#" id="dietLabels" class="card-post__category badge badge-pill badge-info"></a>
                                 <div class="my-auto ml-auto badge badge-pill">
                                     <a class="btn btn-sm btn-white mt-2" href="#">
@@ -46,15 +45,16 @@
                             <div class="my-auto ml-auto">
                                 <a id="source" href="#" class="card-text mr-2"></a>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body" style="padding:1rem 1rem">
                                 <h5 class="card-title">
                                     <a id="label" class="text-fiord-blue" href="#"></a>
                                 </h5>
-                                <p id="health" class="card-text text-muted"/>
+                                <div id="ingredients"></div>
+                                <p id="health" class="card-text text-muted"></p>
                                 <div id="cautions" class="bg-danger rounded text-white text-left p-1"
-                                     style="box-shadow: inset 0 0 5px rgba(0,0,0,.2); display: none;"/>
+                                     style="box-shadow: inset 0 0 5px rgba(0,0,0,.2); display: none;"></div>
                             </div>
-                            <div class="card-post border-top d-flex">
+                            <div class="card-post border-top d-flex" style="padding:0.1rem 1rem">
                                 <div id="totalTime" href="#" class="card-text mr-auto mt-3" style="display: none;">
                                     <i class="material-icons">access_time</i>
                                     <span id="time"></span>
