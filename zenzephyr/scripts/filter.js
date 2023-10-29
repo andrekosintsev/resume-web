@@ -192,7 +192,7 @@ Telegram.WebApp.onEvent("mainButtonClicked", function() {
         const element = document.getElementById(item + 'Toggle');
         if (element.checked) {
             let selVal = document.getElementById(item + 'Slider').noUiSlider.get();
-            filter[item] = [selVal[0], selVal[1]];
+            filt[item] = [selVal[0], selVal[1]];
         }
     });
     tg.sendData(JSON.stringify({
