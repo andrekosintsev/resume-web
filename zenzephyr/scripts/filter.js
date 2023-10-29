@@ -80,7 +80,7 @@ function populateList(arrayElement, fieldName) {
     $(document).ready(function() {
         hideAnother(basic);
         const encodedJsonData = getQueryParam("json_data");
-        const entry = {};
+        let entry = {};
 
         if (encodedJsonData) {
             const jsonData = decodeURIComponent(encodedJsonData);
