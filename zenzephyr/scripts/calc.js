@@ -35,7 +35,7 @@ document.getElementById('addRow').addEventListener('click', function() {
                 message: 'Maximum row limit of 5 has been reached.',
                 buttons: [{
                     id: 'ok',
-                    text: 'Ok'
+                    text: 'Okay'
                 } ]
             }, function(buttonId) {
             });
