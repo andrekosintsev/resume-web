@@ -1,8 +1,8 @@
 let tg = window.Telegram.WebApp;
 
 tg.expand();
-tg.MainButton.hide();
 tg.MainButton.text = "Calculate";
+tg.MainButton.show();
 
 let rowCount = 0;
 const maxRowCount = 5;
