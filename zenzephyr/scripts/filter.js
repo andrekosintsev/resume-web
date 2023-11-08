@@ -9,9 +9,6 @@ const diets = document.getElementById('diets');
 const calories = document.getElementById('calories');
 const nutrients = document.getElementById('nutrients');
 
-const basicOptions = document.getElementById('basicOptions');
-const allergiesOptions = document.getElementById('allergiesOptions');
-
 function getQueryParam(name) {
     const urlSearchParams = new URLSearchParams(window.location.search);
     return urlSearchParams.get(name);

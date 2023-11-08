@@ -7,6 +7,15 @@ tg.MainButton.show();
 
 let deleteButton = document.getElementById("delete-button");
 
+const tokenJson = getQueryParam("token");
+if(tokenJson) {
+        const decodedToken = decodeURIComponent(tokenJson);
+        const fixedTokenJson = decodedToken.replace(/(['"])?([a-zA-Z0-9_]+)(['"])?:/g, '"$2":');
+        const tokenObject = JSON.parse(fixedTokenJson);
+        token = btoa([tokenObject.userId,tokenObject.id,tg.initDataUnsafe.query_id].join(' '));
+        document.getElementById('token').value = token;
+}
+
 document.addEventListener("DOMContentLoaded", function() {
     const encodedJsonData = getQueryParam("json_data");
 
@@ -98,9 +107,10 @@ Telegram.WebApp.onEvent("mainButtonClicked", function() {
                     aCountry: document.getElementById('aCountry').value,
                     aCity: document.getElementById('aCity').value,
                     dDate: document.getElementById('dDate').value,
-                    package: document.getElementById('package').value
+                    package: document.getElementById('package').value,
+                    token: document.getElementById('token').value
                 };
-                fetch('https://httpbin.org/post?userId=' + `${userData.id }`, {
+                fetch('https://tdriver-service.kvadsoft.de:8081/create', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'

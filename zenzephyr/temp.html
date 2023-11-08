@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product List</title>
+</head>
+<body>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Quantity</th>
+        <th>Type</th>
+        <th>Product Name</th>
+    </tr>
+    </thead>
+    <tbody id="productList">
+    <!-- Existing rows will be added here -->
+    </tbody>
+</table>
+<button id="addRow">Add Row</button>
+
+<script>
+        document.getElementById('addRow').addEventListener('click', function () {
+            const productList = document.getElementById('productList');
+            const newRow = productList.insertRow(0); // Insert a new row at the top
+
+            const cell1 = newRow.insertCell(0);
+            const cell2 = newRow.insertCell(1);
+            const cell3 = newRow.insertCell(2);
+
+            cell1.innerHTML = '<input type="number" name="quantity[]" />';
+            cell2.innerHTML = `
+                <select name="type[]">
+                    <option value="oz">oz</option>
+                    <option value="kg">kg</option>
+                    <option value="cup">cup</option>
+                    <option value="g">g</option>
+                    <!-- Add more options as needed -->
+                </select>
+            `;
+            cell3.innerHTML = '<input type="text" name="product_name[]" />';
+        });
+    </script>
+</body>
+</html>

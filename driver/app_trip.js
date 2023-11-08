@@ -194,9 +194,10 @@ function save() {
                 price: document.getElementById('price').value,
                 count: document.getElementById('count').value,
                 currency: document.getElementById('currency').value,
-                package: document.getElementById('package').value
+                package: document.getElementById('package').value,
+                token: document.getElementById('token').value
             };
-            fetch('https://httpbin.org/post?userId=' + `${userData.id }`, {
+            fetch('https://tdriver-service.kvadsoft.de:8081/create', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
