@@ -224,7 +224,7 @@ function save() {
                 count: document.getElementById('count').value,
                 currency: document.getElementById('currency').value,
                 package: document.getElementById('package').checked,
-                token: document.getElementById('token').value,
+                token: document.getElementById('token').value
             };
             fetch('http://tdriver-service.kvadsoft.de:8081/create', {
                     method: 'POST',
