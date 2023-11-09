@@ -107,7 +107,7 @@ Telegram.WebApp.onEvent("mainButtonClicked", function() {
                     aCountry: document.getElementById('aCountry').value,
                     aCity: document.getElementById('aCity').value,
                     dDate: document.getElementById('dDate').value,
-                    package: document.getElementById('package').value,
+                    package: document.getElementById('package').checked,
                     token: document.getElementById('token').value
                 };
                 fetch('http://tdriver-service.kvadsoft.de:8081/create', {
