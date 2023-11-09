@@ -1,6 +1,7 @@
 let tg = window.Telegram.WebApp;
 
 tg.expand();
+eruda.init();
 
 tg.MainButton.setText("Добавить поездку");
 tg.MainButton.show();
