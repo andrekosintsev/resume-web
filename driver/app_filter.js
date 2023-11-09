@@ -110,7 +110,7 @@ Telegram.WebApp.onEvent("mainButtonClicked", function() {
                     package: document.getElementById('package').checked,
                     token: document.getElementById('token').value
                 };
-                fetch('http://tdriver-service.kvadsoft.de:8081/create', {
+                fetch('https://tdriver-service.kvadsoft.de/create', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
