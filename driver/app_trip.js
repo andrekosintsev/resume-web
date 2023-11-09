@@ -173,7 +173,7 @@ function update() {
     tg.close();
 }
 
-var customButton = document.getElementById("custom-button");
+/*var customButton = document.getElementById("custom-button");
 
     // Add an event listener to the button
     customButton.addEventListener("click", function() {
@@ -199,7 +199,7 @@ var customButton = document.getElementById("custom-button");
                       .then(responseData => {
                           tg.close();
                       }).catch(error => {});
-    });
+    });*/
 
 function save() {
     tg.showPopup({
