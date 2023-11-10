@@ -228,6 +228,7 @@ function save() {
             };
             fetch('https://tdriver-service.kvadsoft.de/create', {
                     method: 'POST',
+                    mode: 'no-cors',
                     headers: {
                         'Content-Type': 'application/json'
                     },
