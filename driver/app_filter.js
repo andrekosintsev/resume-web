@@ -110,9 +110,8 @@ Telegram.WebApp.onEvent("mainButtonClicked", function() {
                     package: document.getElementById('package').checked,
                     token: document.getElementById('token').value
                 };
-                const corsProxyUrl = 'https://cors-anywhere.herokuapp.com/';
-
-                fetch(corsProxyUrl+'https://tdriver-service.kvadsoft.de/create', {
+                process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+                fetch('https://tdriver-service.kvadsoft.de/create', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
