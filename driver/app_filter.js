@@ -110,7 +110,6 @@ Telegram.WebApp.onEvent("mainButtonClicked", function() {
                     package: document.getElementById('package').checked,
                     token: document.getElementById('token').value
                 };
-                process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
                 fetch('https://tdriver-service.kvadsoft.de/create', {
                         method: 'POST',
                         headers: {
