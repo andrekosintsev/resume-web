@@ -7,16 +7,7 @@ tg.MainButton.show();
 
 let deleteButton = document.getElementById("delete-button");
 let previewButton = document.getElementById("preview-button");
-let savingSpinner = document.createElement("div");
-savingSpinner.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving';
-savingSpinner.style.display = "none";
-savingSpinner.style.position = "absolute";
-savingSpinner.style.top = "50%";
-savingSpinner.style.left = "50%";
-savingSpinner.style.transform = "translate(-50%, -50%)";
-savingSpinner.style.zIndex = "3";
-document.body.appendChild(savingSpinner);
-
+let savingSpinner = document.getElementById("spinner");
 const countInput = document.getElementById("count");
 
 let initDataUnsafe = tg.initDataUnsafe;

@@ -15,49 +15,27 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 
     <style>
-        /* Custom CSS for responsiveness */
-        body {
-            margin: 0;
-            padding: 0;
-        }
-
-        .mdl-layout {
+        .overlay-spinner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
             display: flex;
-            flex-direction: column;
-            min-height: 100vh;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            pointer-events: all;
         }
 
-        .mdl-layout__content {
-            flex: 1;
+        .overlay-spinner i {
+            position: fixed;
+            top: 50%;
+            left: 45%;
+            font-size: 3em;
+            color: #333; /* Adjust the color as needed */
         }
-
-        .mdl-card {
-            margin: 16px;
-            width: calc(100% - 32px); /* Full width on mobile */
-            position: relative; /* Make the card container for absolute positioning */
-        }
-
-        .delete-button {
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            cursor: pointer;
-            z-index: 2; /* Ensure it's on top of other elements */
-        }
-        .preview-button {
-            position: absolute;
-            top: 75px;
-            right: 5px;
-            cursor: pointer;
-            z-index: 2; /* Ensure it's on top of other elements */
-        }
-
-        .mdl-card__supporting-text {
-            padding: 16px;
-        }
-
-
-
     </style>
 </head>
 <body class="h-100">
@@ -65,6 +43,9 @@
     <input type="hidden" name="id" id="id">
     <input type="hidden" name="token" id="token">
     <div class="row">
+        <div id="spinner" class="overlay-spinner" style="display:none" >
+            <i class="fas fa-spinner fa-spin"></i>
+        </div>
         <main class="main-content col-lg-12 col-md-12 col-sm-12 p-0 offset-lg-0 offset-md-0">
             <div class="main-content-container container-fluid px-4">
                 <div class="page-header row no-gutters py-4">
