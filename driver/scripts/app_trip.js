@@ -1,6 +1,7 @@
 let tg = window.Telegram.WebApp;
 
 tg.expand();
+eruda.init();
 
 tg.MainButton.setText("Добавить поездку");
 tg.MainButton.show();
@@ -130,6 +131,32 @@ previewButton.addEventListener("click", function() {
     });
 });
 
+document.getElementById("save").addEventListener("click", function() {
+                toggleSavingSpinner(true);
+                const data = {
+                    dCountry: document.getElementById('dCountry').value,
+                    dCity: document.getElementById('dCity').value,
+                    aCountry: document.getElementById('aCountry').value,
+                    aCity: document.getElementById('aCity').value,
+                    dDate: document.getElementById('dDate').value,
+                    price: document.getElementById('price').value,
+                    count: document.getElementById('count').value,
+                    currency: document.getElementById('currency').value,
+                    package: document.getElementById('package').checked,
+                    token: document.getElementById('token').value
+                };
+                fetch('https://tdriver-service.kvadsoft.de/create', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    }).then(response => response.json())
+                    .then(responseData => {
+                    }).catch(error => {});
+                    toggleSavingSpinner(false);
+});
+
 Telegram.WebApp.onEvent("mainButtonClicked", function() {
     if (validateInput(['dDate', 'price', 'count','currency'])) {
             document.getElementById("message").textContent = "Необходимо заполнить все обязательные поля";
@@ -138,6 +165,7 @@ Telegram.WebApp.onEvent("mainButtonClicked", function() {
     if (tg.MainButton.text ==="Сохранить изменения") {
         update();
     } else {
+        toggleSavingSpinner(true);
         save();
     }
 });
