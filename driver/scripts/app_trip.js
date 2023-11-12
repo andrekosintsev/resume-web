@@ -7,12 +7,23 @@ tg.MainButton.show();
 
 let deleteButton = document.getElementById("delete-button");
 let previewButton = document.getElementById("preview-button");
-let token;
+let savingSpinner = document.createElement("div");
+savingSpinner.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving';
+savingSpinner.style.display = "none";
+savingSpinner.style.position = "absolute";
+savingSpinner.style.top = "50%";
+savingSpinner.style.left = "50%";
+savingSpinner.style.transform = "translate(-50%, -50%)";
+savingSpinner.style.zIndex = "3";
+document.body.appendChild(savingSpinner);
 
 const countInput = document.getElementById("count");
 
-
+let initDataUnsafe = tg.initDataUnsafe;
+let userData = tg.initDataUnsafe.user;
 const tokenJson = getQueryParam("token");
+let token = "";
+
 if(tokenJson) {
         const decodedToken = decodeURIComponent(tokenJson);
         const fixedTokenJson = decodedToken.replace(/(['"])?([a-zA-Z0-9_]+)(['"])?:/g, '"$2":');
@@ -49,8 +60,6 @@ function getQueryParam(name) {
     const urlSearchParams = new URLSearchParams(window.location.search);
     return urlSearchParams.get(name);
 }
-let initDataUnsafe = tg.initDataUnsafe;
-let userData = tg.initDataUnsafe.user;
 
 function toggleDeleteButton(showButton) {
     if (showButton) {
@@ -198,6 +207,16 @@ function save() {
                 .then(responseData => {
                     tg.close();
                 }).catch(error => {});
+                toggleSavingSpinner(false);
         }
     });
+}
+
+
+function toggleSavingSpinner(showSpinner) {
+    if (showSpinner) {
+        savingSpinner.style.display = "block"; // Show the spinner
+    } else {
+        savingSpinner.style.display = "none"; // Hide the spinner
+    }
 }

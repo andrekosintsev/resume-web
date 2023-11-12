@@ -16,6 +16,9 @@ savingSpinner.style.transform = "translate(-50%, -50%)";
 savingSpinner.style.zIndex = "3";
 document.body.appendChild(savingSpinner);
 
+
+let initDataUnsafe = tg.initDataUnsafe;
+let userData = tg.initDataUnsafe.user;
 const tokenJson = getQueryParam("token");
 let token = "";
 
@@ -46,9 +49,6 @@ function getQueryParam(name) {
     const urlSearchParams = new URLSearchParams(window.location.search);
     return urlSearchParams.get(name);
 }
-let initDataUnsafe = tg.initDataUnsafe;
-let userData = tg.initDataUnsafe.user;
-
 function toggleDeleteButton(showButton) {
     if (showButton) {
         deleteButton.style.display = "block"; // Show the button
@@ -109,8 +109,6 @@ Telegram.WebApp.onEvent("mainButtonClicked", function() {
             type: 'cancel'
         }, ]
     }, function (buttonId) {
-        toggleSavingSpinner(false);
-
         if (buttonId === 'delete') {
             const data = {
                 dCountry: document.getElementById('dCountry').value,
@@ -132,6 +130,7 @@ Telegram.WebApp.onEvent("mainButtonClicked", function() {
                 }).catch(error => {
                     // Handle error
                 });
+                toggleSavingSpinner(false);
         }
     });
 });
