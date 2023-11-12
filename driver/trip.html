@@ -55,6 +55,9 @@
         .mdl-card__supporting-text {
             padding: 16px;
         }
+
+
+
     </style>
 </head>
 <body class="h-100">
@@ -69,10 +72,6 @@
                         <span id="ruName"
                               class="text-uppercase page-subtitle"></span>
                         <h3 id="enName" class="page-title">Детали поездки</h3>
-                        <i id="delete-button" class="material-icons delete-button"
-                           style="cursor: pointer; background-color: red; color: white; border-radius: 50%; padding: 15px;">delete</i>
-                        <i id="preview-button" class="material-icons preview-button"
-                           style="cursor: pointer; background-color: blue; color: white; border-radius: 50%; padding: 15px;">preview</i>
                     </div>
                 </div>
                 <div class="row">
@@ -153,6 +152,16 @@
                                             <label class="custom-control-label" for="package">Возьму посылку
                                             </label>
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div id="preview-button" href="#" class="card-text mr-auto mt-3">
+                                        <a class="nav-link" href="#">Предпросмотр</a>
+                                    </div>
+                                    <div class="my-auto ml-auto">
+                                        <button id="delete-button" type="button"
+                                                class="mb-2 btn btn-outline-danger mr-2">Удалить объявление
+                                        </button>
                                     </div>
                                 </div>
                             </div>

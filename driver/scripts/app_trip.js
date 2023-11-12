@@ -9,17 +9,8 @@ let deleteButton = document.getElementById("delete-button");
 let previewButton = document.getElementById("preview-button");
 let token;
 
-const package = document.getElementById("package");
 const countInput = document.getElementById("count");
 
-package.addEventListener("change", function () {
-    if (package.checked) {
-        countInput.disabled = true;
-        countInput.value = "0";
-    } else {
-       countInput.disabled = false;
-    }
-});
 
 const tokenJson = getQueryParam("token");
 if(tokenJson) {
@@ -166,7 +157,7 @@ function update() {
             price: document.getElementById('price').value,
             count: document.getElementById('count').value,
             currency: document.getElementById('currency').value,
-            package: document.getElementById('package').value
+            package: document.getElementById('package').checked
         }
     }));
     tg.close();
