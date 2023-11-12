@@ -1,7 +1,6 @@
 let tg = window.Telegram.WebApp;
 
 tg.expand();
-eruda.init();
 
 tg.MainButton.setText("Добавить поездку");
 tg.MainButton.show();
@@ -173,34 +172,6 @@ function update() {
     tg.close();
 }
 
-/*var customButton = document.getElementById("custom-button");
-
-    // Add an event listener to the button
-    customButton.addEventListener("click", function() {
-                  const data = {
-                      dCountry: document.getElementById('dCountry').value,
-                      dCity: document.getElementById('dCity').value,
-                      aCountry: document.getElementById('aCountry').value,
-                      aCity: document.getElementById('aCity').value,
-                      dDate: document.getElementById('dDate').value,
-                      price: document.getElementById('price').value,
-                      count: document.getElementById('count').value,
-                      currency: document.getElementById('currency').value,
-                      package: document.getElementById('package').checked,
-                      token: document.getElementById('token').value,
-                  };
-                  fetch('http://localhost:8081/create', {
-                          method: 'POST',
-                          headers: {
-                              'Content-Type': 'application/json'
-                          },
-                          body: JSON.stringify(data)
-                      }).then(response => response.json())
-                      .then(responseData => {
-                          tg.close();
-                      }).catch(error => {});
-    });*/
-
 function save() {
     tg.showPopup({
         title: 'Сохранение поездки',
@@ -228,7 +199,6 @@ function save() {
             };
             fetch('https://tdriver-service.kvadsoft.de/create', {
                     method: 'POST',
-                    mode: 'no-cors',
                     headers: {
                         'Content-Type': 'application/json'
                     },
