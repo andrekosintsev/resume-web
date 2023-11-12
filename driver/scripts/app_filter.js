@@ -108,6 +108,7 @@ Telegram.WebApp.onEvent("mainButtonClicked", function() {
                 dDate: document.getElementById('dDate').value,
                 token: document.getElementById('token').value
             };
+            tg.MainButton.hide();
             fetch('https://tdriver-service.kvadsoft.de/create', {
                 method: 'POST',
                 headers: {
@@ -116,11 +117,11 @@ Telegram.WebApp.onEvent("mainButtonClicked", function() {
                 body: JSON.stringify(data)
             }).then(response => response.json())
                 .then(responseData => {
+                    toggleSavingSpinner(false);
                     tg.close();
                 }).catch(error => {
-                    // Handle error
+                   tg.MainButton.show();
                 });
-                toggleSavingSpinner(false);
         }
     });
 });

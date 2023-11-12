@@ -189,6 +189,7 @@ function save() {
                 package: document.getElementById('package').checked,
                 token: document.getElementById('token').value
             };
+            tg.MainButton.hide();
             fetch('https://tdriver-service.kvadsoft.de/create', {
                     method: 'POST',
                     headers: {
@@ -196,9 +197,13 @@ function save() {
                     },
                     body: JSON.stringify(data)
                 }).then(response => response.json())
-                .then(responseData => {}).catch(error => {});
-            toggleSavingSpinner(false);
-        }
+                .then(responseData => {
+                   toggleSavingSpinner(false);
+                   tg.close();
+                }).catch(error => {
+                   tg.MainButton.show();
+                });
+                }
     });
 }
 
