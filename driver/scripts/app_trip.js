@@ -1,7 +1,6 @@
 let tg = window.Telegram.WebApp;
 
 tg.expand();
-eruda.init();
 
 tg.MainButton.setText("Добавить поездку");
 tg.MainButton.show();
@@ -16,12 +15,12 @@ let userData = tg.initDataUnsafe.user;
 const tokenJson = getQueryParam("token");
 let token = "";
 
-if(tokenJson) {
-        const decodedToken = decodeURIComponent(tokenJson);
-        const fixedTokenJson = decodedToken.replace(/(['"])?([a-zA-Z0-9_]+)(['"])?:/g, '"$2":');
-        const tokenObject = JSON.parse(fixedTokenJson);
-        token = btoa([tokenObject.userId,tokenObject.id,tg.initDataUnsafe.query_id].join(' '));
-        document.getElementById('token').value = token;
+if (tokenJson) {
+    const decodedToken = decodeURIComponent(tokenJson);
+    const fixedTokenJson = decodedToken.replace(/(['"])?([a-zA-Z0-9_]+)(['"])?:/g, '"$2":');
+    const tokenObject = JSON.parse(fixedTokenJson);
+    token = btoa([tokenObject.userId, tokenObject.id, tg.initDataUnsafe.query_id].join(' '));
+    document.getElementById('token').value = token;
 }
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -131,38 +130,12 @@ previewButton.addEventListener("click", function() {
     });
 });
 
-document.getElementById("save").addEventListener("click", function() {
-                toggleSavingSpinner(true);
-                const data = {
-                    dCountry: document.getElementById('dCountry').value,
-                    dCity: document.getElementById('dCity').value,
-                    aCountry: document.getElementById('aCountry').value,
-                    aCity: document.getElementById('aCity').value,
-                    dDate: document.getElementById('dDate').value,
-                    price: document.getElementById('price').value,
-                    count: document.getElementById('count').value,
-                    currency: document.getElementById('currency').value,
-                    package: document.getElementById('package').checked,
-                    token: document.getElementById('token').value
-                };
-                fetch('https://tdriver-service.kvadsoft.de/create', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(data)
-                    }).then(response => response.json())
-                    .then(responseData => {
-                    }).catch(error => {});
-                    toggleSavingSpinner(false);
-});
-
 Telegram.WebApp.onEvent("mainButtonClicked", function() {
-    if (validateInput(['dDate', 'price', 'count','currency'])) {
-            document.getElementById("message").textContent = "Необходимо заполнить все обязательные поля";
-            return;
-        }
-    if (tg.MainButton.text ==="Сохранить изменения") {
+    if (validateInput(['dDate', 'price', 'count', 'currency'])) {
+        document.getElementById("message").textContent = "Необходимо заполнить все обязательные поля";
+        return;
+    }
+    if (tg.MainButton.text === "Сохранить изменения") {
         update();
     } else {
         toggleSavingSpinner(true);
@@ -171,7 +144,7 @@ Telegram.WebApp.onEvent("mainButtonClicked", function() {
 });
 
 function update() {
-    if (validateInput(['dDate', 'price', 'count','currency'])) {
+    if (validateInput(['dDate', 'price', 'count', 'currency'])) {
         return;
     }
     tg.sendData(JSON.stringify({
@@ -223,10 +196,8 @@ function save() {
                     },
                     body: JSON.stringify(data)
                 }).then(response => response.json())
-                .then(responseData => {
-                    tg.close();
-                }).catch(error => {});
-                toggleSavingSpinner(false);
+                .then(responseData => {}).catch(error => {});
+            toggleSavingSpinner(false);
         }
     });
 }
