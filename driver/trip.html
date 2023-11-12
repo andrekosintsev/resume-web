@@ -36,6 +36,7 @@
             font-size: 3em;
             color: #333; /* Adjust the color as needed */
         }
+
     </style>
 </head>
 <body class="h-100">
@@ -44,7 +45,7 @@
     <input type="hidden" name="token" id="token">
     <div id="message"></div>
     <div class="row">
-        <div id="spinner" class="overlay-spinner" style="display:none" >
+        <div id="spinner" class="overlay-spinner" style="display:none">
             <i class="fas fa-spinner fa-spin"></i>
         </div>
         <main class="main-content col-lg-12 col-md-12 col-sm-12 p-0 offset-lg-0 offset-md-0">
@@ -137,11 +138,12 @@
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <div style="display: none;" id="preview-button" href="#" class="card-text mr-auto mt-3">
+                                    <div style="display: none;" id="preview-button" href="#"
+                                         class="card-text mr-auto mt-3">
                                         <a class="nav-link" href="#">Предпросмотр</a>
                                     </div>
-                                    <div style="display: none;" class="my-auto ml-auto">
-                                        <button id="delete-button" type="button"
+                                    <div class="my-auto ml-auto">
+                                        <button style="display: none;" id="delete-button" type="button"
                                                 class="mb-2 btn btn-outline-danger mr-2">Удалить объявление
                                         </button>
                                     </div>
