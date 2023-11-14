@@ -122,6 +122,8 @@ Telegram.WebApp.onEvent("mainButtonClicked", function() {
                 }).catch(error => {
                    tg.MainButton.show();
                 });
+        } else {
+            toggleSavingSpinner(false);
         }
     });
 });

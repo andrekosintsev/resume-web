@@ -203,6 +203,8 @@ function save() {
                 }).catch(error => {
                    tg.MainButton.show();
                 });
+                } else {
+                toggleSavingSpinner(false);
                 }
     });
 }
