@@ -173,7 +173,8 @@ function save() {
             type: 'destructive',
             text: 'Сохранить'
         }, {
-            type: 'cancel'
+           id: 'cancel',
+           type: 'cancel'
         }, ]
     }, function(buttonId) {
         if (buttonId === 'delete') {
@@ -203,8 +204,9 @@ function save() {
                 }).catch(error => {
                    tg.MainButton.show();
                 });
-                } else {
-                toggleSavingSpinner(false);
+                }
+                if (buttonId === 'cancel') {
+                    toggleSavingSpinner(false);
                 }
     });
 }

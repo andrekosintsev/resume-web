@@ -96,6 +96,7 @@ Telegram.WebApp.onEvent("mainButtonClicked", function() {
             type: 'destructive',
             text: 'Сохранить'
         }, {
+            id: 'cancel',
             type: 'cancel'
         }, ]
     }, function (buttonId) {
@@ -122,7 +123,8 @@ Telegram.WebApp.onEvent("mainButtonClicked", function() {
                 }).catch(error => {
                    tg.MainButton.show();
                 });
-        } else {
+        }
+        if (buttonId === 'cancel') {
             toggleSavingSpinner(false);
         }
     });
