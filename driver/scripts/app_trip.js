@@ -68,10 +68,12 @@ function populateFormForEditing(entry) {
     document.getElementById('id').value = entry.id || "";
     document.getElementById('dCountry').value = entry.dCountry || "";
     document.getElementById('dCountry').disabled = true;
+    populateCityDropdown(departureCityDropdown, departureCountryDropdown);
     document.getElementById('dCity').value = entry.dCity || "";
     document.getElementById('dCity').disabled = true;
     document.getElementById('aCountry').value = entry.aCountry || "";
     document.getElementById('aCountry').disabled = true;
+    populateCityDropdown(arrivalCityDropdown, arrivalCountryDropdown);
     document.getElementById('aCity').value = entry.aCity || "";
     document.getElementById('aCity').disabled = true;
     document.getElementById('dDate').value = entry.dDate || "";
