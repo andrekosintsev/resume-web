@@ -80,8 +80,8 @@ function populateFormForEditing(entry) {
     document.getElementById('dDate').disabled = true;
     document.getElementById('price').value = entry.price || "";
     document.getElementById('count').value = entry.count || "";
-    document.getElementById('phone').value = entry.price || "";
-    document.getElementById('comment').value = entry.count || "";
+    document.getElementById('phone').value = entry.phone || "";
+    document.getElementById('comment').value = entry.comment || "";
     document.getElementById('currency').value = entry.currency || "";
     document.getElementById('package').value = entry.package || "";
     document.getElementById('package').disabled = true;
