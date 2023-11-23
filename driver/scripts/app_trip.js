@@ -80,6 +80,8 @@ function populateFormForEditing(entry) {
     document.getElementById('dDate').disabled = true;
     document.getElementById('price').value = entry.price || "";
     document.getElementById('count').value = entry.count || "";
+    document.getElementById('phone').value = entry.price || "";
+    document.getElementById('comment').value = entry.count || "";
     document.getElementById('currency').value = entry.currency || "";
     document.getElementById('package').value = entry.package || "";
     document.getElementById('package').disabled = true;
@@ -160,7 +162,9 @@ function update() {
             price: document.getElementById('price').value,
             count: document.getElementById('count').value,
             currency: document.getElementById('currency').value,
-            package: document.getElementById('package').checked
+            package: document.getElementById('package').checked,
+            phone: document.getElementById('phone').value,
+            comment: document.getElementById('comment').value
         }
     }));
     tg.close();
@@ -190,7 +194,9 @@ function save() {
                 count: document.getElementById('count').value,
                 currency: document.getElementById('currency').value,
                 package: document.getElementById('package').checked,
-                token: document.getElementById('token').value
+                token: document.getElementById('token').value,
+                phone: document.getElementById('phone').value,
+                comment: document.getElementById('comment').value
             };
             tg.MainButton.hide();
             fetch('https://tdriver-service.kvadsoft.de/create', {

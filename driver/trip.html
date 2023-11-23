@@ -37,6 +37,9 @@
             color: #333; /* Adjust the color as needed */
         }
 
+
+
+
     </style>
 </head>
 <body class="h-100">
@@ -98,7 +101,8 @@
                                 <strong class="text-muted d-block">Дата:</strong>
                                 <div class="form-row">
                                     <div class="form-group col-md-5">
-                                        <input inputmode="numeric" class="form-control" type="text" class="required-field" id="dDate"
+                                        <input inputmode="numeric" class="form-control" type="text"
+                                               class="required-field" id="dDate"
                                                name="dDate"
                                                pattern="-\d{2}.\d{2}.\d{4}" placeholder="ДД.ММ.ГГГГ"
                                                title="Введите дату в формате ДД.MM.ГГГГ" required>
@@ -125,8 +129,23 @@
                                 <strong class="text-muted d-block">Количество пассажиров:</strong>
                                 <div class="form-row">
                                     <div class="form-group col-md-5">
-                                        <input  inputmode="numeric"  class="form-control" type="number" id="count" name="count" min="1"
+                                        <input inputmode="numeric" class="form-control" type="number" id="count"
+                                               name="count" min="1"
                                                max="10" step="1">
+                                    </div>
+                                </div>
+                                <strong class="text-muted d-block">Телефон:</strong>
+                                <div class="form-row">
+                                    <div class="form-group col-md-5">
+                                        <input class="form-control" type="text" id="phone"
+                                               name="phone">
+                                    </div>
+                                </div>
+                                <strong class="text-muted d-block">Комментарий:</strong>
+                                <div class="form-row">
+                                    <div class="form-group col-md-5">
+                                        <input class="form-control" type="text" id="comment"
+                                               name="comment">
                                     </div>
                                 </div>
                                 <div class="form-row">
