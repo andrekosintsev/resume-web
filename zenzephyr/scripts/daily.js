@@ -49,7 +49,7 @@ document.getElementById("image").style.backgroundImage = "url('https://images.un
         document.getElementById("cuisineType").textContent = "Cusine: " + entry.cuisineType.join(', ');
     }
     if(entry.mealType) {
-        document.getElementById("mealType").textContent = "Meal: " + entry.mealType.join(', ');
+        document.getElementById("mealType").textContent = "Meal type: " + entry.mealType.join(', ');
     }
     if(entry.dishType) {
         document.getElementById("dishType").textContent = entry.dishType.join(', ');
@@ -60,7 +60,7 @@ document.getElementById("image").style.backgroundImage = "url('https://images.un
         document.getElementById("totalTime").style.display = 'block';
     }
     if(entry.source) {
-        document.getElementById("source").textContent = "From " + entry.source;
+        document.getElementById("source").textContent = "Link to original recipe";
         if(entry.url) {
             document.getElementById("source").href = entry.url;
         }

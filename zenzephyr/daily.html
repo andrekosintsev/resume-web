@@ -23,8 +23,9 @@
                 <!-- Page Header -->
                 <div class="page-header row no-gutters py-4">
                     <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
-                        <span class="text-uppercase page-subtitle">Results found based on your configured filter</span>
-                        <h3 class="page-title">Daily Advice</h3>
+                        <span id="dishType" class="text-uppercase page-subtitle"></span>
+                        <h3 id="label" class="page-title"></h3>
+                        <span id="mealType" class="card-post__author-name"></span>
                     </div>
                 </div>
                 <!-- End Page Header -->
@@ -43,11 +44,11 @@
                                 </div>
                             </div>
                             <div class="my-auto ml-auto">
-                                <a id="source" href="#" class="card-text mr-2"></a>
+                                <small id="cuisineType" class="text-muted card-text mr-2"></small>
                             </div>
                             <div class="card-body" style="padding:1rem 1rem">
                                 <h5 class="card-title">
-                                    <a id="label" class="text-fiord-blue" href="#"></a>
+                                    <a id="source" href="#"></a>
                                 </h5>
                                 <div id="ingredients"></div>
                                 <p id="health" class="card-text text-muted"></p>
@@ -55,16 +56,10 @@
                                      style="box-shadow: inset 0 0 5px rgba(0,0,0,.2); display: none;"></div>
                             </div>
                             <div class="card-post border-top d-flex" style="padding:0.1rem 1rem">
-                                <div id="totalTime" href="#" class="card-text mr-auto mt-3" style="display: none;">
+                                <div id="totalTime" class="card-text mr-auto mt-3" style="display: none;">
+                                    <span>Cooking Time: </span>
                                     <i class="material-icons">access_time</i>
                                     <span id="time"></span>
-                                </div>
-                                <div class="d-flex flex-column justify-content-center">
-                                    <span id="mealType" class="card-post__author-name"></span>
-                                    <small id="cuisineType" class="text-muted"></small>
-                                </div>
-                                <div class="my-auto ml-auto">
-                                    <a id="dishType" class="btn btn-sm btn-white" href="#" style="display: none;"></a>
                                 </div>
                             </div>
                         </div>
