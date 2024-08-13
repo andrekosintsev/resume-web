@@ -1,6 +1,6 @@
-//let tg = window.Telegram.WebApp;
+let tg = window.Telegram.WebApp;
 
-//tg.expand();
+tg.expand();
 //tg.MainButton.hide();
 
 function getQueryParam(name) {
