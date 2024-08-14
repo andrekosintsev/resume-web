@@ -60,7 +60,7 @@ document.getElementById("image").style.backgroundImage = "url('https://images.un
         document.getElementById("totalTime").style.display = 'block';
     }
     if(entry.source) {
-        document.getElementById("source").textContent = "Link to original recipe from " + entry.source;
+        document.getElementById("source").textContent = "View full recipe on " + entry.source;
         if(entry.url) {
             document.getElementById("source").href = entry.url;
         }
